@@ -23,16 +23,17 @@
                                     <table id="datatable" class="table table-striped" data-toggle="data-table">
                                         <thead>
                                             <tr class="ligth">
-                                                <th>ID Domain</th>
+                                                <th>No.</th>
                                                 <th>Nama</th>
                                                 <th>Bobot</th>
                                                 <th style="min-width: 100px">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        <?php $no=1; ?>
                                             @foreach($data_domain as $domain)
                                             <tr>
-                                                <td>{{$domain->id}}</td>
+                                                <td>{{$no++}}</td>
                                                 <td>{{$domain->nama_domain}}</td>
                                                 <td>{{$domain->bobot_domain}}</td>
                                                 <td>

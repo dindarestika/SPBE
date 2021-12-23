@@ -23,15 +23,16 @@
                                     <table id="datatable" class="table table-striped" data-toggle="data-table">
                                         <thead>
                                             <tr class="ligth">
-                                                <th>ID</th>
+                                                <th>No. </th>
                                                 <th>Soal</th>
                                                 <th style="min-width: 100px">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        <?php $no=1; ?>
                                             @foreach($data_pertanyaan as $pertanyaan)
                                             <tr>
-                                                <td>{{$pertanyaan->id}}</td>
+                                                <td>{{$no++}}</td>
                                                 <td>{{$pertanyaan->soal}}</td>
                                                 <td>
                                                     <div class="flex align-items-center list-pertanyaan-action">

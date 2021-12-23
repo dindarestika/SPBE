@@ -23,7 +23,7 @@
                   <table id="datatable" class="table table-striped" data-toggle="data-table">
                      <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>No. </th>
                             <th>Nama Acara</th>
                             <!--
                             <th>Notulen</th>
@@ -35,9 +35,10 @@
                         </tr>
                      </thead>
                      <tbody>
+                     <?php $no=1; ?>
                         @foreach($dokumentasi as $d)
                         <tr>
-                            <td>{{$d->id}}</td>
+                            <td>{{$no++}}</td>
                             <td>{{$d->agenda->nama_acara}}</td>
                             <!--
                             <td>{{$d->notulen}}</td>

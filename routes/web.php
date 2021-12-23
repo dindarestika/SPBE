@@ -28,8 +28,6 @@ Route::get('/arsitektur', 'HomeController@arsitektur');
 Route::get('/map', 'MapController@index');
 Route::get('/titik', 'MapController@titik');
 Route::get('/lokasi/{id}', 'MapController@lokasi');
-Route::get('/email', 'EmailController@create');
-Route::post('/emailsend', 'EmailController@sendEmail')->name('send.email');
 
 Route::group(['middleware' => ['auth', 'cekrole:1']], function(){
     Route::get('/opd', 'OpdController@index');

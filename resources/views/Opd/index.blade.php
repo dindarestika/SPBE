@@ -23,7 +23,7 @@
                   <table id="datatable" class="table table-striped" data-toggle="data-table">
                      <thead>
                         <tr>
-                            <th>ID OPD</th>
+                            <th>No. </th>
                             <th>Nama OPD</th>
                             <th>Email</th>
                             <th>Telepon</th>
@@ -32,9 +32,10 @@
                         </tr>
                      </thead>
                      <tbody>
+                     <?php $no=1; ?>
                         @foreach($data_opd as $opd)
                         <tr>
-                            <td>{{$opd->id}}</td>
+                            <td>{{$no++}}</td>
                             <td>{{$opd->nama_opd}}</td>
                             <td>{{$opd->email_opd}}</td>
                             <td>{{$opd->telepon_opd}}</td>

@@ -116,6 +116,7 @@
               Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
             </div>
           </div>
+          
 
           <div class="col-lg-6 col-xs-12 text-lg-right text-center">
             <ul class="list-inline">

@@ -23,7 +23,7 @@
                                     <table id="datatable" class="table table-striped" data-toggle="data-table">
                                         <thead>
                                             <tr class="ligth">
-                                                <th>ID Aspek</th>
+                                                <th>No.</th>
                                                 <th>Domain</th>
                                                 <th>Nama Aspek</th>
                                                 <th>Bobot</th>
@@ -31,9 +31,10 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        <?php $no=1; ?>
                                             @foreach($data_aspek as $aspek)
                                             <tr>
-                                                <td>{{$aspek->id}}</td>
+                                                <td>{{$no++}}</td>
                                                 <td>{{$aspek->domain->nama_domain}}</td>
                                                 <td>{{$aspek->nama_aspek}}</td>
                                                 <td>{{$aspek->bobot_aspek}}</td>

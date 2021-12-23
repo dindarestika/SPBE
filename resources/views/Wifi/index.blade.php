@@ -24,7 +24,7 @@
                                         data-toggle="data-table">
                                         <thead>
                                             <tr class="ligth">
-                                                <th>ID </th>
+                                                <th>No. </th>
                                                 <th>Nama Wifi</th>
                                                 <th>Latitude</th>
                                                 <th>Longitude</th>
@@ -33,9 +33,10 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        <?php $no=1; ?>
                                             @foreach($data_wifi as $wifi)
                                             <tr>
-                                                <td>{{$wifi->id}}</td>
+                                                <td>{{$no++}}</td>
                                                 <td>{{$wifi->nama_wifi}}</td>
                                                 <td>{{$wifi->latitude}}</td>
                                                 <td>{{$wifi->longitude}}</td>

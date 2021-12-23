@@ -23,7 +23,7 @@
                                     <table id="datatable" class="table table-striped" data-toggle="data-table">
                                         <thead>
                                             <tr class="ligth">
-                                                <th>ID</th>
+                                                <th>No. </th>
                                                 <th>Aspek</th>
                                                 <th>Nama Indikator</th>
                                                 <th>Bobot</th>
@@ -32,9 +32,10 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        <?php $no=1; ?>
                                             @foreach($data_indikator as $indikator)
                                             <tr>
-                                                <td>{{$indikator->id}}</td>
+                                                <td>{{$no++}}</td>
                                                 <td>{{$indikator->aspek->nama_aspek}}</td>
                                                 <td>{{$indikator->nama_indikator}}</td>
                                                 <td>{{$indikator->bobot_indikator}}</td>

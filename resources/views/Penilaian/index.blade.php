@@ -19,16 +19,17 @@
                                 <table id="datatable" class="table table-striped" data-toggle="data-table">
                                     <thead>
                                         <tr>
-                                            <th>No</th>
+                                            <th>No. </th>
                                             <th>Tahun</th>
                                             <th>Nama Form</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <?php $no=1; ?>
                                         @foreach($data_evaluasi as $evaluasi)
                                         <tr>
-                                            <td>{{$evaluasi->id}}</td>
+                                            <td>{{$no++}}</td>
                                             <td>{{$evaluasi->tahun_evaluasi}}</td>
                                             <td>{{$evaluasi->nama_evaluasi}}</td>
                                             <td>
