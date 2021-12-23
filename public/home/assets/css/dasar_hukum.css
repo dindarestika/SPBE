@@ -1,0 +1,30 @@
+body {
+	background-color: #f7f7f7;
+	overflow-x: hidden;
+}
+
+.pasal {
+	background-color: white;
+	width: 60vw;
+	height: auto;
+	margin: 0 auto;
+	padding: 2px;
+	border-radius: 10px;
+}
+
+.pasal p b {
+	color: #2753c2;
+	font-size: 20px;
+	margin-left: 1vw;
+}
+
+.pasal hr {
+	margin-right: 1vw;
+	margin-left: 1vw;
+}
+
+footer {
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+}
