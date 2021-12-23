@@ -83,7 +83,7 @@
               <li><a href="/map">Map Wifi</a></li>
             </ul>
           </li>
-          <li><a class="nav-link {{ ($title === 'Contact') ? 'active' : '' }}" href="/email">Contact</a></li>
+          <li><a href="https://ulas.surakarta.go.id/">Ulas</a></li>
           <li><a href="/login">Login</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
