@@ -9,7 +9,7 @@ class Domain extends Model
 {
     use HasFactory;
     protected $table = 'domain';
-    protected $fillable =['nama_domain', 'bobot_domain'];
+    protected $fillable =['evaluasi_id','nama_domain', 'bobot_domain'];
 
     public function aspek()
     {
@@ -18,6 +18,10 @@ class Domain extends Model
     public function indikator()
     {
         return $this->hasManyThrough(Indikator::class, Aspek::class);
+    }
+    public function evaluasi()
+    {
+        return $this->belongsTo(Evaluasi::class);
     }
     
 }

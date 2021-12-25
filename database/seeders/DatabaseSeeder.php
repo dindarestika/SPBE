@@ -82,21 +82,25 @@ class DatabaseSeeder extends Seeder
         ]); 
         
         Domain::create([
+            'evaluasi_id' => "1",
             'nama_domain' => "Kebijakan Internal SPBE",
             'bobot_domain' => "2",
         ]); 
 
         Domain::create([
+            'evaluasi_id' => "1",
             'nama_domain' => "Tata Kelola SPBE",
             'bobot_domain' => "2",
         ]); 
 
         Domain::create([
+            'evaluasi_id' => "1",
             'nama_domain' => "Manajemen SPBE",
             'bobot_domain' => "2",
         ]); 
 
         Domain::create([
+            'evaluasi_id' => "1",
             'nama_domain' => "Layanan SPBE",
             'bobot_domain' => "2",
         ]); 
@@ -142,6 +146,7 @@ class DatabaseSeeder extends Seeder
             'bobot_aspek' => "2",
         ]);
         Indikator::create([
+            'opd_id' => "1",
             'aspek_id' => "1",
             'nama_indikator' => "Tingkat kematangan kebijakan internal arsitektur SPBE Instansi Pusat/Pemerintah Daerah",
             'bobot_indikator' => "2",
@@ -157,6 +162,7 @@ class DatabaseSeeder extends Seeder
         ]); 
 
         Indikator::create([
+            'opd_id' => "1",
             'aspek_id' => "1",
             'nama_indikator' => "Tingkat kematangan kebijakan internal peta rencana SPBE Instansi Pusat/Pemerintah Daerah",
             'bobot_indikator' => "2",
@@ -173,6 +179,7 @@ class DatabaseSeeder extends Seeder
         ]); 
 
         Indikator::create([
+            'opd_id' => "1",
             'aspek_id' => "1",
             'nama_indikator' => "Tingkat kematangan kebijakan internal manajemen data",
             'bobot_indikator' => "2",

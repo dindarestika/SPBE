@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Opd;
 use App\Models\Domain;
 use App\Models\Aspek;
 use App\Models\Indikator;
@@ -13,14 +14,18 @@ class IndikatorController extends Controller
     {
         $data_aspek = Aspek::all();
         $data_indikator = Indikator::all();
+        $data_opd = Opd::all();
         return view('indikator.index',[
             "title" => "Indikator",
             'data_aspek' => $data_aspek,
-            'data_indikator' => $data_indikator]);
+            'data_indikator' => $data_indikator,
+            'data_opd' => $data_opd,
+        ]);
     }
     public function create(Request $request)
     {
         $validatedData = $request->validate([
+            'opd_id' => 'required',
             'aspek_id' => 'required',
             'nama_indikator' => 'required|max:255|unique:indikator',
             'bobot_indikator' => 'required|int',
@@ -33,8 +38,10 @@ class IndikatorController extends Controller
     {
         $indikator = Indikator::find($id);
         $aspek = Aspek::all();
+        $opd = Opd::all();
         return view('indikator/edit', [
             "title" => "Indikator",
+            'opd' => $opd,
             'aspek' => $aspek,
             'indikator' => $indikator]);
     }

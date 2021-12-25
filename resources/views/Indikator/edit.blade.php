@@ -19,6 +19,18 @@
                <form action="/indikator/{{$indikator->id}}/update" method="POST" enctype="multipart/form-data">
                                     {{csrf_field()}}
                                     <div class="mb-3">
+                                        <label class="form-label">OPD</label>
+                                        <select name="opd_id" class="form-select" required aria-label=".form-select-sm example">
+                                            <?php
+                                                foreach ($opd as $opd)
+                                                {
+                                                    echo "<option value='$opd->id'";
+                                                    echo $indikator['opd_id']==$opd->id?'selected':'';
+                                                    echo ">$opd->nama_opd</option>";
+                                                }
+                                            ?>
+                                        </select>
+
                                         <label class="form-label">Aspek</label>
                                         <select name="aspek_id" class="form-select" required aria-label=".form-select-sm example">
                                             <?php

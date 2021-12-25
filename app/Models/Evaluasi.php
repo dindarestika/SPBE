@@ -10,4 +10,9 @@ class Evaluasi extends Model
     use HasFactory;
     protected $table = 'evaluasi';
     protected $fillable =['nama_evaluasi', 'tahun_evaluasi','deskripsi_evaluasi'];
+
+    public function domain()
+    {
+        return $this->hasMany(Domain::class);
+    }
 }

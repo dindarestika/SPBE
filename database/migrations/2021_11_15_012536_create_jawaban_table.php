@@ -19,7 +19,7 @@ class CreateJawabanTable extends Migration
             $table->foreignId('pertanyaan_id');
             $table->text('jawaban_pertanyaan')->nullable();
             $table->string('bukti_dukung')->nullable();
-            $table->integer('capaian')->nullable();
+            $table->integer('capaian')->default(0);
             $table->timestamps();
         });
     }

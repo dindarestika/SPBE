@@ -4,19 +4,24 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Domain;
+use App\Models\Evaluasi;
 
 class DomainController extends Controller
 {
     public function index()
     {
         $data_domain = Domain::all();
+        $data_evaluasi = Evaluasi::all();
         return view('domain.index',[
             "title" => "Domain",
-            'data_domain' => $data_domain]);
+            'data_domain' => $data_domain,
+            'data_evaluasi' => $data_evaluasi,
+        ]);
     }
     public function create(Request $request)
     {
         $validatedData = $request->validate([
+            'evaluasi_id' => 'required',
             'nama_domain' => 'required|max:255|unique:domain',
             'bobot_domain' => 'required|int',
         ]);
@@ -26,9 +31,12 @@ class DomainController extends Controller
     public function edit($id)
     {
         $domain = Domain::find($id);
+        $data_evaluasi = Evaluasi::all();
         return view('domain/edit', [
             "title" => "Domain",
-            'domain' => $domain]);
+            'domain' => $domain,
+            'data_evaluasi' => $data_evaluasi,
+        ]);
     }
     public function update(Request $request, $id)
     {

@@ -105,6 +105,13 @@
                 <form action="/domain/create" method="POST" enctype="multipart/form-data">
                 {{csrf_field()}}
                     <div class="mb-3">
+                        <label class="form-label">Evaluasi</label>
+                        <select name="evaluasi_id" class="form-select" required aria-label=".form-select-sm example">
+                            @foreach($data_evaluasi as $evaluasi)
+                            <option value="{{$evaluasi->id}}">{{$evaluasi->nama_evaluasi}}</option>
+                            @endforeach
+                        </select>
+
                         <label class="form-label">Nama domain</label>
                         <input type="text" name="nama_domain" class="form-control @error('nama_domain') is-invalid @enderror" required value="{{ old('nama_domain')}}">
                         @error('nama_domain')

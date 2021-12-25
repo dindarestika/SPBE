@@ -16,7 +16,7 @@ class Pertanyaan extends Model
     }
     public function jawaban()
     {
-        return $this->hasOne(Jawaban::class);
+        return $this->hasMany(Jawaban::class);
     }
 
 }

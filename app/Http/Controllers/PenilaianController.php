@@ -89,17 +89,29 @@ class PenilaianController extends Controller
     }
     public function mandiri($id)
     {
+        $user=request()->user();
         $evaluasi = Evaluasi::find($id);
-        $indikator = Indikator::all();
+        $indikator = Indikator::where('opd_id',$user->opd_id)->get();
+        $items = Indikator::where('opd_id',$user->opd_id)->get();
         $data_domain = Domain::all();
         $data_aspek = Aspek::all();
-        
+        $jawaban = Jawaban::where('user_id', $user->id)->exists();
+        if($jawaban)
+        {
+            $status="ADA";
+        }
+        else{
+            $status="TIDAK ADA";
+        }
         return view('penilaian.mandiri', [
             "title" => "Penilaian",
             'evaluasi' => $evaluasi,
             'indikator' => $indikator,
+            'items' => $items,
             'data_domain' => $data_domain,
             'data_aspek' => $data_aspek,
+            'jawaban' => $jawaban,
+            'status' => $status,
         ]);
     }
     public function penilaianindikator($id)
@@ -186,10 +198,12 @@ class PenilaianController extends Controller
 
     public function jawabanpertanyaan(Request $request)
     {
+        //return $request->capaian;
 
         $userID=array();
         $pertanyaanID=array();
         $answer=array();
+        $nilaicapaian=array();
         //$bukti=array();
         
         foreach($request->user_id as $u)
@@ -200,30 +214,35 @@ class PenilaianController extends Controller
         {
             array_push($pertanyaanID, $p);
         }
-        foreach($request->jawaban as $j)
+        foreach($request->jawaban as $key => $j)
         {
+            if($request->capaian == $key+1)
+            {
+                $nilaicapaian[$key]=$key+1;
+            }
+            else
+            {
+                $nilaicapaian[$key]=0;
+            }
             array_push($answer, $j);
         }
-        /*
-        foreach($request->bukti_dukung as $b)
-        {
-            array_push($bukti, $b);
-        }
         
-        $nilaicapaian=array(0,0,0,0,0);
-        foreach($request->capaian as $c)
-        {
-            $nilaicapaian[$c-1]=$c;
-            //array_push($nilaicapaian, $c);
-        }
-        */
+        // foreach($request->bukti_dukung as $b)
+        // {
+        //     array_push($bukti, $b);
+        // }
+        
+
+           // return $nilaicapaian;
+
+       
         for($i=0; $i<sizeof($pertanyaanID); $i++)
         {
             $jawab = new Jawaban();
             $jawab->user_id = $userID[$i];
             $jawab->pertanyaan_id = $pertanyaanID[$i];
             $jawab->jawaban_pertanyaan = $answer[$i];
-           // $jawab->capaian = $nilaicapaian[$i];
+            $jawab->capaian = $nilaicapaian[$i];
             $jawab->save();
         }
         return back()->with('sukses', 'Jawaban berhasil diinput');

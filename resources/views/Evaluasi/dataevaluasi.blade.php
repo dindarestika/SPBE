@@ -6,45 +6,32 @@
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 @endif
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="card">
-                            <div class="card-header d-flex justify-content-between">
-                                <div class="header-title">
-                                <h4 class="card-title">Data Indikator</h4>
-                                </div>
-                                <div class="right">
-                                    <button type="button" class="btn btn-primary btn-sm" 
-                                    data-bs-toggle="modal" data-bs-target="#exampleModal">Tambah</button>
+    <div class="row">
+        <div class="col-sm-12">
+                <div class="card-header d-flex justify-content-between">
+                    <div class="header-title">
+                        <h4 class="card-title">Data Evaluasi</h4>
+                    </div>
+                    <div class="right">
+                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">Tambah Evaluasi</button>
+                    </div>
+                </div>
+                </br>
+
+                @foreach($data_evaluasi as $evaluasi)
+                <div class="col-lg-3 col-md-6">
+                    <div class="card bg-soft-primary">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="text-end">
+                                    <a href="/{{$evaluasi->id}}/datadomain">{{$evaluasi->nama_evaluasi}}</a>
                                 </div>
                             </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table id="datatable" class="table table-striped" data-toggle="data-table">
-                                        <thead>
-                                            <tr class="ligth">
-                                                <th>No. </th>
-                                                <th>Aspek</th>
-                                                <th>Nama Indikator</th>
-                                                <th>Bobot</th>
-                                                <!-- <th>Penjelasan Indikator</th> -->
-                                                <th style="min-width: 100px">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        <?php $no=1; ?>
-                                            @foreach($data_indikator as $indikator)
-                                            <tr>
-                                                <td>{{$no++}}</td>
-                                                <td>{{$indikator->aspek->nama_aspek}}</td>
-                                                <td>{{$indikator->nama_indikator}}</td>
-                                                <td>{{$indikator->bobot_indikator}}</td>
-                                                <!-- <td>{{$indikator->penjelasan_indikator}}</td> -->
-                                                <td>
-                                                    <div class="flex align-items-center list-indikator-action">
+                        </div>
+                        <div class="flex align-items-center list-evaluasi-action">
                                                         <a class="btn btn-sm btn-icon btn-warning" data-toggle="tooltip"
                                                             data-placement="top" title="" data-original-title="Edit"
-                                                            href="/indikator/{{$indikator->id}}/edit">
+                                                            href="/evaluasi/{{$evaluasi->id}}/edit">
                                                             <span class="btn-inner">
                                                                 <svg width="20" viewBox="0 0 24 24" fill="none"
                                                                     xmlns="http://www.w3.org/2000/svg">
@@ -64,10 +51,10 @@
                                                                     </path>
                                                                 </svg>
                                                             </span>
-                                                        </a>
+                                                        </a>                            
                                                         <a class="btn btn-sm btn-icon btn-danger" data-toggle="tooltip"
                                                             data-placement="top" title="" data-original-title="Delete"
-                                                            href="/indikator/{{$indikator->id}}/delete" onclick="return confirm('Yakin ingin menghapus?')">
+                                                            href="/evaluasi/{{$evaluasi->id}}/delete" onclick="return confirm('Yakin ingin menghapus?')">
                                                             <span class="btn-inner">
                                                                 <svg width="20" viewBox="0 0 24 24" fill="none"
                                                                     xmlns="http://www.w3.org/2000/svg"
@@ -89,59 +76,40 @@
                                                             </span>
                                                         </a>
                                                     </div>
-                                                </td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
+                
+                @endforeach
+        </div>
+    </div>         
 
-
-   <!-- Modal -->
+    <!-- Modal -->
    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">
-                <form action="/indikator/create" method="POST" enctype="multipart/form-data">
+                <form action="/evaluasi/create" method="POST" enctype="multipart/form-data">
                 {{csrf_field()}}
                     <div class="mb-3">
-                        <label class="form-label">OPD</label>
-                        <select name="opd_id" class="form-select" required aria-label=".form-select-sm example">
-                            @foreach($data_opd as $opd)
-                            <option value="{{$opd->id}}">{{$opd->nama_opd}}</option>
-                            @endforeach
-                        </select>
+                        <label class="form-label">Tahun Evaluasi</label>
+                        <input type="text" name="tahun_evaluasi" class="form-control @error('tahun_evaluasi') is-invalid @enderror" required value="{{ old('tahun_evaluasi')}}">
+                        @error('tahun_evaluasi')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
 
-                        <label class="form-label">Aspek</label>
-                        <select name="aspek_id" class="form-select" required aria-label=".form-select-sm example">
-                            @foreach($data_aspek as $aspek)
-                            <option value="{{$aspek->id}}">{{$aspek->nama_aspek}}</option>
-                            @endforeach
-                        </select>
-
-                        <label class="form-label">Nama Indikator</label>
-                        <input type="text" name="nama_indikator" class="form-control @error('nama_indikator') is-invalid @enderror" required value="{{ old('nama_indikator')}}">
-                        @error('nama_indikator')
+                        <label class="form-label">Nama Evaluasi</label>
+                        <input type="text" name="nama_evaluasi" class="form-control @error('nama_evaluasi') is-invalid @enderror" required value="{{ old('nama_evaluasi')}}">
+                        @error('nama_evaluasi')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                         @enderror
                         
-                        <label class="form-label">Bobot Indikator</label>
-                        <input type="number" name="bobot_indikator" class="form-control @error('bobot_indikator') is-invalid @enderror" required value="{{ old('bobot_indikator')}}">
-                        @error('bobot_indikator')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                        @enderror
-
-                        <label class="form-label">Penjelasan Indikator</label>
-                        <textarea name="penjelasan_indikator" class="form-control @error('penjelasan_indikator') is-invalid @enderror" rows="5" required>{{ old('penjelasan_indikator')}}</textarea>
-                        @error('penjelasan_indikator')
+                        <label class="form-label">Deskripsi Evaluasi</label>
+                        <input type="text" name="deskripsi_evaluasi" class="form-control @error('deskripsi_evaluasi') is-invalid @enderror" required value="{{ old('deskripsi_evaluasi')}}">
+                        @error('deskripsi_evaluasi')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -155,6 +123,6 @@
             </div>
         </div>
     </div>
-</div>
+   </div>
 @stop
 

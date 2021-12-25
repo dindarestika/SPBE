@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Evaluasi;
-
+use App\Models\Domain;
 class EvaluasiController extends Controller
 {
     public function index()
@@ -43,4 +43,22 @@ class EvaluasiController extends Controller
         $evaluasi->delete($evaluasi);
         return redirect('/evaluasi')->with('sukses', 'Data berhasil dihapus');
     }
+    public function dataevaluasi()
+    {
+        // $data_evaluasi = Evaluasi::all();
+        $data_evaluasi = Evaluasi::orderBy('tahun_evaluasi', 'asc')->get();
+        return view('evaluasi.dataevaluasi',[
+            "title" => "Evaluasi",
+            'data_evaluasi' => $data_evaluasi]);
+    }
+    // public function datadomain($id)
+    // {
+    //     $evaluasi = Evaluasi::find($id);
+    //     $data_domain = Domain::orderBy('evaluasi_id', $id)->get();
+    //     return view('evaluasi.datadomain',[
+    //         "title" => "Evaluasi",
+    //         'data_evaluasi' => $data_evaluasi,
+    //         'data_domain' => $data_domain,
+    //     ]);
+    // }
 }

@@ -103,6 +103,9 @@ Route::group(['middleware' => ['auth', 'cekrole:1']], function(){
     Route::post('/dokumentasi/{id}/update', 'DokumentasiController@update');
     Route::get('/dokumentasi/{id}/delete', 'DokumentasiController@delete');
 
+    Route::get('/dataevaluasi', 'EvaluasiController@dataevaluasi');
+    Route::get('/{id}/datadomain', 'EvaluasiController@datadomain');
+
 });
 
 Route::group(['middleware' => ['auth', 'cekrole:1,2']], function(){
