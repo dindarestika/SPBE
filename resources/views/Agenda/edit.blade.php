@@ -70,7 +70,16 @@
                             @error('tempat_acara')
                                     {{ $message }}
                             @enderror 
-                        </div>    
+                        </div> 
+                        
+                        <label>Link Upload</label>
+                        <input name="link_upload" value="{{ $agenda->link_upload }}" class="form-control @error('link_upload') is-invalid @enderror">
+                        <div class="text-danger">
+                            @error('link_upload')
+                                    {{ $message }}
+                            @enderror 
+                        </div> 
+
                         <label class="form-label">Upload Surat</label>
                         <object data="{{asset('storage/'.$agenda->surat)}}" alt="Surat" width="900" height="800"></object>
                         <input type="file" name="surat" value="{{$agenda->surat}}" class="form-control" >

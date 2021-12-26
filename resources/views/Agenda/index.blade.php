@@ -23,22 +23,25 @@
                   <table id="datatable" class="table table-striped" data-toggle="data-table">
                      <thead>
                         <tr>
-                            <th>Jenis Acara</th>
-                            <th>Nama</th>
-                            <th>Tanggal</th>
-                            <th>Waktu</th>
-                            <th>Tempat</th>
-                            <th>Aksi</th>
+                            <th><center>No</center></th>
+                            <th><center>Jenis Acara</center></th>
+                            <th><center>Nama</center></th>
+                            <th><center>Tanggal</center></th>
+                            <th><center>Waktu</center></th>
+                            <th><center>Tempat</center></th>
+                            <th><center>Aksi</center></th>
                         </tr>
                      </thead>
                      <tbody>
+                        <?php $no=1; ?>
                         @foreach($data_agenda as $agenda)
                         <tr>
+                            <td><center>{{$no++}}</center></td>
                             <td>{{$agenda->jenisagenda->nama_jenis}}</td>
                             <td>{{$agenda->nama_acara}}</td>
                             <td>{{$agenda->tanggal_acara}}</td>
-                            <td>{{$agenda->waktu_acara}}</td>
-                            <td>{{$agenda->tempat_acara}}</td>
+                            <td><center>{{$agenda->waktu_acara}}</center></td>
+                            <td><center>{{$agenda->tempat_acara}}</center></td>
                             <td>
                                                     <div class="flex align-items-center list-user-action">
                                                         <a class="btn btn-sm btn-icon btn-success" data-toggle="tooltip"
@@ -176,6 +179,14 @@
                         <input name="tempat_acara" class="form-control @error('tempat_acara') is-invalid @enderror">
                         <div class="text-danger">
                             @error('tempat_acara')
+                                    {{ $message }}
+                            @enderror 
+                        </div>
+
+                        <label>Link Upload</label>
+                        <input type="link" name="link_upload" class="form-control @error('link_upload') is-invalid @enderror">
+                        <div class="text-danger">
+                            @error('link_upload')
                                     {{ $message }}
                             @enderror 
                         </div>

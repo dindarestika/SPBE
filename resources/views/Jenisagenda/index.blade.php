@@ -23,18 +23,19 @@
                   <table id="datatable" class="table table-striped" data-toggle="data-table">
                      <thead>
                         <tr>
-                            <th>No. </th>
-                            <th>Nama Jenis</th>
-                            <th>Aksi</th>
+                            <th><center>No</center></th>
+                            <th><center>Nama Jenis</center></th>
+                            <th><center>Aksi</center></th>
                         </tr>
                      </thead>
                      <tbody>
                      <?php $no=1; ?>
                         @foreach($data_jenisagenda as $jenisagenda)
                         <tr>
-                            <td>{{$no++}}</td>
-                            <td>{{$jenisagenda->nama_jenis}}</td>
+                            <td><center>{{$no++}}</center></td>
+                            <td><center>{{$jenisagenda->nama_jenis}}</center></td>
                             <td>
+                                                    <center>
                                                     <div class="flex align-items-center list-user-action">
                                                         <a class="btn btn-sm btn-icon btn-warning" data-toggle="tooltip"
                                                             data-placement="top" title="" data-original-title="Edit"
@@ -83,6 +84,7 @@
                                                             </span>
                                                         </a>
                                                     </div>
+                                                    </center>
                             </td>
                         </tr>
                         @endforeach

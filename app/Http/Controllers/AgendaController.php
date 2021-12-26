@@ -26,6 +26,7 @@ class AgendaController extends Controller
             'tanggal_acara' => 'required',
             'waktu_acara' => 'required',
             'tempat_acara' => 'required',
+            'link_upload' => 'required',
             'surat' => 'required|mimes:pdf',
         ]);  
         $validatedData['surat'] = $request->file('surat')->store('agenda-surat');
@@ -52,6 +53,7 @@ class AgendaController extends Controller
             'tanggal_acara' => 'required',
             'waktu_acara' => 'required',
             'tempat_acara' => 'required',
+            'link_upload' => 'required',
             'surat' => 'mimes:pdf',
         ]);
 

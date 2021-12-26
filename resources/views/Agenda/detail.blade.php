@@ -46,6 +46,11 @@
                         <th>{{ $agenda->tempat_acara}}</th>
                     </tr>
                     <tr>
+                        <th width="120px">Link Upload</th>
+                        <th width="20px">:</th>
+                        <th><a href="{{ $agenda->link_upload}}">{{ $agenda->link_upload}}</a></th>
+                    </tr>
+                    <tr>
                         <th width="120px">Surat</th>
                         <th></th>
                         <th></th>

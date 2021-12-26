@@ -271,7 +271,7 @@ class DatabaseSeeder extends Seeder
         PertanyaanUmum::create([
             'soal' => "Jelaskan Misi Penerapan Sistem Pemerintahan Berbasis Elektronik di Lingkungan Instansi Pusat/Pemerintah Daerah Anda?",
         ]);
-        /*
+
         Agenda::create([
             'jenisagenda_id' => 1,
             'nama_acara' => "Webinar Asik",
@@ -279,9 +279,10 @@ class DatabaseSeeder extends Seeder
             'tanggal_acara' => "super admin",
             'waktu_acara' => "super admin",
             'tempat_acara' => "Surakarta",
+            'link_upload' => "https://drive.google.com/drive/folders/17yHfZubLCrvk0mTf9mgHGwT1Sii7T2CS",
             'surat' => "WEBINARASIK.pdf",
         ]);
-        */
+
 
     }
 }
