@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Evaluasi;
 use App\Models\Domain;
+use App\Models\Aspek;
+use App\Models\Indikator;
+use App\Models\Pertanyaan;
 class EvaluasiController extends Controller
 {
     public function index()
@@ -51,14 +54,40 @@ class EvaluasiController extends Controller
             "title" => "Evaluasi",
             'data_evaluasi' => $data_evaluasi]);
     }
-    // public function datadomain($id)
-    // {
-    //     $evaluasi = Evaluasi::find($id);
-    //     $data_domain = Domain::orderBy('evaluasi_id', $id)->get();
-    //     return view('evaluasi.datadomain',[
-    //         "title" => "Evaluasi",
-    //         'data_evaluasi' => $data_evaluasi,
-    //         'data_domain' => $data_domain,
-    //     ]);
-    // }
+    public function datadomain($id)
+    {
+        $evaluasi = Evaluasi::find($id);
+        $data_domain = Domain::where('evaluasi_id', $id)->get();
+        return view('evaluasi.datadomain',[
+            "title" => "Evaluasi",
+            'data_domain' => $data_domain,
+        ]);
+    }
+    public function dataaspek($id)
+    {
+        $domain = Domain::find($id);
+        $data_aspek = Aspek::where('domain_id', $id)->get();
+        return view('evaluasi.dataaspek',[
+            "title" => "Evaluasi",
+            'data_aspek' => $data_aspek,
+        ]);
+    }
+    public function dataindikator($id)
+    {
+        $aspek = Aspek::find($id);
+        $data_indikator= Indikator::where('aspek_id', $id)->get();
+        return view('evaluasi.dataindikator',[
+            "title" => "Evaluasi",
+            'data_indikator' => $data_indikator,
+        ]);
+    }
+    public function datapertanyaan($id)
+    {
+        $indikator = Indikator::find($id);
+        $data_pertanyaan= Pertanyaan::where('indikator_id', $id)->get();
+        return view('evaluasi.datapertanyaan',[
+            "title" => "Evaluasi",
+            'data_pertanyaan' => $data_pertanyaan,
+        ]);
+    }
 }

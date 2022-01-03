@@ -129,20 +129,20 @@
                                             <th scope="col">Capaian</th>
                                         </tr>
                                     </thead>
-                                    <?php $jawaban = App\Models\Jawaban::where('pertanyaan_id', $jawaban->id)->get();?>
-                                    @foreach($jawaban as $j)
+                                    <?php $pertanyaan = App\Models\Pertanyaan::where('indikator_id', $indikator->id)->get();?>
+                                    @foreach($pertanyaan as $p)
                                     <tbody>
                                         <tr>
-                                            <td style="text-align:center">{{$indikator->tingkat}}</td>
+                                            <td style="text-align:center">{{$p->tingkat}}</td>
                                             <td>
-                                                <p>{{$indikator->kriteria}}</p>
+                                                <p>{{$p->kriteria}}</p>
                                                 <div class="form-group">
-                                                    <input type="hidden" name="pertanyaan_id[]" class="form-control" value="{{$j->id}}">
+                                                    <input type="hidden" name="pertanyaan_id[]" class="form-control" value="{{$p->id}}">
                                                     <input type="hidden" name="user_id[]" class="form-control" value="{{auth()->user()->id}}">
                                                     <textarea name="jawaban[]" class="form-control" id="Textarea" placeholder="Jawab di sini ..." rows="3"></textarea>
                                                 </div>
                                             <td style="text-align:center">
-                                                <input type="radio" class="form-check-input" name="capaian" value="{{$j->tingkat}}">
+                                                <input type="radio" class="form-check-input" required name="capaian" value="{{$p->tingkat}}">
                                             </td>
                                         </tr>
                                     </tbody>
@@ -201,7 +201,7 @@
                                         </tr>
                                     </thead>
                                     <?php $pertanyaan = App\Models\Pertanyaan::where('indikator_id', $indikator->id)->get();?>
-                                    @foreach($pertanyaan as $key => $p)
+                                    @foreach($pertanyaan as $p)
                                     <tbody>
                                         <tr>
                                             <td style="text-align:center">{{$p->tingkat}}</td>
@@ -213,7 +213,7 @@
                                                     <textarea name="jawaban[]" class="form-control" id="Textarea" placeholder="Jawab di sini ..." rows="3"></textarea>
                                                 </div>
                                             <td style="text-align:center">
-                                                <input type="radio" class="form-check-input" name="capaian" value="{{$p->tingkat}}">
+                                                <input type="radio" class="form-check-input" required name="capaian" value="{{$p->tingkat}}">
                                             </td>
                                         </tr>
                                     </tbody>

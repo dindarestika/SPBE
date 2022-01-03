@@ -52,7 +52,7 @@
   
             <div class="feature-col col-lg-4 col-xs-12">
               <div class="card card-block text-center">
-                <a href="#">
+                <a href="/dasarhukum">
                   <div>
                     <div class="feature-icon">
                       <i class="bi bi-bar-chart"></i>

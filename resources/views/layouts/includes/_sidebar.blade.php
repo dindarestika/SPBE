@@ -48,7 +48,7 @@
                             <span class="mini-icon">-</span>
                         </a>
                     </li>
-                    <!-- <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link {{ ($title === '') ? 'active' : '' }}" href="/dataevaluasi">
                             <i class="icon">
                                 <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -58,7 +58,7 @@
                             </i>
                             <span class="item-name">Evaluasi New</span>
                         </a>
-                    </li> -->
+                    </li> 
                     <li class="nav-item">
                         <a class="nav-link {{ ($title === 'Evaluasi') ? 'active' : '' }}" data-bs-toggle="collapse" href="#sidebar-auth" role="button" aria-expanded="false" aria-controls="sidebar-user">
                             <i class="icon">

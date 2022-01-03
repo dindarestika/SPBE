@@ -129,7 +129,7 @@
               </li>
 
               <li class="list-inline-item">
-                <a href="/contact">Contact</a>
+                <a href="/contact">Kontak</a>
               </li>
             </ul>
           </div>

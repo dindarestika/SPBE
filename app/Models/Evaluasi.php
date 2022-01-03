@@ -15,4 +15,9 @@ class Evaluasi extends Model
     {
         return $this->hasMany(Domain::class);
     }
+    public function aspek()
+    {
+        return $this->hasManyThrough(Aspek::class, Domain::class);
+    }
+
 }

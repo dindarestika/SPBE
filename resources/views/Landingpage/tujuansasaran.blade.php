@@ -7,9 +7,9 @@
         <h1><i class="bi bi-book-fill"></i><span> Tujuan</span></h1>
         <hr>
         <ul>
-          <li>Mewujudkan tata kelola pemerintahan yang bersih, efektif, efisien, transparan, dan akuntabel.</li>
-          <li>Mewujudkan pelayanan publik yang berkualitas dan terpercaya; dan</li>
-          <li>Mewujudkan sistem pemerintahan berbasis elektronik yang terpadu.</li>
+          @foreach ($tujuan as $t)
+          <li>{{$t->tujuan}}</li>
+          @endforeach
         </ul>
       </div>
     </div>
@@ -19,10 +19,9 @@
         <h1><i class="bi bi-bookmark-fill"></i><span> Sasaran</span></h1>
         <hr>
         <ul>
-          <li>Terwujudnya tata kelola dan manajemen SPBE yang efektif dan efisien</li>
-          <li>Terwujudnya layanan SPBE yang terpadu dan berorientasi kepada pengguna</li>
-          <li>Terselenggaranya infrastruktur SPBE yang terintegrasi; dan</li>
-          <li>Meningkatnya kapasitas SDM SPBE.</li>
+          @foreach ($sasaran as $s)
+          <li>{{$s->sasaran}}</li>
+          @endforeach
         </ul>
       </div>
     </div>

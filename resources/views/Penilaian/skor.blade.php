@@ -91,7 +91,7 @@
                                     </div>
                                     <div class="card-body">
                                     </div>
-                                </adiv>
+                                </div>
                             </div>
                         </div>
                     </div>

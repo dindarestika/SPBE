@@ -56,7 +56,8 @@ class PenilaianController extends Controller
     public function skor($id)
     {
         $evaluasi = Evaluasi::find($id);
-        $data_domain = Domain::all();
+        $data_domain = Domain::where('evaluasi_id', $id)->get();
+        //$data_domain = Domain::all();
         $data_aspek = Aspek::all();
         return view('penilaian.skor', [
             "title" => "Penilaian",
@@ -95,6 +96,7 @@ class PenilaianController extends Controller
         $items = Indikator::where('opd_id',$user->opd_id)->get();
         $data_domain = Domain::all();
         $data_aspek = Aspek::all();
+        $jwb = Jawaban::all();
         $jawaban = Jawaban::where('user_id', $user->id)->exists();
         if($jawaban)
         {
@@ -111,6 +113,7 @@ class PenilaianController extends Controller
             'data_domain' => $data_domain,
             'data_aspek' => $data_aspek,
             'jawaban' => $jawaban,
+            'jwb' => $jwb,
             'status' => $status,
         ]);
     }

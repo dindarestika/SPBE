@@ -12,21 +12,22 @@
           <div class="row justify-content-center">
             <div class="col-lg-3 col-md-4">
               <div class="info">
+                @foreach ($kontak as $kontak)
                 <div>
                   <i class="bi bi-geo-alt"></i>
-                  <p>Jl. Jend. Sudirman, Kedung Lumbu, Ps. Kliwon,<br>Surakarta, Jawa Tengah 57133</p>
+                  <p>{{$kontak->alamat}}</p>
                 </div>
   
                 <div>
                   <i class="bi bi-envelope"></i>
-                  <p>diskominfosp@surakarta.go.id</p>
+                  <p>{{$kontak->email}}</p>
                 </div>
   
                 <div>
                   <i class="bi bi-phone"></i>
-                  <p>(0271) 643454</p>
+                  <p>{{$kontak->no_telephone}}</p>
                 </div>
-  
+                @endforeach
               </div>
             </div>
           </div>

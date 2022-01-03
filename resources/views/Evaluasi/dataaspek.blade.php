@@ -10,28 +10,28 @@
         <div class="col-sm-12">
                 <div class="card-header d-flex justify-content-between">
                     <div class="header-title">
-                        <h4 class="card-title">Data Domain</h4>
+                        <h4 class="card-title">Data Aspek</h4>
                     </div>
                     <div class="right">
-                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">Tambah Domain</button>
+                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">Tambah aspek</button>
                     </div>
                 </div>
                 </br>
 
-                @foreach($data_domain as $domain)
+                @foreach($data_aspek as $aspek)
                 <div class="col-lg-3 col-md-6">
                     <div class="card bg-soft-primary">
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="text-end">
-                                    <a href="/{{$domain->id}}/dataaspek">{{$domain->nama_domain}}</a>
+                                    <a href="/{{$aspek->id}}/dataindikator">{{$aspek->nama_aspek}}</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="flex align-items-center list-domain-action">
+                        <div class="flex align-items-center list-aspek-action">
                                                         <a class="btn btn-sm btn-icon btn-warning" data-toggle="tooltip"
                                                             data-placement="top" title="" data-original-title="Edit"
-                                                            href="/domain/{{$domain->id}}/edit">
+                                                            href="/aspek/{{$aspek->id}}/edit">
                                                             <span class="btn-inner">
                                                                 <svg width="20" viewBox="0 0 24 24" fill="none"
                                                                     xmlns="http://www.w3.org/2000/svg">
@@ -54,7 +54,7 @@
                                                         </a>                            
                                                         <a class="btn btn-sm btn-icon btn-danger" data-toggle="tooltip"
                                                             data-placement="top" title="" data-original-title="Delete"
-                                                            href="/domain/{{$domain->id}}/delete" onclick="return confirm('Yakin ingin menghapus?')">
+                                                            href="/aspek/{{$aspek->id}}/delete" onclick="return confirm('Yakin ingin menghapus?')">
                                                             <span class="btn-inner">
                                                                 <svg width="20" viewBox="0 0 24 24" fill="none"
                                                                     xmlns="http://www.w3.org/2000/svg"

@@ -23,5 +23,9 @@ class Indikator extends Model
     {
         return $this->hasMany(Opd::class);
     }
+    public function jawaban()
+    {
+        return $this->hasManyThrough(Jawaban::class, Pertanyaan::class);
+    }
 
 }

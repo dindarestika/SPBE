@@ -15,6 +15,11 @@ use App\Models\Evaluasi;
 use App\Models\Pertanyaan;
 use App\Models\PertanyaanUmum;
 use App\Models\Wifi;
+use App\Models\Visi;
+use App\Models\Tujuan;
+use App\Models\Misi;
+use App\Models\Sasaran;
+use App\Models\Kontak;
 
 class DatabaseSeeder extends Seeder
 {
@@ -271,6 +276,52 @@ class DatabaseSeeder extends Seeder
         PertanyaanUmum::create([
             'soal' => "Jelaskan Misi Penerapan Sistem Pemerintahan Berbasis Elektronik di Lingkungan Instansi Pusat/Pemerintah Daerah Anda?",
         ]);
+
+
+        Visi::create([
+            'visi' => "Terwujudnya sistem pemerintahan berbasis elektronik yang terpadu dan menyeluruh untuk mencapai birokrasi dan pelayanan publik yang berkinerja tinggi.",
+        ]);
+        Misi::create([
+            'misi' => "Melakukan penataan dan penguatan organisasi dan tata kelola sistem pemerintahan berbasis elektronik yang terpadu.",
+        ]);
+        Misi::create([
+            'misi' => "Mengembangkan pelayanan publik berbasis elektronik yang terpadu, menyeluruh, dan menjangkau masyarakat luas.",
+        ]);
+        Misi::create([
+            'misi' => "Membangun fondasi teknologi informasi dan komunikasi yang terintegrasi, aman, dan andal.",
+        ]);
+        Misi::create([
+            'misi' => "Membangun SDM yang kompeten dan inovatif berbasis teknologi informasi dan komunikasi.",
+        ]);
+        Tujuan::create([
+            'tujuan' => "Mewujudkan tata kelola pemerintahan yang bersih, efektif, efisien, transparan, dan akuntabel.",
+        ]);
+        Tujuan::create([
+            'tujuan' => "Mewujudkan pelayanan publik yang berkualitas dan terpercaya.",
+        ]);
+        Tujuan::create([
+            'tujuan' => "Mewujudkan sistem pemerintahan berbasis elektronik yang terpadu.",
+        ]);
+        Sasaran::create([
+            'sasaran' => "Terwujudnya tata kelola dan manajemen SPBE yang efektif dan efisien.",
+        ]);
+        Sasaran::create([
+            'sasaran' => "Terwujudnya layanan SPBE yang terpadu dan berorientasi kepada pengguna.",
+        ]);
+        Sasaran::create([
+            'sasaran' => "Terselenggaranya infrastruktur SPBE yang terintegrasi.",
+        ]);
+        Sasaran::create([
+            'sasaran' => "Meningkatnya kapasitas SDM SPBE.",
+        ]);
+        Kontak::create([
+            'alamat' => "Jl. Jend. Sudirman, Kedung Lumbu, Ps. Kliwon, Surakarta, Jawa Tengah 57133",
+            'email' => "diskominfosp@surakarta.go.id",
+            'no_telephone' => "(0271) 643454",
+        ]);
+        
+
+
         /*
         Agenda::create([
             'jenisagenda_id' => 1,
