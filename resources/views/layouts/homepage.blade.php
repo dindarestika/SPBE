@@ -79,7 +79,7 @@
           <li><a class="nav-link {{ ($title === 'Tentang') ? 'active' : '' }}" href="/tentang">Tentang</a></li>
           <li class="dropdown"><a class="nav-link {{ ($title === 'TIK') ? 'active' : '' }}" href="#"><span>TIK</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">Infrastruktur</a></li>
+              <li><a href="/infrastruktur">Infrastruktur</a></li>
               <li><a href="/map">Map Wifi</a></li>
             </ul>
           </li>

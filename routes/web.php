@@ -26,6 +26,8 @@ Route::get('/visimisi', 'HomeController@visimisi');
 Route::get('/tujuansasaran', 'HomeController@tujuansasaran');
 Route::get('/arsitektur', 'HomeController@arsitektur');
 Route::get('/dasarhukum', 'HomeController@dasarhukum');
+Route::get('/masterplan', 'HomeController@masterplan');
+Route::get('/infrastruktur', 'HomeController@infrastruktur');
 Route::get('/map', 'MapController@index');
 Route::get('/titik', 'MapController@titik');
 Route::get('/lokasi/{id}', 'MapController@lokasi');

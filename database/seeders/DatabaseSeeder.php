@@ -20,6 +20,10 @@ use App\Models\Tujuan;
 use App\Models\Misi;
 use App\Models\Sasaran;
 use App\Models\Kontak;
+use App\Models\Dasarhukum;
+use App\Models\Masterplan;
+use App\Models\Infrastruktur;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -318,6 +322,43 @@ class DatabaseSeeder extends Seeder
             'alamat' => "Jl. Jend. Sudirman, Kedung Lumbu, Ps. Kliwon, Surakarta, Jawa Tengah 57133",
             'email' => "diskominfosp@surakarta.go.id",
             'no_telephone' => "(0271) 643454",
+        ]);
+
+        Dasarhukum::create([
+            'nama_dasarhukum' => "Undang-Undang Nomor 23 Tahun 2004 Tentang Pemerintah Daerah",
+            'link_dasarhukum' => "https://drive.google.com/file/d/1d6On5F3IwS0e8SIOPl5GvMKQQKbRcLws/view?usp=sharing",
+        ]);
+        Dasarhukum::create([
+            'nama_dasarhukum' => "Instruksi Presiden Nomor 3 Tahun 2003 Tentang Kebijakan dan Strategi Nasional Pengembangan e-Government",
+            'link_dasarhukum' => "https://drive.google.com/file/d/1lZg0iTl0jLECe6w0fc6oM1NFuXxLzkYZ/view?usp=sharing",
+        ]);
+        Dasarhukum::create([
+            'nama_dasarhukum' => "Keputusan Menteri Komunikasi dan Informasi Nomor 57 Tahun 2003 Tentang Panduan Penyusunan Rencana Induk Pengembangan e-Government Lembaga",
+            'link_dasarhukum' => "https://drive.google.com/file/d/10PpT1MIoVJh0YrI4MzW3qK72mrb4swvA/view?usp=sharing",
+        ]);
+        Dasarhukum::create([
+            'nama_dasarhukum' => "Peraturan Pemerintah Nomor 82 Tahun 2012 Tentang Penyelengaraan Sistem dan Transaksi Elektronik",
+            'link_dasarhukum' => "https://drive.google.com/file/d/19CeuV7a9lyTsFlWUPmqWnPPpXcLPN8Hj/view?usp=sharing",
+        ]);
+        Dasarhukum::create([
+            'nama_dasarhukum' => "Peraturan Menteri Komunikasi dan Informatika Nomor 41 Tahun 2007 Tentang Panduan Umum Tata Kelola Teknologi Informasi dan Komunikasi Nasional",
+            'link_dasarhukum' => "https://drive.google.com/file/d/1_s4LUAlS6HI69fblV0w44I2rDg7mYe1M/view?usp=sharing",
+        ]);
+        Dasarhukum::create([
+            'nama_dasarhukum' => "Undang-Undang Nomor 11 Tahun 2008 Tentang Informasi dan Transaksi Elektronik",
+            'link_dasarhukum' => "https://drive.google.com/file/d/1REl5WZ2_YK_wsFBX0j6DWWI8MaU6hhyg/view?usp=sharing",
+        ]);
+        Dasarhukum::create([
+            'nama_dasarhukum' => "Undang Undang Republik Indonesia Nomor 14 Tahun 2008 Tentang Keterbukaan Informasi Publik",
+            'link_dasarhukum' => "https://drive.google.com/file/d/1vCFx8jvu-Rj3c6wCpNkS4n6dGRZ-DOcR/view?usp=sharing",
+        ]);
+        Dasarhukum::create([
+            'nama_dasarhukum' => "Peraturan Presiden Nomor 95 Tahun 2018 tentang Sistem Pemerintahan Berbasis Elektronik",
+            'link_dasarhukum' => "https://drive.google.com/file/d/1DqKgMsu9o8OxZkOLQ9efveoxbI_zCnaZ/view?usp=sharing",
+        ]);
+        Dasarhukum::create([
+            'nama_dasarhukum' => "Peraturan Wali Kota Surakarta Nomor 28 Tahun 2019 tentang Pedoman Penyelenggaraan e-Government",
+            'link_dasarhukum' => "https://drive.google.com/file/d/1EUPnEc7J6dIrO65JOLtir_SskBf1XkZN/view?usp=sharing",
         ]);
         
 
