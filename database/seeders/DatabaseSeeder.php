@@ -155,7 +155,7 @@ class DatabaseSeeder extends Seeder
             'bobot_aspek' => "2",
         ]);
         Indikator::create([
-            'opd_id' => "1",
+            'opd_id' => "2",
             'aspek_id' => "1",
             'nama_indikator' => "Tingkat kematangan kebijakan internal arsitektur SPBE Instansi Pusat/Pemerintah Daerah",
             'bobot_indikator' => "2",
@@ -188,7 +188,7 @@ class DatabaseSeeder extends Seeder
         ]); 
 
         Indikator::create([
-            'opd_id' => "1",
+            'opd_id' => "2",
             'aspek_id' => "1",
             'nama_indikator' => "Tingkat kematangan kebijakan internal manajemen data",
             'bobot_indikator' => "2",
@@ -249,12 +249,38 @@ class DatabaseSeeder extends Seeder
         Pertanyaan::create([
             'indikator_id' => "2",
             'tingkat' => "4",
-            'kriteria' => "	Kriteria tingkat 3 telah terpenuhi, kebijakan internal Peta Rencana SPBE Instansi Pusat/Pemerintah Daerah telah mengatur keselarasan antara Peta Rencana SPBE Instansi Pusat/Pemerintah Daerah dan Peta Rencana SPBE Nasional. Selain itu, Kebijakan internal Peta Rencana SPBE Instansi Pusat/Pemerintah Daerah telah direviu dan dievaluasi secara periodik.",
+            'kriteria' => "Kriteria tingkat 3 telah terpenuhi, kebijakan internal Peta Rencana SPBE Instansi Pusat/Pemerintah Daerah telah mengatur keselarasan antara Peta Rencana SPBE Instansi Pusat/Pemerintah Daerah dan Peta Rencana SPBE Nasional. Selain itu, Kebijakan internal Peta Rencana SPBE Instansi Pusat/Pemerintah Daerah telah direviu dan dievaluasi secara periodik.",
         ]); 
         Pertanyaan::create([
             'indikator_id' => "2",
             'tingkat' => "5",
-            'kriteria' => "	Kriteria tingkat 4 telah terpenuhi serta hasil reviu dan evaluasi kebijakan internal Peta Rencana SPBE Instansi. ",
+            'kriteria' => "Kriteria tingkat 4 telah terpenuhi serta hasil reviu dan evaluasi kebijakan internal Peta Rencana SPBE Instansi. ",
+        ]); 
+
+        Pertanyaan::create([
+            'indikator_id' => "3",
+            'tingkat' => "1",
+            'kriteria' => "Konsep kebijakan internal terkait Manajemen Data di Instansi Pusat/Pemerintah Daerah belum atau telah tersedia.",
+        ]); 
+        Pertanyaan::create([
+            'indikator_id' => "3",
+            'tingkat' => "2",
+            'kriteria' => "Kebijakan internal Manajemen Data di Instansi Pusat/Pemerintah Daerah telah ditetapkan.",
+        ]); 
+        Pertanyaan::create([
+            'indikator_id' => "3",
+            'tingkat' => "3",
+            'kriteria' => "Kondisi: Kebijakan internal Manajemen Data di Instansi Pusat/Pemerintah Daerah tersebut hanya mengatur sebagian dari rangkaian proses pengelolaan arsitektur data, data induk, data referensi, basis data, kualitas data dan interoperabilitas data.",
+        ]); 
+        Pertanyaan::create([
+            'indikator_id' => "3",
+            'tingkat' => "4",
+            'kriteria' => "Kriteria tingkat 2 telah terpenuhi dan kebijakan internal Manajemen Data di Instansi Pusat/Pemerintah Daerah telah mengatur seluruh rangkaian proses pengelolaan arsitektur data, data induk, data referensi, basis data, kualitas data dan interoperabilitas data.",
+        ]); 
+        Pertanyaan::create([
+            'indikator_id' => "3",
+            'tingkat' => "5",
+            'kriteria' => "Kriteria tingkat 4 telah terpenuhi serta hasil reviu dan evaluasi kebijakan internal Manajemen Data di Instansi Pusat/Pemerintah Daerah telah ditindaklanjuti dengan kebijakan baru.",
         ]); 
         Wifi::create([
             'nama_wifi' => "DISKOMINFO SP",

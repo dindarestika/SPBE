@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 */
+
 Route::get('/', 'HomeController@index');
 Route::get('/login', 'AuthController@login')->name('login');
 Route::post('/postlogin', 'AuthController@postlogin');
@@ -32,13 +33,13 @@ Route::get('/map', 'MapController@index');
 Route::get('/titik', 'MapController@titik');
 Route::get('/lokasi/{id}', 'MapController@lokasi');
 
-Route::group(['middleware' => ['auth', 'cekrole:1']], function(){
+Route::group(['middleware' => ['auth', 'cekrole:1']], function () {
     Route::get('/opd', 'OpdController@index');
     Route::post('/opd/create', 'OpdController@create');
     Route::get('/opd/{id}/edit', 'OpdController@edit');
     Route::post('/opd/{id}/update', 'OpdController@update');
     Route::get('/opd/{id}/delete', 'OpdController@delete');
-    Route::get('/user', 'AuthController@index'); 
+    Route::get('/user', 'AuthController@index');
     Route::post('/user/create', 'AuthController@create');
     Route::get('/user/{id}/detail', 'AuthController@detail');
     Route::get('/user/{id}/edit', 'AuthController@edit');
@@ -65,7 +66,7 @@ Route::group(['middleware' => ['auth', 'cekrole:1']], function(){
     Route::get('/evaluasi/{id}/edit', 'EvaluasiController@edit');
     Route::post('/evaluasi/{id}/update', 'EvaluasiController@update');
     Route::get('/evaluasi/{id}/delete', 'EvaluasiController@delete');
-    
+
 
     Route::get('/domain', 'DomainController@index');
     Route::post('/domain/create', 'DomainController@create');
@@ -111,11 +112,9 @@ Route::group(['middleware' => ['auth', 'cekrole:1']], function(){
     Route::get('/{id}/dataaspek', 'EvaluasiController@dataaspek');
     Route::get('/{id}/dataindikator', 'EvaluasiController@dataindikator');
     Route::get('/{id}/datapertanyaan', 'EvaluasiController@datapertanyaan');
-
-
 });
 
-Route::group(['middleware' => ['auth', 'cekrole:1,2']], function(){
+Route::group(['middleware' => ['auth', 'cekrole:1,2']], function () {
     Route::get('/logout', 'AuthController@logout');
     Route::get('/profile', 'AuthController@profile');
 
@@ -128,12 +127,13 @@ Route::group(['middleware' => ['auth', 'cekrole:1,2']], function(){
     Route::get('/lihat-penilaian/{id}/skorindex', 'PenilaianController@skor');
     Route::get('/lihat-penilaian/{id}/pertanyaanumum', 'PenilaianController@pertanyaanumum');
     Route::get('/lihat-penilaian/{id}/mandiri', 'PenilaianController@mandiri');
+
+    Route::post('/lihat-penilaian/get_pertanyaan', 'PenilaianController@ajax_get_pertanyaan')->name('penilaian.get_pertanyaan');
+
     Route::get('/calender', 'AgendaController@calender');
     Route::get('/jscalender', 'AgendaController@jscalender');
     Route::get('/calender/{id}/detail', 'AgendaController@detailcalender');
     Route::post('/jawaban', 'PenilaianController@jawabanpertanyaan');
     Route::post('/jawabanumum', 'PenilaianController@jawabanumum');
     Route::post('/update/jawabanumum', 'PenilaianController@updatejawabanumum');
-
-    
 });
