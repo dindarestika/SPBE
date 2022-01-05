@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApiAgenda;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/agenda', [ApiAgenda::class, 'index']);
+Route::post('/agenda/create', [ApiAgenda::class, 'create']);
+Route::get('/agenda/read/{id}', [ApiAgenda::class, 'read']);
+Route::put('/agenda/update/{id}', [ApiAgenda::class, 'update']);
+Route::delete('/proyek/delete/{id}', [ApiAgenda::class, 'delete']);
