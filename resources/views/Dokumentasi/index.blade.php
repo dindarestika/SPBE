@@ -13,66 +13,57 @@
                 <div class="header-title">
                   <h4 class="card-title">Data Dokumentasi</h4>
                 </div>
+                @if (auth()->user()->role_id=="1")
                 <div class="right">
-                    <button type="button" class="btn btn-primary btn-sm" 
+                    <button type="button" class="btn btn-primary btn-sm"
                     data-bs-toggle="modal" data-bs-target="#exampleModal">Tambah</button>
                 </div>
+                @endauth
             </div>
             <div class="card-body">
                <div class="table-responsive">
                   <table id="datatable" class="table table-striped" data-toggle="data-table">
                      <thead>
                         <tr>
-                            <th>No. </th>
-                            <th>Nama Acara</th>
-                            <!--
-                            <th>Notulen</th>
-                            <th>Surat</th>
-                            <th>Presensi</th>
-                            <th>Foto Acara</th>
-                            -->
-                            <th>Aksi</th>
+                            <th><center>No</center></th>
+                            <th><center>Nama Acara</center></th>
+                            <th><center>Aksi</center></th>
                         </tr>
                      </thead>
                      <tbody>
                      <?php $no=1; ?>
                         @foreach($dokumentasi as $d)
                         <tr>
-                            <td>{{$no++}}</td>
-                            <td>{{$d->agenda->nama_acara}}</td>
-                            <!--
-                            <td>{{$d->notulen}}</td>
-                            <td>{{$d->surat}}</td>
-                            <td>{{$d->presensi}}</td>
-                            <td>{{$d->foto_acara}}</td>
-                            -->
-                            <td>
+                            <td><center>{{$no++}}</center></td>
+                            <td><center>{{$d->agenda->nama_acara}}</center></td>
+                            <td><center>
                                                     <div class="flex align-items-center list-user-action">
                                                         <a class="btn btn-sm btn-icon btn-success" data-toggle="tooltip"
                                                             data-placement="top" title="" data-original-title="Detail"
                                                             href="/dokumentasi/{{$d->id}}/detail">
                                                             <span class="btn-inner">
                                                                 <svg width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                    <path fill-rule="evenodd" clip-rule="evenodd" 
-                                                                        d="M12 2.75C17.108 2.75 21.25 6.891 21.25 12C21.25 17.108 17.108 21.25 12 21.25C6.891 21.25 2.75 17.108 2.75 12C2.75 6.892 6.892 2.75 12 2.75Z" 
-                                                                        stroke="currentColor" stroke-width="1.5" 
+                                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                        d="M12 2.75C17.108 2.75 21.25 6.891 21.25 12C21.25 17.108 17.108 21.25 12 21.25C6.891 21.25 2.75 17.108 2.75 12C2.75 6.892 6.892 2.75 12 2.75Z"
+                                                                        stroke="currentColor" stroke-width="1.5"
                                                                         stroke-linecap="round" stroke-linejoin="round">
                                                                     </path>
-                                                                    <path d="M15.9393 12.0129H15.9483" 
-                                                                        stroke="currentColor" stroke-width="2" 
+                                                                    <path d="M15.9393 12.0129H15.9483"
+                                                                        stroke="currentColor" stroke-width="2"
                                                                         stroke-linecap="round" stroke-linejoin="round">
                                                                     </path>
-                                                                    <path d="M11.9301 12.0129H11.9391" 
-                                                                        stroke="currentColor" stroke-width="2" 
+                                                                    <path d="M11.9301 12.0129H11.9391"
+                                                                        stroke="currentColor" stroke-width="2"
                                                                         stroke-linecap="round" stroke-linejoin="round">
                                                                     </path>
-                                                                    <path d="M7.92128 12.0129H7.93028" 
-                                                                        stroke="currentColor" stroke-width="2" 
+                                                                    <path d="M7.92128 12.0129H7.93028"
+                                                                        stroke="currentColor" stroke-width="2"
                                                                         stroke-linecap="round" stroke-linejoin="round">
                                                                     </path>
                                                                 </svg>
                                                             </span>
                                                         </a>
+                                                        @if (auth()->user()->role_id=="1")
                                                         <a class="btn btn-sm btn-icon btn-warning" data-toggle="tooltip"
                                                             data-placement="top" title="" data-original-title="Edit"
                                                             href="/dokumentasi/{{$d->id}}/edit">
@@ -119,7 +110,9 @@
                                                                 </svg>
                                                             </span>
                                                         </a>
+                                                        @endauth
                                                     </div>
+                                                    </center>
                             </td>
                         </tr>
                         @endforeach
@@ -174,6 +167,14 @@
                         <label class="form-label">Upload Foto</label>
                         <input type="file" name="foto_acara" class="form-control @error('foto_acara') is-invalid @enderror" required>
                         @error('foto_acara')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+
+                        <label class="form-label">Upload Link Tautan</label>
+                        <input type="text" name="tautan" class="form-control @error('tautan') is-invalid @enderror" required>
+                        @error('tautan')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>

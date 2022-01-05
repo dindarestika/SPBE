@@ -25,11 +25,13 @@ class DokumentasiController extends Controller
             'surat' => 'required|mimes:pdf',
             'presensi' => 'required|mimes:pdf',
             'foto_acara' => 'required|mimes:jpeg,jpg,png',
-        ]);  
+            'tautan' => 'required',
+        ]);
         $validatedData['notulen'] = $request->file('notulen')->store('dokumentasi-notulen');
         $validatedData['surat'] = $request->file('surat')->store('dokumentasi-surat');
         $validatedData['presensi'] = $request->file('presensi')->store('dokumentasi-presensi');
         $validatedData['foto_acara'] = $request->file('foto_acara')->store('dokumentasi-foto-acara');
+        $validatedData['tautan'] = $request->tautan;
         $data_dokumentasi = Dokumentasi::create($validatedData);
         return redirect('/dokumentasi')->with('success', 'Data berhasil ditambahkan!');
     }
@@ -52,6 +54,7 @@ class DokumentasiController extends Controller
             'surat' => 'mimes:pdf',
             'presensi' => 'mimes:pdf',
             'foto_acara' => 'mimes:jpeg,jpg,png',
+            'tautan' => 'required',
         ]);
 
         if($request->file('notulen')){
@@ -65,6 +68,9 @@ class DokumentasiController extends Controller
         }
         if($request->file('foto_acara')){
             $validatedData['foto_acara'] = $request->file('foto_acara')->store('dokumentasi-foto-acara');
+        }
+        if($request->tautan){
+            $validatedData['tautan'] = $request->tautan;
         }
         $dokumentasi->update($validatedData);
         return redirect('/dokumentasi')->with('sukses', 'Data berhasil diupdate');

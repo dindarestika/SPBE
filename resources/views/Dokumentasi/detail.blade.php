@@ -68,11 +68,18 @@
                             <a href="{{ asset('storage/'.$dokumentasi->foto_acara) }}" class="btn btn-primary">Lihat Foto</a>
                         </th>
                     </tr>
+                    <tr>
+                        <th width="120px">Tautan Link</th>
+                        <th width="20px">:</th>
+                        <th>
+                            <a href="{{ $dokumentasi->tautan }}" target="_blank" class="btn btn-primary">Buka Link</a>
+                        </th>
+                    </tr>
 
-                </table> 
+                </table>
                 <div class="modal-footer">
                     <a href="/dokumentasi" class="btn btn-primary ">Kembali</a>
-                </div>   
+                </div>
             </div>
          </div>
       </div>

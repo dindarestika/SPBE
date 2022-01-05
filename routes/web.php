@@ -127,6 +127,8 @@ Route::group(['middleware' => ['auth', 'cekrole:1,2']], function(){
     Route::post('/jawaban', 'PenilaianController@jawabanpertanyaan');
     Route::post('/jawabanumum', 'PenilaianController@jawabanumum');
     Route::post('/update/jawabanumum', 'PenilaianController@updatejawabanumum');
+    Route::get('/dokumentasi', 'DokumentasiController@index');
+    Route::get('/dokumentasi/{id}/detail', 'DokumentasiController@detail');
 
     
 });
