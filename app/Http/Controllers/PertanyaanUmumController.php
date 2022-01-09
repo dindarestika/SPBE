@@ -4,15 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\PertanyaanUmum;
+use App\Models\Evaluasi;
+
 class PertanyaanUmumController extends Controller
 {
     public function index()
     {
         $data_pertanyaan = PertanyaanUmum::all();
-        return view('pertanyaan umum.index',[
+        $evaluasi = Evaluasi::all();
+        return view('pertanyaan umum.index', [
             "title" => "Pertanyaan Umum",
             'data_pertanyaan' => $data_pertanyaan,
-        ]);
+        ], compact('evaluasi'));
     }
     public function create(Request $request)
     {

@@ -12,7 +12,7 @@ class DomainController extends Controller
     {
         $data_domain = Domain::all();
         $data_evaluasi = Evaluasi::all();
-        return view('domain.index',[
+        return view('domain.index', [
             "title" => "Domain",
             'data_domain' => $data_domain,
             'data_evaluasi' => $data_evaluasi,
@@ -22,11 +22,11 @@ class DomainController extends Controller
     {
         $validatedData = $request->validate([
             'evaluasi_id' => 'required',
-            'nama_domain' => 'required|max:255|unique:domain',
+            'nama_domain' => 'required|max:255',
             'bobot_domain' => 'required|int',
         ]);
         Domain::create($validatedData);
-        return redirect('/domain')->with('sukses', 'Data berhasil diinput');
+        return back()->with('sukses', 'Data berhasil diinput');
     }
     public function edit($id)
     {
@@ -48,6 +48,6 @@ class DomainController extends Controller
     {
         $domain = Domain::find($id);
         $domain->delete($domain);
-        return redirect('/domain')->with('sukses', 'Data berhasil dihapus');
+        return back()->with('sukses', 'Data berhasil dihapus');
     }
 }

@@ -112,6 +112,17 @@ Route::group(['middleware' => ['auth', 'cekrole:1']], function () {
     Route::get('/{id}/dataaspek', 'EvaluasiController@dataaspek');
     Route::get('/{id}/dataindikator', 'EvaluasiController@dataindikator');
     Route::get('/{id}/datapertanyaan', 'EvaluasiController@datapertanyaan');
+
+    Route::get('/lihatvisimisi', 'HomeController@lihatvisimisi');
+    Route::get('/datavisi', 'HomeController@datavisi');
+    Route::get('/datamisi', 'HomeController@datamisi');
+    Route::get('/lihattujuansasaran', 'HomeController@lihattujuansasaran');
+    Route::get('/datatujuan', 'HomeController@datatujuan');
+    Route::get('/datasasaran', 'HomeController@datasasaran');
+    Route::get('/datadasarhukum', 'HomeController@datadasarhukum');
+    Route::get('/datamasterplan', 'HomeController@datamasterplan');
+    Route::get('/dataarsitektur', 'HomeController@dataarsitektur');
+    Route::get('/datainfrastruktur', 'HomeController@datainfrastruktur');
 });
 
 Route::group(['middleware' => ['auth', 'cekrole:1,2']], function () {

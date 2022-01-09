@@ -76,64 +76,64 @@ class DatabaseSeeder extends Seeder
 
         Role::create([
             'nama_role' => "Super Admin",
-        ]); 
+        ]);
 
         Role::create([
             'nama_role' => "Admin",
-        ]); 
+        ]);
 
         Jenisagenda::create([
             'nama_jenis' => "Seminar",
-        ]); 
+        ]);
 
         Jenisagenda::create([
             'nama_jenis' => "Pelatihan",
-        ]); 
-        
+        ]);
+
         Domain::create([
             'evaluasi_id' => "1",
             'nama_domain' => "Kebijakan Internal SPBE",
             'bobot_domain' => "2",
-        ]); 
+        ]);
 
         Domain::create([
             'evaluasi_id' => "1",
             'nama_domain' => "Tata Kelola SPBE",
             'bobot_domain' => "2",
-        ]); 
+        ]);
 
         Domain::create([
             'evaluasi_id' => "1",
             'nama_domain' => "Manajemen SPBE",
             'bobot_domain' => "2",
-        ]); 
+        ]);
 
         Domain::create([
             'evaluasi_id' => "1",
             'nama_domain' => "Layanan SPBE",
             'bobot_domain' => "2",
-        ]); 
+        ]);
 
         Aspek::create([
             'domain_id' => "1",
             'nama_aspek' => "Kebijakan Internal Tata Kelola SPBE",
             'bobot_aspek' => "2",
-        ]); 
+        ]);
         Aspek::create([
             'domain_id' => "2",
             'nama_aspek' => "Perencanaan Strategi SPBE",
             'bobot_aspek' => "2",
-        ]); 
+        ]);
         Aspek::create([
             'domain_id' => "2",
             'nama_aspek' => "Teknologi Informasi dan Komunikasi",
             'bobot_aspek' => "2",
-        ]); 
+        ]);
         Aspek::create([
             'domain_id' => "2",
             'nama_aspek' => "Penyelanggara SPBE",
             'bobot_aspek' => "2",
-        ]); 
+        ]);
         Aspek::create([
             'domain_id' => "3",
             'nama_aspek' => "Penerapan Manajemen SPBE",
@@ -168,7 +168,7 @@ class DatabaseSeeder extends Seeder
                                         Domain Arsitektur Aplikasi;
                                         Domain Arsitektur Infrastruktur SPBE; dan,
                                         Domain Arsitektur Keamanan SPBE.",
-        ]); 
+        ]);
 
         Indikator::create([
             'opd_id' => "1",
@@ -185,7 +185,7 @@ class DatabaseSeeder extends Seeder
                                         Aplikasi SPBE;
                                         Keamanan SPBE; dan,
                                         Audit TIK.",
-        ]); 
+        ]);
 
         Indikator::create([
             'opd_id' => "2",
@@ -196,92 +196,92 @@ class DatabaseSeeder extends Seeder
                                         Manajemen Data dilakukan melalui serangkaian proses pengelolaan Arsitektur Data, Data Induk, Data Referensi, Basis Data, Kualitas Data dan Interoperabilitas Data.
                                         Kebijakan Internal Manajemen Data merupakan pengaturan mengenai Manajemen Data di Instansi Pusat dan Pemerintah Daerah yang bertujuan untuk memberikan panduan arah dan langkah dalam pengelolaan data di Instansi Pusat dan Pemerintah Daerah.
                                         Instansi Pusat dan Pemerintah Daerah menyusun kebijakan internal Manajemen Data mengacu pada pedoman Manajemen Data SPBE.",
-        ]); 
+        ]);
 
         Evaluasi::create([
             'nama_evaluasi' => "Evaluasi SPBE 2021",
             'tahun_evaluasi' => "2021",
             'deskripsi_evaluasi' => "Evaluasi SPBE 2021",
-        ]); 
+        ]);
 
         Pertanyaan::create([
             'indikator_id' => "1",
             'tingkat' => "1",
             'kriteria' => "Konsep kebijakan internal terkait Arsitektur SPBE Instansi Pusat/Pemerintah Daerah belum atau telah tersedia.",
-        ]); 
+        ]);
 
         Pertanyaan::create([
             'indikator_id' => "1",
             'tingkat' => "2",
             'kriteria' => "Kebijakan internal Arsitektur SPBE Instansi Pusat/Pemerintah Daerah telah ditetapkan. Kondisi: Kebijakan internal Arsitektur SPBE Instansi Pusat/Pemerintah Daerah tersebut belum memuat secara lengkap pengaturan mengenai referensi Arsitektur dan domain Arsitektur SPBE (Proses Bisnis, Data dan Informasi, Infrastruktur SPBE, Aplikasi SPBE, Keamanan SPBE, dan Layanan SPBE).",
-        ]); 
+        ]);
 
         Pertanyaan::create([
             'indikator_id' => "1",
             'tingkat' => "3",
             'kriteria' => "Kriteria tingkat 2 telah terpenuhi dan kebijakan internal Arsitektur SPBE Instansi Pusat/Pemerintah Daerah telah memuat secara lengkap pengaturan mengenai referensi Arsitektur dan domain Arsitektur SPBE (Proses Bisnis, Data dan Informasi, Infrastruktur SPBE, Aplikasi SPBE, Keamanan SPBE, dan Layanan SPBE).",
-        ]); 
+        ]);
         Pertanyaan::create([
             'indikator_id' => "1",
             'tingkat' => "4",
             'kriteria' => "Kriteria tingkat 3 telah terpenuhi, kebijakan internal Arsitektur SPBE Instansi Pusat/Pemerintah Daerah telah mengatur integrasi SPBE antar Instansi Pusat, antar Pemerintah Daerah, dan/atau antar Instansi Pusat dan Pemerintah Daerah, dan kebijakan internal Arsitektur SPBE Instansi Pusat/Pemerintah Daerah telah direviu dan dievaluasi secara periodik.",
-        ]); 
+        ]);
         Pertanyaan::create([
             'indikator_id' => "1",
             'tingkat' => "5",
             'kriteria' => "Kriteria tingkat 4 telah terpenuhi serta hasil reviu dan evaluasi kebijakan internal Arsitektur Instansi Pusat/Pemerintah Daerah SPBE telah ditindaklanjuti dengan kebijakan baru.",
-        ]); 
+        ]);
         Pertanyaan::create([
             'indikator_id' => "2",
             'tingkat' => "1",
             'kriteria' => "Konsep kebijakan internal terkait Peta Rencana SPBE Instansi Pusat/Pemerintah Daerah belum atau telah tersedia.",
-        ]); 
+        ]);
         Pertanyaan::create([
             'indikator_id' => "2",
             'tingkat' => "2",
             'kriteria' => "Kebijakan internal Peta Rencana SPBE Instansi Pusat/Pemerintah Daerah telah ditetapkan. Kondisi: Kebijakan internal Peta Rencana SPBE Instansi Pusat/Pemerintah Daerah tersebut belum mengatur muatan Peta Rencana SPBE secara lengkap (Tata Kelola SPBE, Manajemen SPBE, Layanan SPBE, Infrastruktur SPBE, Aplikasi SPBE, Keamanan SPBE, dan Audit TIK).",
-        ]); 
+        ]);
         Pertanyaan::create([
             'indikator_id' => "2",
             'tingkat' => "3",
             'kriteria' => "Kriteria tingkat 2 telah terpenuhi dan kebijakan internal Peta Rencana SPBE Instansi Pusat/Pemerintah Daerah telah mengatur seluruh muatan Peta Rencana SPBE secara lengkap (Tata Kelola SPBE, Manajemen SPBE, Layanan SPBE, Infrastruktur SPBE, Aplikasi SPBE, Keamanan SPBE, dan Audit TIK).",
-        ]); 
+        ]);
         Pertanyaan::create([
             'indikator_id' => "2",
             'tingkat' => "4",
             'kriteria' => "Kriteria tingkat 3 telah terpenuhi, kebijakan internal Peta Rencana SPBE Instansi Pusat/Pemerintah Daerah telah mengatur keselarasan antara Peta Rencana SPBE Instansi Pusat/Pemerintah Daerah dan Peta Rencana SPBE Nasional. Selain itu, Kebijakan internal Peta Rencana SPBE Instansi Pusat/Pemerintah Daerah telah direviu dan dievaluasi secara periodik.",
-        ]); 
+        ]);
         Pertanyaan::create([
             'indikator_id' => "2",
             'tingkat' => "5",
             'kriteria' => "Kriteria tingkat 4 telah terpenuhi serta hasil reviu dan evaluasi kebijakan internal Peta Rencana SPBE Instansi. ",
-        ]); 
+        ]);
 
         Pertanyaan::create([
             'indikator_id' => "3",
             'tingkat' => "1",
             'kriteria' => "Konsep kebijakan internal terkait Manajemen Data di Instansi Pusat/Pemerintah Daerah belum atau telah tersedia.",
-        ]); 
+        ]);
         Pertanyaan::create([
             'indikator_id' => "3",
             'tingkat' => "2",
             'kriteria' => "Kebijakan internal Manajemen Data di Instansi Pusat/Pemerintah Daerah telah ditetapkan.",
-        ]); 
+        ]);
         Pertanyaan::create([
             'indikator_id' => "3",
             'tingkat' => "3",
             'kriteria' => "Kondisi: Kebijakan internal Manajemen Data di Instansi Pusat/Pemerintah Daerah tersebut hanya mengatur sebagian dari rangkaian proses pengelolaan arsitektur data, data induk, data referensi, basis data, kualitas data dan interoperabilitas data.",
-        ]); 
+        ]);
         Pertanyaan::create([
             'indikator_id' => "3",
             'tingkat' => "4",
             'kriteria' => "Kriteria tingkat 2 telah terpenuhi dan kebijakan internal Manajemen Data di Instansi Pusat/Pemerintah Daerah telah mengatur seluruh rangkaian proses pengelolaan arsitektur data, data induk, data referensi, basis data, kualitas data dan interoperabilitas data.",
-        ]); 
+        ]);
         Pertanyaan::create([
             'indikator_id' => "3",
             'tingkat' => "5",
             'kriteria' => "Kriteria tingkat 4 telah terpenuhi serta hasil reviu dan evaluasi kebijakan internal Manajemen Data di Instansi Pusat/Pemerintah Daerah telah ditindaklanjuti dengan kebijakan baru.",
-        ]); 
+        ]);
         Wifi::create([
             'nama_wifi' => "DISKOMINFO SP",
             'alamat_wifi' => "Jl. Jend. Sudirman, Kedung Lumbu, Kec. Ps. Kliwon, Kota Surakarta, Jawa Tengah 57133",
@@ -301,9 +301,11 @@ class DatabaseSeeder extends Seeder
             'longitude' => "110.8567077847702",
         ]);
         PertanyaanUmum::create([
+            'evaluasi_id' => "1",
             'soal' => "Jelaskan Visi Penerapan Sistem Pemerintahan Berbasis Elektronik di Lingkungan Instansi Pusat/Pemerintah Daerah Anda?",
         ]);
         PertanyaanUmum::create([
+            'evaluasi_id' => "1",
             'soal' => "Jelaskan Misi Penerapan Sistem Pemerintahan Berbasis Elektronik di Lingkungan Instansi Pusat/Pemerintah Daerah Anda?",
         ]);
 
@@ -355,6 +357,14 @@ class DatabaseSeeder extends Seeder
             'link_dasarhukum' => "https://drive.google.com/file/d/1d6On5F3IwS0e8SIOPl5GvMKQQKbRcLws/view?usp=sharing",
         ]);
         Dasarhukum::create([
+            'nama_dasarhukum' => "Undang-Undang Nomor 11 Tahun 2008 Tentang Informasi dan Transaksi Elektronik",
+            'link_dasarhukum' => "https://drive.google.com/file/d/1REl5WZ2_YK_wsFBX0j6DWWI8MaU6hhyg/view?usp=sharing",
+        ]);
+        Dasarhukum::create([
+            'nama_dasarhukum' => "Undang Undang Republik Indonesia Nomor 14 Tahun 2008 Tentang Keterbukaan Informasi Publik",
+            'link_dasarhukum' => "https://drive.google.com/file/d/1vCFx8jvu-Rj3c6wCpNkS4n6dGRZ-DOcR/view?usp=sharing",
+        ]);
+        Dasarhukum::create([
             'nama_dasarhukum' => "Instruksi Presiden Nomor 3 Tahun 2003 Tentang Kebijakan dan Strategi Nasional Pengembangan e-Government",
             'link_dasarhukum' => "https://drive.google.com/file/d/1lZg0iTl0jLECe6w0fc6oM1NFuXxLzkYZ/view?usp=sharing",
         ]);
@@ -371,14 +381,6 @@ class DatabaseSeeder extends Seeder
             'link_dasarhukum' => "https://drive.google.com/file/d/1_s4LUAlS6HI69fblV0w44I2rDg7mYe1M/view?usp=sharing",
         ]);
         Dasarhukum::create([
-            'nama_dasarhukum' => "Undang-Undang Nomor 11 Tahun 2008 Tentang Informasi dan Transaksi Elektronik",
-            'link_dasarhukum' => "https://drive.google.com/file/d/1REl5WZ2_YK_wsFBX0j6DWWI8MaU6hhyg/view?usp=sharing",
-        ]);
-        Dasarhukum::create([
-            'nama_dasarhukum' => "Undang Undang Republik Indonesia Nomor 14 Tahun 2008 Tentang Keterbukaan Informasi Publik",
-            'link_dasarhukum' => "https://drive.google.com/file/d/1vCFx8jvu-Rj3c6wCpNkS4n6dGRZ-DOcR/view?usp=sharing",
-        ]);
-        Dasarhukum::create([
             'nama_dasarhukum' => "Peraturan Presiden Nomor 95 Tahun 2018 tentang Sistem Pemerintahan Berbasis Elektronik",
             'link_dasarhukum' => "https://drive.google.com/file/d/1DqKgMsu9o8OxZkOLQ9efveoxbI_zCnaZ/view?usp=sharing",
         ]);
@@ -386,10 +388,27 @@ class DatabaseSeeder extends Seeder
             'nama_dasarhukum' => "Peraturan Wali Kota Surakarta Nomor 28 Tahun 2019 tentang Pedoman Penyelenggaraan e-Government",
             'link_dasarhukum' => "https://drive.google.com/file/d/1EUPnEc7J6dIrO65JOLtir_SskBf1XkZN/view?usp=sharing",
         ]);
-        
+        Dasarhukum::create([
+            'nama_dasarhukum' => "Peraturan Menteri Pendayagunaan Aparatur Negara dan Reformasi Birokrasi Republik Indonesia Nomor 59 Tahun 2020 tentang Pemantauan dan Evaluasi Sistem Pemerintahan Berbasis Elektronik",
+            'link_dasarhukum' => "https://drive.google.com/file/d/1kJrlGpHwkNsLLDvdyr6FWGq0Rm_UVFWm/view?usp=sharing",
+        ]);
 
-
-        /*
+        Masterplan::create([
+            'nama_masterplan' => "Buku I Masterplan Smart City Tahun 2021-2026",
+            'link_masterplan' => "https://drive.google.com/file/d/1kGosqtoKW4PLs4JWT3CGX1z9yELBzl6N/view?usp=sharing",
+        ]);
+        Masterplan::create([
+            'nama_masterplan' => "Buku II Masterplan Smart City Tahun 2021-2026",
+            'link_masterplan' => "https://drive.google.com/file/d/17h-yJod31iNX0r4FHR8y5qWikEzZZzSI/view?usp=sharing",
+        ]);
+        Masterplan::create([
+            'nama_masterplan' => "Buku III Masterplan Smart City Tahun 2021-2026",
+            'link_masterplan' => "https://drive.google.com/file/d/1Qdy9KrDcUlTic5TcnMWsvVVj3ErUeTcC/view?usp=sharing",
+        ]);
+        Masterplan::create([
+            'nama_masterplan' => "Laporan Akhir Masterplan E-Government Kota Surakarta - Pemenuhan Smart Governance dalam Masterplan Smart City",
+            'link_masterplan' => "https://drive.google.com/file/d/1iWjuybb2QP7Ri_gFZRqhWXVL2v36yMUP/view?usp=sharing",
+        ]);
         Agenda::create([
             'jenisagenda_id' => 1,
             'nama_acara' => "Webinar Asik",
@@ -397,9 +416,8 @@ class DatabaseSeeder extends Seeder
             'tanggal_acara' => "super admin",
             'waktu_acara' => "super admin",
             'tempat_acara' => "Surakarta",
+            'link_upload' => "https://drive.google.com/drive/folders/17yHfZubLCrvk0mTf9mgHGwT1Sii7T2CS",
             'surat' => "WEBINARASIK.pdf",
         ]);
-        */
-
     }
 }

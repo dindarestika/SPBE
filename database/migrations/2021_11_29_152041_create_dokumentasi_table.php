@@ -20,6 +20,7 @@ class CreateDokumentasiTable extends Migration
             $table->string('surat');
             $table->string('presensi');
             $table->string('foto_acara');
+            $table->string('tautan');
             $table->timestamps();
         });
     }

@@ -11,7 +11,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <div class="header-title">
-                        <h4 class="card-title">Data Pertanyaan Umum</h4>
+                        <h4 class="card-title">Data Masterplan</h4>
                     </div>
                     <div class="right">
                         <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
@@ -22,23 +22,23 @@
                     <div class="table-responsive">
                         <table id="datatable" class="table table-striped" data-toggle="data-table">
                             <thead>
-                                <tr class="ligth">
-                                    <th>No. </th>
-                                    <th>Soal</th>
-                                    <th style="min-width: 100px">Action</th>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Masterplan</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php $no = 1; ?>
-                                @foreach ($data_pertanyaan as $pertanyaan)
+                                @foreach ($masterplan as $m)
                                     <tr>
-                                        <td>{{ $no++ }}</td>
-                                        <td>{{ $pertanyaan->soal }}</td>
+                                        <td>{{ $no++ }}.</td>
+                                        <td>{{ $m->nama_masterplan }}</td>
                                         <td>
-                                            <div class="flex align-items-center list-pertanyaan-action">
+                                            <div class="flex align-items-center list-user-action">
                                                 <a class="btn btn-sm btn-icon btn-warning" data-toggle="tooltip"
                                                     data-placement="top" title="" data-original-title="Edit"
-                                                    href="/pertanyaanumum/{{ $pertanyaan->id }}/edit">
+                                                    href="/masterplan/{{ $m->id }}/edit">
                                                     <span class="btn-inner">
                                                         <svg width="20" viewBox="0 0 24 24" fill="none"
                                                             xmlns="http://www.w3.org/2000/svg">
@@ -61,7 +61,7 @@
                                                 </a>
                                                 <a class="btn btn-sm btn-icon btn-danger" data-toggle="tooltip"
                                                     data-placement="top" title="" data-original-title="Delete"
-                                                    href="/pertanyaanumum/{{ $pertanyaan->id }}/delete"
+                                                    href="/masterplan/{{ $m->id }}/delete"
                                                     onclick="return confirm('Yakin ingin menghapus?')">
                                                     <span class="btn-inner">
                                                         <svg width="20" viewBox="0 0 24 24" fill="none"
@@ -94,39 +94,51 @@
         </div>
     </div>
 
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <form action="/pertanyaanumum/create" method="POST" enctype="multipart/form-data">
-                        {{ csrf_field() }}
-                        <div class="mb-3">
-                            <label class="form-label">Evaluasi</label>
-                            <select name="evaluasi_id" class="form-select" required aria-label=".form-select-sm example">
-                                <!-- <option selected="">Pilih...</option> -->
-                                @foreach ($evaluasi as $row)
-                                    <option value="{{ $row->id }}">{{ $row->nama_evaluasi }}</option>
-                                @endforeach
-                            </select>
-
-                            <label class="form-label">Soal</label>
-                            <textarea name="soal" class="form-control @error('soal') is-invalid @enderror"
-                                rows="5"></textarea>
-                            @error('soal')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
+    {{-- <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form action="/masterplan/create" method="POST">
+                {{csrf_field()}}
+                    <div class="mb-3">
+                        <label class="form-label">Nama OPD</label>
+                        <input type="text" name="nama_opd" class="form-control @error('nama_opd') is-invalid @enderror" required value="{{ old('nama_opd')}}">
+                        @error('nama_opd')
+                        <div class="invalid-feedback">
+                            {{ $message }}
                         </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
+                        @enderror
+                        <label for="exampleInputEmail1" class="form-label">Email</label>
+                        <input type="email" name="email_opd" class="form-control @error('email_opd') is-invalid @enderror" value="{{ old('email_opd')}}" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                        @error('email_opd')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                        <label class="form-label">No Telepon</label>
+                        <input type="text" name="telepon_opd" class="form-control @error('telepon_opd') is-invalid @enderror" value="{{ old('telepon_opd')}}" required>
+                        @error('telepon_opd')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                        <label class="form-label">Alamat</label>
+                        <textarea name="alamat_opd" class="form-control @error('alamat_opd') is-invalid @enderror" rows="3" required>{{ old('alamat_opd')}}</textarea>
+                        @error('alamat_opd')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
                 </form>
             </div>
         </div>
     </div>
-    </div>
+</div> --}}
+
 @stop

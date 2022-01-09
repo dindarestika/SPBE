@@ -16,6 +16,7 @@ class CreatePertanyaanUmumTable extends Migration
         Schema::create('pertanyaan_umum', function (Blueprint $table) {
             $table->id();
             $table->text('soal');
+            $table->foreignId("evaluasi_id");
             $table->timestamps();
         });
     }

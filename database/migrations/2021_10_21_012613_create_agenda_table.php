@@ -21,6 +21,7 @@ class CreateAgendaTable extends Migration
             $table->string('tanggal_acara');
             $table->string('waktu_acara');
             $table->text('tempat_acara');
+            $table->text('link_upload');
             $table->string('surat');
             $table->timestamps();
         });
