@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
+    <link rel="shortcut icon" href="{{ asset('home/assets/img/logo.png') }}">
     <title>SPBE</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
@@ -69,7 +69,7 @@
 
             <div id="logo" class="me-auto">
                 <a href="index.html">
-                    <!-- <img src="assets/img/spbe.png" alt=""> -->
+                    {{-- <img src="{{ asset('home/assets/img/logo.png') }}" alt=""> --}}
                 </a>
                 <h1><a href="#hero">SPBE</a></h1>
             </div>

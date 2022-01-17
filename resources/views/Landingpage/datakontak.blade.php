@@ -11,26 +11,26 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <div class="header-title">
-                        <h4 class="card-title">Data Visi</h4>
+                        <h4 class="card-title">Data Kontak</h4>
                     </div>
                     <div class="right">
                         <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
                             data-bs-target="#exampleModal">Tambah</button>
-                        <a type="button" href="/lihatvisimisi" class="btn btn-primary btn-sm">Kembali</a>
-
                     </div>
                 </div>
-                @foreach ($visi as $v)
+                @foreach ($kontak as $v)
                     <div class="card-body">
                         <div class="bd-example">
                             <div class="alert alert-primary mb-0" role="alert">
-                                <p>{{ $v->visi }}</p>
+                                <p>{{ $v->alamat }}</p>
+                                <p>{{ $v->email }}</p>
+                                <p>{{ $v->no_telephone }}</p>
                             </div>
                         </div>
                         </br>
                         <div class="flex align-items-center list-user-action">
                             <a class="btn btn-sm btn-icon btn-warning" data-placement="top" title=""
-                                data-original-title="Edit" href="/datavisi/{{ $v->id }}/edit">
+                                data-original-title="Edit" href="/datakontak/{{ $v->id }}/edit">
                                 <span class="btn-inner">
                                     <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -50,7 +50,7 @@
                                 </span>
                             </a>
                             <a class="btn btn-sm btn-icon btn-danger" data-toggle="tooltip" data-placement="top" title=""
-                                data-original-title="Delete" href="/datavisi/{{ $v->id }}/delete"
+                                data-original-title="Delete" href="/datakontak/{{ $v->id }}/delete"
                                 onclick="return confirm('Yakin ingin menghapus?')">
                                 <span class="btn-inner">
                                     <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
@@ -84,13 +84,29 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
-                    <form action="/datavisi/create" method="POST">
+                    <form action="/datakontak/create" method="POST">
                         {{ csrf_field() }}
                         <div class="mb-3">
-                            <label class="form-label">Visi</label>
-                            <textarea name="visi" class="form-control @error('visi') is-invalid @enderror" rows="3"
-                                required>{{ old('visi') }}</textarea>
-                            @error('visi')
+                            <label class="form-label">Alamat</label>
+                            <input type="text" name="alamat" class="form-control @error('alamat') is-invalid @enderror"
+                                required>
+                            @error('alamat')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                            <label class="form-label">Email</label>
+                            <input type="text" name="email" class="form-control @error('email') is-invalid @enderror"
+                                required>
+                            @error('email')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                            <label class="form-label">No Telephone</label>
+                            <input type="text" name="no_telephone"
+                                class="form-control @error('no_telephone') is-invalid @enderror" required>
+                            @error('no_telephone')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>

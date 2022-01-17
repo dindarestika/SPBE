@@ -16,7 +16,7 @@ class CreateArsitekturTable extends Migration
         Schema::create('arsitektur', function (Blueprint $table) {
             $table->id();
             $table->string('nama_arsitektur')->nullable();
-            $table->string('file_arsitektur')->nullable();
+            $table->string('link_arsitektur')->nullable();
             $table->timestamps();
         });
     }

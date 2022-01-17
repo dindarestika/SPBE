@@ -1,7 +1,7 @@
 <div class="sidebar-header d-flex align-items-center justify-content-start">
-    <a href="../dashboard/index.html" class="navbar-brand">
+    <a href="#" class="navbar-brand">
         <!--Logo start-->
-        <svg width="30" class="" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        {{-- <svg width="30" class="" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="-0.757324" y="19.2427" width="28" height="4" rx="2" transform="rotate(-45 -0.757324 19.2427)"
                 fill="currentColor" />
             <rect x="7.72803" y="27.728" width="28" height="4" rx="2" transform="rotate(-45 7.72803 27.728)"
@@ -10,7 +10,7 @@
                 fill="currentColor" />
             <rect x="10.5562" y="-0.556152" width="28" height="4" rx="2" transform="rotate(45 10.5562 -0.556152)"
                 fill="currentColor" />
-        </svg>
+        </svg> --}}
         <!--logo End-->
         <h4 class="logo-title">Evaluasi SPBE</h4>
     </a>
@@ -172,6 +172,20 @@
                                 </i>
                                 <i class="sidenav-mini-icon"> C </i>
                                 <span class="item-name">Data Infrastruktur</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ $title === 'Kontak' ? 'active' : '' }}" href="/kontak">
+                                <i class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24"
+                                        fill="currentColor">
+                                        <g>
+                                            <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
+                                        </g>
+                                    </svg>
+                                </i>
+                                <i class="sidenav-mini-icon"> C </i>
+                                <span class="item-name">Kontak</span>
                             </a>
                         </li>
                     </ul>

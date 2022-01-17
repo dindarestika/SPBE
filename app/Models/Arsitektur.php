@@ -9,6 +9,5 @@ class Arsitektur extends Model
 {
     use HasFactory;
     protected $table = 'arsitektur';
-    protected $fillable =['nama_arsitektur', 'file_arsitektur'];
-
+    protected $fillable = ['nama_arsitektur', 'link_arsitektur'];
 }

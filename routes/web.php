@@ -115,14 +115,59 @@ Route::group(['middleware' => ['auth', 'cekrole:1']], function () {
 
     Route::get('/lihatvisimisi', 'HomeController@lihatvisimisi');
     Route::get('/datavisi', 'HomeController@datavisi');
+    Route::post('/datavisi/create', 'HomeController@createvisi');
+    Route::get('/datavisi/{id}/edit', 'HomeController@editvisi');
+    Route::post('/datavisi/{id}/update', 'HomeController@updatevisi');
+    Route::get('/datavisi/{id}/delete', 'HomeController@deletevisi');
+
     Route::get('/datamisi', 'HomeController@datamisi');
+    Route::post('/datamisi/create', 'HomeController@createmisi');
+    Route::get('/datamisi/{id}/edit', 'HomeController@editmisi');
+    Route::post('/datamisi/{id}/update', 'HomeController@updatemisi');
+    Route::get('/datamisi/{id}/delete', 'HomeController@deletemisi');
+
     Route::get('/lihattujuansasaran', 'HomeController@lihattujuansasaran');
     Route::get('/datatujuan', 'HomeController@datatujuan');
+    Route::post('/datatujuan/create', 'HomeController@createtujuan');
+    Route::get('/datatujuan/{id}/edit', 'HomeController@edittujuan');
+    Route::post('/datatujuan/{id}/update', 'HomeController@updatetujuan');
+    Route::get('/datatujuan/{id}/delete', 'HomeController@deletetujuan');
+
     Route::get('/datasasaran', 'HomeController@datasasaran');
+    Route::post('/datasasaran/create', 'HomeController@createsasaran');
+    Route::get('/datasasaran/{id}/edit', 'HomeController@editsasaran');
+    Route::post('/datasasaran/{id}/update', 'HomeController@updatesasaran');
+    Route::get('/datasasaran/{id}/delete', 'HomeController@deletesasaran');
+
     Route::get('/datadasarhukum', 'HomeController@datadasarhukum');
+    Route::post('/datadasarhukum/create', 'HomeController@createdasarhukum');
+    Route::get('/datadasarhukum/{id}/edit', 'HomeController@editdasarhukum');
+    Route::post('/datadasarhukum/{id}/update', 'HomeController@updatedasarhukum');
+    Route::get('/datadasarhukum/{id}/delete', 'HomeController@deletedasarhukum');
+
     Route::get('/datamasterplan', 'HomeController@datamasterplan');
+    Route::post('/datamasterplan/create', 'HomeController@createmasterplan');
+    Route::get('/datamasterplan/{id}/edit', 'HomeController@editmasterplan');
+    Route::post('/datamasterplan/{id}/update', 'HomeController@updatemasterplan');
+    Route::get('/datamasterplan/{id}/delete', 'HomeController@deletemasterplan');
+
     Route::get('/dataarsitektur', 'HomeController@dataarsitektur');
+    Route::post('/dataarsitektur/create', 'HomeController@createarsitektur');
+    Route::get('/dataarsitektur/{id}/edit', 'HomeController@editarsitektur');
+    Route::post('/dataarsitektur/{id}/update', 'HomeController@updatearsitektur');
+    Route::get('/dataarsitektur/{id}/delete', 'HomeController@deletearsitektur');
+
     Route::get('/datainfrastruktur', 'HomeController@datainfrastruktur');
+    Route::post('/datainfrastruktur/create', 'HomeController@createinfrastruktur');
+    Route::get('/datainfrastruktur/{id}/edit', 'HomeController@editinfrastruktur');
+    Route::post('/datainfrastruktur/{id}/update', 'HomeController@updateinfrastruktur');
+    Route::get('/datainfrastruktur/{id}/delete', 'HomeController@deleteinfrastruktur');
+
+    Route::get('/kontak', 'HomeController@datakontak');
+    Route::post('/datakontak/create', 'HomeController@createkontak');
+    Route::get('/datakontak/{id}/edit', 'HomeController@editkontak');
+    Route::post('/datakontak/{id}/update', 'HomeController@updatekontak');
+    Route::get('/datakontak/{id}/delete', 'HomeController@deletekontak');
 });
 
 Route::group(['middleware' => ['auth', 'cekrole:1,2']], function () {

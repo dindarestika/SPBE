@@ -16,6 +16,7 @@
                     <div class="right">
                         <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
                             data-bs-target="#exampleModal">Tambah</button>
+                        <a type="button" href="/lihattujuansasaran" class="btn btn-primary btn-sm">Kembali</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -35,7 +36,7 @@
                                             <div class="flex align-items-center list-user-action">
                                                 <a class="btn btn-sm btn-icon btn-warning" data-toggle="tooltip"
                                                     data-placement="top" title="" data-original-title="Edit"
-                                                    href="/sasaran/{{ $s->id }}/edit">
+                                                    href="/datasasaran/{{ $s->id }}/edit">
                                                     <span class="btn-inner">
                                                         <svg width="20" viewBox="0 0 24 24" fill="none"
                                                             xmlns="http://www.w3.org/2000/svg">
@@ -58,7 +59,7 @@
                                                 </a>
                                                 <a class="btn btn-sm btn-icon btn-danger" data-toggle="tooltip"
                                                     data-placement="top" title="" data-original-title="Delete"
-                                                    href="/sasaran/{{ $s->id }}/delete"
+                                                    href="/datasasaran/{{ $s->id }}/delete"
                                                     onclick="return confirm('Yakin ingin menghapus?')">
                                                     <span class="btn-inner">
                                                         <svg width="20" viewBox="0 0 24 24" fill="none"
@@ -92,50 +93,29 @@
     </div>
 
     <!-- Modal -->
-    {{-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-body">
-                <form action="/opd/create" method="POST">
-                {{csrf_field()}}
-                    <div class="mb-3">
-                        <label class="form-label">Nama OPD</label>
-                        <input type="text" name="nama_opd" class="form-control @error('nama_opd') is-invalid @enderror" required value="{{ old('nama_opd')}}">
-                        @error('nama_opd')
-                        <div class="invalid-feedback">
-                            {{ $message }}
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form action="/datasasaran/create" method="POST">
+                        {{ csrf_field() }}
+                        <div class="mb-3">
+                            <label class="form-label">Sasaran</label>
+                            <textarea name="sasaran" class="form-control @error('sasaran') is-invalid @enderror" rows="3"
+                                required></textarea>
+                            @error('sasaran')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
-                        @enderror
-                        <label for="exampleInputEmail1" class="form-label">Email</label>
-                        <input type="email" name="email_opd" class="form-control @error('email_opd') is-invalid @enderror" value="{{ old('email_opd')}}" id="exampleInputEmail1" aria-describedby="emailHelp" required>
-                        @error('email_opd')
-                        <div class="invalid-feedback">
-                            {{ $message }}
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
-                        @enderror
-                        <label class="form-label">No Telepon</label>
-                        <input type="text" name="telepon_opd" class="form-control @error('telepon_opd') is-invalid @enderror" value="{{ old('telepon_opd')}}" required>
-                        @error('telepon_opd')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                        @enderror
-                        <label class="form-label">Alamat</label>
-                        <textarea name="alamat_opd" class="form-control @error('alamat_opd') is-invalid @enderror" rows="3" required>{{ old('alamat_opd')}}</textarea>
-                        @error('alamat_opd')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                        @enderror
-                    </div>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div> --}}
 
 @stop
