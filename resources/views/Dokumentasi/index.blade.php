@@ -154,8 +154,7 @@
                     </select>
 
                     <label class="form-label">Upload Notulen</label>
-                    <input type="file" name="notulen" class="form-control @error('notulen') is-invalid @enderror"
-                        required>
+                    <input type="file" name="notulen" class="form-control @error('notulen') is-invalid @enderror">
                     @error('notulen')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -163,8 +162,7 @@
                     @enderror
 
                     <label class="form-label">Upload Surat</label>
-                    <input type="file" name="surat" class="form-control @error('surat') is-invalid @enderror"
-                        required>
+                    <input type="file" name="surat" class="form-control @error('surat') is-invalid @enderror">
                     @error('surat')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -172,8 +170,7 @@
                     @enderror
 
                     <label class="form-label">Upload Presensi</label>
-                    <input type="file" name="presensi" class="form-control @error('presensi') is-invalid @enderror"
-                        required>
+                    <input type="file" name="presensi" class="form-control @error('presensi') is-invalid @enderror">
                     @error('presensi')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -182,7 +179,7 @@
 
                     <label class="form-label">Upload Foto</label>
                     <input type="file" name="foto_acara"
-                        class="form-control @error('foto_acara') is-invalid @enderror" required>
+                        class="form-control @error('foto_acara') is-invalid @enderror">
                     @error('foto_acara')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -190,8 +187,7 @@
                     @enderror
 
                     <label class="form-label">Upload Link Tautan</label>
-                    <input type="text" name="tautan" class="form-control @error('tautan') is-invalid @enderror"
-                        required>
+                    <input type="text" name="tautan" class="form-control @error('tautan') is-invalid @enderror">
                     @error('tautan')
                         <div class="invalid-feedback">
                             {{ $message }}

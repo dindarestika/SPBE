@@ -76,8 +76,7 @@
                             <th width="120px">Tautan Link</th>
                             <th width="20px">:</th>
                             <th>
-                                <a href="{{ $dokumentasi->tautan }}" target="_blank" class="btn btn-primary">Buka
-                                    Link</a>
+                                <a href="{{ $dokumentasi->tautan }}" target="_blank" class="btn btn-primary">Lihat</a>
                             </th>
                         </tr>
 

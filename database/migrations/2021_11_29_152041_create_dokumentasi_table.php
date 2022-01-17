@@ -16,11 +16,11 @@ class CreateDokumentasiTable extends Migration
         Schema::create('dokumentasi', function (Blueprint $table) {
             $table->id();
             $table->foreignId('agenda_id');
-            $table->string('notulen');
-            $table->string('surat');
-            $table->string('presensi');
-            $table->string('foto_acara');
-            $table->string('tautan');
+            $table->string('notulen')->nullable();
+            $table->string('surat')->nullable();
+            $table->string('presensi')->nullable();
+            $table->string('foto_acara')->nullable();
+            $table->string('tautan')->nullable();
             $table->timestamps();
         });
     }

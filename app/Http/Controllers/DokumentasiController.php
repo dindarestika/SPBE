@@ -33,7 +33,6 @@ class DokumentasiController extends Controller
         $validatedData['surat'] = $request->file('surat')->store('dokumentasi-surat');
         $validatedData['presensi'] = $request->file('presensi')->store('dokumentasi-presensi');
         $validatedData['foto_acara'] = $request->file('foto_acara')->store('dokumentasi-foto-acara');
-        $validatedData['tautan'] = $request->tautan;
         $data_dokumentasi = Dokumentasi::create($validatedData);
         return redirect('/dokumentasi')->with('success', 'Data berhasil ditambahkan!');
     }
@@ -71,9 +70,6 @@ class DokumentasiController extends Controller
         }
         if ($request->file('foto_acara')) {
             $validatedData['foto_acara'] = $request->file('foto_acara')->store('dokumentasi-foto-acara');
-        }
-        if ($request->tautan) {
-            $validatedData['tautan'] = $request->tautan;
         }
         $dokumentasi->update($validatedData);
         return redirect('/dokumentasi')->with('sukses', 'Data berhasil diupdate');
