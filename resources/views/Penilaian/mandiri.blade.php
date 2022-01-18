@@ -487,7 +487,7 @@
                             <td>
                                 <p>${item.kriteria}</p>
                                 <div class="form-group">
-                                    <input type="hidden" name="jawaban_id[]" value="${item.id_jawaban}">
+                                    <input type="hidden" name="id[]" value="${item.id_jawaban}">
                                     <input type="hidden" name="pertanyaan_id[]"  value="${item.id}">
                                     <input type="hidden" name="user_id[]" value="{{ auth()->user()->id }}">
                                     <textarea name="jawaban[]" class="form-control" placeholder="Jawab di sini ..." rows="3">${item.jawaban_pertanyaan}</textarea>

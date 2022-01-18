@@ -190,6 +190,7 @@ Route::group(['middleware' => ['auth', 'cekrole:1,2']], function () {
     Route::get('/jscalender', 'AgendaController@jscalender');
     Route::get('/calender/{id}/detail', 'AgendaController@detailcalender');
     Route::post('/jawaban', 'PenilaianController@jawabanpertanyaan');
+    Route::post('/update_jawaban', 'PenilaianController@updatejawabanpertanyaan');
     Route::post('/jawabanumum', 'PenilaianController@jawabanumum');
     Route::post('/update/jawabanumum', 'PenilaianController@updatejawabanumum');
 });

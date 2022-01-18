@@ -247,9 +247,6 @@ class PenilaianController extends Controller
 
     public function jawabanpertanyaan(Request $request)
     {
-        //return $request->capaian;
-
-
         $userID = array();
         $pertanyaanID = array();
         $answer = array();
@@ -290,7 +287,41 @@ class PenilaianController extends Controller
         }
         return back()->with('sukses', 'Jawaban berhasil diinput');
         //return $nilaicapaian;
+    }
 
+    public function updatejawabanpertanyaan(Request $request)
+    {
+        $ID = array();
+        $userID = array();
+        $pertanyaanID = array();
+        $answer = array();
+        $nilaicapaian = array();
 
+        foreach ($request->id as $d) {
+            array_push($ID, $d);
+        }
+        foreach ($request->user_id as $u) {
+            array_push($userID, $u);
+        }
+        foreach ($request->pertanyaan_id as $p) {
+            array_push($pertanyaanID, $p);
+        }
+        foreach ($request->jawaban as $key => $j) {
+            if ($request->capaian == $key + 1) {
+                $nilaicapaian[$key] = $key + 1;
+            } else {
+                $nilaicapaian[$key] = 0;
+            }
+            array_push($answer, $j);
+        }
+
+        for ($i = 0; $i < sizeof($pertanyaanID); $i++) {
+            $jawab = Jawaban::find($ID[$i]);
+            $jawab->user_id = $userID[$i];
+            $jawab->jawaban_pertanyaan = $answer[$i];
+            $jawab->capaian = $nilaicapaian[$i];
+            $jawab->save();
+        }
+        return back()->with('sukses', 'Jawaban berhasil diupdate');
     }
 }

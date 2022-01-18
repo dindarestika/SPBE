@@ -33,7 +33,7 @@ class DomainController extends Controller
         $domain = Domain::find($id);
         $data_evaluasi = Evaluasi::all();
         return view('domain/edit', [
-            "title" => "Domain",
+            "title" => "Evaluasi New",
             'domain' => $domain,
             'data_evaluasi' => $data_evaluasi,
         ]);
