@@ -17,8 +17,9 @@ class CreateIndikatorTable extends Migration
             $table->id();
             $table->foreignId('opd_id');
             $table->foreignId('aspek_id');
+            $table->integer('no_indikator');
             $table->string('nama_indikator');
-            $table->integer('bobot_indikator');
+            $table->decimal('bobot_indikator', $precision = 8, $scale = 2);
             $table->text('penjelasan_indikator');
             $table->timestamps();
         });

@@ -9,7 +9,7 @@ class Aspek extends Model
 {
     use HasFactory;
     protected $table = 'aspek';
-    protected $fillable =['domain_id', 'nama_aspek', 'bobot_aspek'];
+    protected $fillable = ['domain_id', 'no_aspek', 'nama_aspek', 'bobot_aspek'];
 
     public function domain()
     {

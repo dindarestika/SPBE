@@ -9,7 +9,7 @@ class Indikator extends Model
 {
     use HasFactory;
     protected $table = 'indikator';
-    protected $fillable =['opd_id','aspek_id', 'nama_indikator', 'bobot_indikator', 'penjelasan_indikator'];
+    protected $fillable = ['opd_id', 'aspek_id', 'no_indikator', 'nama_indikator', 'bobot_indikator', 'penjelasan_indikator'];
 
     public function aspek()
     {
@@ -27,5 +27,4 @@ class Indikator extends Model
     {
         return $this->hasManyThrough(Jawaban::class, Pertanyaan::class);
     }
-
 }

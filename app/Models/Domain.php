@@ -9,7 +9,7 @@ class Domain extends Model
 {
     use HasFactory;
     protected $table = 'domain';
-    protected $fillable =['evaluasi_id','nama_domain', 'bobot_domain'];
+    protected $fillable = ['evaluasi_id', 'no_domain', 'nama_domain', 'bobot_domain'];
 
     public function aspek()
     {
@@ -23,5 +23,4 @@ class Domain extends Model
     {
         return $this->belongsTo(Evaluasi::class);
     }
-    
 }

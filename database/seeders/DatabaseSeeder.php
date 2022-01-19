@@ -92,73 +92,86 @@ class DatabaseSeeder extends Seeder
 
         Domain::create([
             'evaluasi_id' => "1",
+            'no_domain' => "1",
             'nama_domain' => "Kebijakan Internal SPBE",
-            'bobot_domain' => "2",
+            'bobot_domain' => "13.00",
         ]);
 
         Domain::create([
             'evaluasi_id' => "1",
+            'no_domain' => "2",
             'nama_domain' => "Tata Kelola SPBE",
-            'bobot_domain' => "2",
+            'bobot_domain' => "25.00",
         ]);
 
         Domain::create([
             'evaluasi_id' => "1",
+            'no_domain' => "3",
             'nama_domain' => "Manajemen SPBE",
-            'bobot_domain' => "2",
+            'bobot_domain' => "16.50",
         ]);
 
         Domain::create([
             'evaluasi_id' => "1",
+            'no_domain' => "4",
             'nama_domain' => "Layanan SPBE",
-            'bobot_domain' => "2",
+            'bobot_domain' => "45.50",
         ]);
 
         Aspek::create([
             'domain_id' => "1",
+            'no_aspek' => "1",
             'nama_aspek' => "Kebijakan Internal Tata Kelola SPBE",
-            'bobot_aspek' => "2",
+            'bobot_aspek' => "13.00",
         ]);
         Aspek::create([
             'domain_id' => "2",
+            'no_aspek' => "2",
             'nama_aspek' => "Perencanaan Strategi SPBE",
-            'bobot_aspek' => "2",
+            'bobot_aspek' => "10.00",
         ]);
         Aspek::create([
             'domain_id' => "2",
+            'no_aspek' => "3",
             'nama_aspek' => "Teknologi Informasi dan Komunikasi",
-            'bobot_aspek' => "2",
+            'bobot_aspek' => "10.00",
         ]);
         Aspek::create([
             'domain_id' => "2",
+            'no_aspek' => "4",
             'nama_aspek' => "Penyelanggara SPBE",
-            'bobot_aspek' => "2",
+            'bobot_aspek' => "5.00",
         ]);
         Aspek::create([
             'domain_id' => "3",
+            'no_aspek' => "5",
             'nama_aspek' => "Penerapan Manajemen SPBE",
-            'bobot_aspek' => "2",
+            'bobot_aspek' => "12.00",
         ]);
         Aspek::create([
             'domain_id' => "3",
+            'no_aspek' => "6",
             'nama_aspek' => "Pelaksanaan Audit TIK",
-            'bobot_aspek' => "2",
+            'bobot_aspek' => "4.50",
         ]);
         Aspek::create([
             'domain_id' => "4",
+            'no_aspek' => "7",
             'nama_aspek' => "Layanan Adm.Pemerintahan Berbasis Elektronik",
-            'bobot_aspek' => "2",
+            'bobot_aspek' => "27.50",
         ]);
         Aspek::create([
             'domain_id' => "4",
+            'no_aspek' => "8",
             'nama_aspek' => "Layanan Publik Berbasis Elektronik",
-            'bobot_aspek' => "2",
+            'bobot_aspek' => "18.00",
         ]);
         Indikator::create([
             'opd_id' => "2",
             'aspek_id' => "1",
+            'no_indikator' => "1",
             'nama_indikator' => "Tingkat kematangan kebijakan internal arsitektur SPBE Instansi Pusat/Pemerintah Daerah",
-            'bobot_indikator' => "2",
+            'bobot_indikator' => "1.30",
             'penjelasan_indikator' => " Arsitektur SPBE adalah kerangka dasar yang mendeskripsikan integrasi proses bisnis, data dan informasi, infrastruktur SPBE, aplikasi SPBE, dan keamanan SPBE untuk menghasilkan layanan SPBE yang terintegrasi.
                                         Kebijakan internal Arsitektur SPBE merupakan pengaturan mengenai Arsitektur SPBE di Instansi Pusat dan Pemerintah Daerah yang bertujuan untuk memberikan panduan dalam pelaksanaan integrasi Proses Bisnis, Data dan Informasi, Infrastruktur SPBE, Aplikasi SPBE, dan Keamanan SPBE untuk menghasilkan Layanan SPBE yang terpadu.
                                         Referensi Arsitektur dan Domain Arsitektur SPBE terdiri dari:
@@ -173,8 +186,9 @@ class DatabaseSeeder extends Seeder
         Indikator::create([
             'opd_id' => "1",
             'aspek_id' => "1",
+            'no_indikator' => "2",
             'nama_indikator' => "Tingkat kematangan kebijakan internal peta rencana SPBE Instansi Pusat/Pemerintah Daerah",
-            'bobot_indikator' => "2",
+            'bobot_indikator' => "1.30",
             'penjelasan_indikator' => " Peta Rencana SPBE adalah dokumen yang mendeskripsikan arah dan langkah penyiapan dan pelaksanaan SPBE yang terintegrasi.
                                         Kebijakan internal Peta Rencana SPBE merupakan pengaturan mengenai Peta Rencana SPBE di Instansi Pusat/Pemerintah Daerah yang bertujuan untuk memberikan panduan arah dan langkah dalam penyiapan dan pelaksanaan SPBE di Instansi Pusat/Pemerintah Daerah.
                                         Peta Rencana SPBE memuat:
@@ -190,8 +204,9 @@ class DatabaseSeeder extends Seeder
         Indikator::create([
             'opd_id' => "2",
             'aspek_id' => "1",
+            'no_indikator' => "3",
             'nama_indikator' => "Tingkat kematangan kebijakan internal manajemen data",
-            'bobot_indikator' => "2",
+            'bobot_indikator' => "1.30",
             'penjelasan_indikator' => " Manajemen Data bertujuan untuk menjamin terwujudnya data yang akurat, mutakhir, terintegrasi, dan dapat diakses sebagai dasar perencanaan, pelaksanaan, evaluasi, dan pengendalian pembangunan nasional.
                                         Manajemen Data dilakukan melalui serangkaian proses pengelolaan Arsitektur Data, Data Induk, Data Referensi, Basis Data, Kualitas Data dan Interoperabilitas Data.
                                         Kebijakan Internal Manajemen Data merupakan pengaturan mengenai Manajemen Data di Instansi Pusat dan Pemerintah Daerah yang bertujuan untuk memberikan panduan arah dan langkah dalam pengelolaan data di Instansi Pusat dan Pemerintah Daerah.
