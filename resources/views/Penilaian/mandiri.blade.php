@@ -81,7 +81,7 @@
                                                     class="btn btn-primary btn-sm tombol_indikator_{{ $indikator->status === 'insert' ? 'insert' : 'update' }}"
                                                     data-id_indikator="{{ $indikator->id_indikator }}"
                                                     data-bs-toggle="modal">
-                                                    Indikator {{ $indikator->id_indikator }}
+                                                    Indikator {{ $indikator->no_indikator }}
                                                 </button>
                                                 {{-- @endif --}}
                                             @endauth
@@ -106,7 +106,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="exampleModalLabel">
-                        Indikator <span id="modal_tambah_indikator_id"></span> - Tambah
+                        Indikator <span id="modal_tambah_indikator_no"></span> - Tambah
                     </h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -167,7 +167,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="exampleModalLabel">
-                        Indikator <span id="modal_ubah_indikator_id"></span> - Ubah
+                        Indikator <span id="modal_ubah_indikator_no"></span> - Ubah
                     </h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -439,6 +439,8 @@
                 $('#modal_tambah_nama_aspek').html(result.data.nama_aspek)
                 $('#modal_tambah_nama_indikator').html(result.data.nama_indikator)
                 $('#modal_tambah_indikator_id').html(result.data.id_indikator)
+                $('#modal_tambah_indikator_no').html(result.data.no_indikator)
+
 
                 let html = ''
 
@@ -477,6 +479,8 @@
                 $('#modal_ubah_nama_aspek').html(result.data.nama_aspek)
                 $('#modal_ubah_nama_indikator').html(result.data.nama_indikator)
                 $('#modal_ubah_indikator_id').html(result.data.id_indikator)
+                $('#modal_ubah_indikator_no').html(result.data.no_indikator)
+
 
                 let html = ''
 

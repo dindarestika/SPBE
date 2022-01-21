@@ -15,7 +15,7 @@ class IndikatorController extends Controller
         $data_aspek = Aspek::all();
         $data_indikator = Indikator::all();
         $data_opd = Opd::all();
-        return view('indikator.index',[
+        return view('indikator.index', [
             "title" => "Indikator",
             'data_aspek' => $data_aspek,
             'data_indikator' => $data_indikator,
@@ -27,8 +27,9 @@ class IndikatorController extends Controller
         $validatedData = $request->validate([
             'opd_id' => 'required',
             'aspek_id' => 'required',
-            'nama_indikator' => 'required|max:255|unique:indikator',
-            'bobot_indikator' => 'required|int',
+            'no_indikator' => 'required',
+            'nama_indikator' => 'required|max:255',
+            'bobot_indikator' => 'required',
             'penjelasan_indikator' => 'required',
         ]);
         Indikator::create($validatedData);
@@ -43,7 +44,8 @@ class IndikatorController extends Controller
             "title" => "Indikator",
             'opd' => $opd,
             'aspek' => $aspek,
-            'indikator' => $indikator]);
+            'indikator' => $indikator
+        ]);
     }
     public function update(Request $request, $id)
     {

@@ -22,8 +22,9 @@ class DomainController extends Controller
     {
         $validatedData = $request->validate([
             'evaluasi_id' => 'required',
+            'no_domain' => 'required',
             'nama_domain' => 'required|max:255',
-            'bobot_domain' => 'required|int',
+            'bobot_domain' => 'required',
         ]);
         Domain::create($validatedData);
         return back()->with('sukses', 'Data berhasil diinput');

@@ -53,6 +53,7 @@ class EvaluasiController extends Controller
     {
         // $data_evaluasi = Evaluasi::all();
         $data_evaluasi = Evaluasi::orderBy('tahun_evaluasi', 'asc')->get();
+
         return view('evaluasi.dataevaluasi', [
             "title" => "Evaluasi New",
             'data_evaluasi' => $data_evaluasi
@@ -62,6 +63,9 @@ class EvaluasiController extends Controller
     {
         $evaluasi = Evaluasi::find($id);
         $data_domain = Domain::where('evaluasi_id', $id)->get();
+        // dd($evaluasi);
+        session(['evaluasi_id' => $id]);
+
         return view('evaluasi.datadomain', [
             "title" => "Evaluasi New",
             'data_domain' => $data_domain,
@@ -72,6 +76,9 @@ class EvaluasiController extends Controller
     {
         $domain = Domain::find($id);
         $data_aspek = Aspek::where('domain_id', $id)->get();
+
+        session(['domain_id' => $id]);
+
         return view('evaluasi.dataaspek', [
             "title" => "Evaluasi New",
             'data_aspek' => $data_aspek,
@@ -81,6 +88,9 @@ class EvaluasiController extends Controller
     {
         $aspek = Aspek::find($id);
         $data_indikator = Indikator::where('aspek_id', $id)->get();
+
+        session(['aspek_id' => $id]);
+
         return view('evaluasi.dataindikator', [
             "title" => "Evaluasi New",
             'data_indikator' => $data_indikator,
@@ -90,6 +100,9 @@ class EvaluasiController extends Controller
     {
         $indikator = Indikator::find($id);
         $data_pertanyaan = Pertanyaan::where('indikator_id', $id)->get();
+
+        session(['indikator_id' => $id]);
+
         return view('evaluasi.datapertanyaan', [
             "title" => "Evaluasi New",
             'data_pertanyaan' => $data_pertanyaan,

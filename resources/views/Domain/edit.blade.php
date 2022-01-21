@@ -30,7 +30,15 @@
                                     }
                                     ?>
                                 </select>
-
+                                <label class="form-label">Nomor domain</label>
+                                <input type="number" name="no_domain" value="{{ $domain->no_domain }}"
+                                    class="form-control @error('bobot_domain') is-invalid @enderror" required
+                                    value="{{ old('no_domain') }}">
+                                @error('no_domain')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                                 <label class="form-label">Nama domain</label>
                                 <input type="text" name="nama_domain" value="{{ $domain->nama_domain }}"
                                     class="form-control @error('nama_domain') is-invalid @enderror" required

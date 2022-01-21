@@ -9,9 +9,20 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="card-header d-flex justify-content-between">
-                <div class="header-title">
-                    <h4 class="card-title">Data Domain</h4>
-                </div>
+                {{-- <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/dataevaluasi">Evaluasi</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Domain</li>
+                    </ol>
+                </nav> --}}
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dataevaluasi">Evaluasi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Domain</a>
+                    </li>
+                </ul>
                 <div class="right">
                     <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
                         data-bs-target="#exampleModal">Tambah Domain</button>

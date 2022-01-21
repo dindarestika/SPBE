@@ -13,17 +13,19 @@ class AspekController extends Controller
     {
         $data_aspek = Aspek::all();
         $data_domain = Domain::all();
-        return view('aspek.index',[
+        return view('aspek.index', [
             "title" => "Aspek",
             'data_aspek' => $data_aspek,
-            'data_domain' => $data_domain]);
+            'data_domain' => $data_domain
+        ]);
     }
     public function create(Request $request)
     {
         $validatedData = $request->validate([
             'domain_id' => 'required',
-            'nama_aspek' => 'required|max:255|unique:aspek',
-            'bobot_aspek' => 'required|int',
+            'no_aspek' => 'required',
+            'nama_aspek' => 'required|max:255',
+            'bobot_aspek' => 'required',
         ]);
         Aspek::create($validatedData);
         return redirect('/aspek')->with('sukses', 'Data berhasil diinput');
@@ -35,7 +37,8 @@ class AspekController extends Controller
         return view('aspek/edit', [
             "title" => "Aspek",
             'aspek' => $aspek,
-            'data_domain' => $data_domain]);
+            'data_domain' => $data_domain
+        ]);
     }
     public function update(Request $request, $id)
     {

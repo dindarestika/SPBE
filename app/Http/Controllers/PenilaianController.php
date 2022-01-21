@@ -12,6 +12,7 @@ use App\Models\PertanyaanUmum;
 use App\Models\Indikator;
 use App\Models\Jawaban;
 use App\Models\JawabanUmum;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 
 class PenilaianController extends Controller
@@ -55,19 +56,76 @@ class PenilaianController extends Controller
             //'pertanyaan' => $pertanyaan,
         ]);
     }
+
+    //     SELECT 
+    // -- c.aspek_id, b.indikator_id, a.pertanyaan_id, a.jawaban_pertanyaan,
+    // -- a.capaian ni, c.bobot_indikator bi,
+    // -- (a.capaian * c.bobot_indikator) hasil_kali
+    // -- SUM(a.capaian * c.bobot_indikator) jumlah,
+    // 1 / e.bobot_aspek * SUM(a.capaian * c.bobot_indikator) AS indeks_aspek
+
+    // FROM jawaban a
+    // JOIN pertanyaan b ON b.id = a.pertanyaan_id
+    // JOIN indikator c ON c.id = b.indikator_id
+    // JOIN aspek e ON e.id = c.aspek_id
+    // WHERE c.aspek_id = 9
+    // -- HAVING ni != 0
     public function skor($id)
     {
         $evaluasi = Evaluasi::find($id);
         $data_domain = Domain::where('evaluasi_id', $id)->get();
-        //$data_domain = Domain::all();
-        $data_aspek = Aspek::all();
+
+        $data_aspek = Aspek::whereHas('domain.evaluasi', function (Builder $query) use ($id) {
+            $query->where('evaluasi_id', $id);
+        })->get();
+
+        foreach ($data_aspek as $key => $value) {
+            $indeks_aspek = @Jawaban::select(DB::raw('1 / d.bobot_aspek * SUM(jawaban.capaian * c.bobot_indikator) AS indeks_aspek'))
+                ->join('pertanyaan AS b', 'b.id', '=', 'jawaban.pertanyaan_id', 'left')
+                ->join('indikator AS c', 'c.id', '=', 'b.indikator_id', 'left')
+                ->join('aspek AS d', 'd.id', '=', 'c.aspek_id', 'left')
+                ->where('c.aspek_id', $value->id)
+                ->first()->indeks_aspek;
+
+            $value['indeks_aspek'] = $indeks_aspek;
+
+            if ($indeks_aspek) {
+                Aspek::where('id', $value->id)->update([
+                    'indeks_aspek' => $indeks_aspek
+                ]);
+            }
+        }
+
+        foreach ($data_domain as $key => $value) {
+            $indeks_domain = @Aspek::select(DB::raw('1 / b.bobot_domain * SUM(aspek.indeks_aspek * aspek.bobot_aspek) AS indeks_domain'))
+                ->join('domain AS b', 'b.id', '=', 'aspek.domain_id', 'left')
+                ->where('aspek.domain_id', $value->id)
+                ->first()->indeks_domain;
+
+            $value['indeks_domain'] = $indeks_domain;
+
+            if ($indeks_domain) {
+                Domain::where('id', $value->id)->update([
+                    'indeks_domain' => $indeks_domain
+                ]);
+            }
+        }
+
+        $indeks_spbe = @Domain::select(DB::raw('1 / 100 * SUM(domain.indeks_domain * domain.bobot_domain) AS indeks_spbe'))
+            ->join('evaluasi AS b', 'b.id', '=', 'domain.evaluasi_id', 'left')
+            ->where('domain.evaluasi_id', $id)
+            ->first()->indeks_spbe;
+
         return view('penilaian.skor', [
             "title" => "Penilaian",
             'evaluasi' => $evaluasi,
             'data_domain' => $data_domain,
             'data_aspek' => $data_aspek,
+            'indeks_spbe' => $indeks_spbe
         ]);
     }
+
+
     public function pertanyaanumum($id)
     {
         $evaluasi = Evaluasi::find($id);
@@ -102,7 +160,7 @@ class PenilaianController extends Controller
         // 'users.id', '=', 'contacts.user_id'
 
         $data = Evaluasi::select(DB::raw('
-                evaluasi.id AS id_evaluasi, d.nama_indikator, f.id AS id_opd,
+                evaluasi.id AS id_evaluasi, d.nama_indikator, d.no_indikator, f.id AS id_opd,
                 b.id AS id_domain, c.id AS id_aspek, d.id AS id_indikator,
 
                 CASE 
@@ -150,7 +208,9 @@ class PenilaianController extends Controller
 
     public function ajax_get_pertanyaan(Request $request)
     {
-        $data = Evaluasi::select(DB::raw('evaluasi.id AS id_evaluasi, d.id AS id_indikator, d.nama_indikator, b.nama_domain, c.nama_aspek, d.nama_indikator'))
+        $data = Evaluasi::select(
+            DB::raw('evaluasi.id AS id_evaluasi, d.id AS id_indikator, d.nama_indikator, d.no_indikator, b.nama_domain, c.nama_aspek, d.nama_indikator')
+        )
             ->join('domain AS b', 'b.evaluasi_id', '=', 'evaluasi.id')
             ->join('aspek AS c', 'c.domain_id', '=', 'b.id')
             ->join('indikator AS d', 'd.aspek_id', '=', 'c.id')
@@ -160,7 +220,7 @@ class PenilaianController extends Controller
             ->where('f.id', request()->user()->opd_id)
             ->first();
 
-        $pertanyaan = Pertanyaan::select(DB::raw('pertanyaan.*, b.id AS id_jawaban, b.jawaban_pertanyaan, b.capaian'))
+        $pertanyaan = Pertanyaan::select(DB::raw('pertanyaan.*, b.id AS id_jawaban, IFNULL(b.jawaban_pertanyaan, " ") jawaban_pertanyaan, b.capaian'))
             ->where('indikator_id', $request->id_indikator)
             ->join('jawaban AS b', 'b.pertanyaan_id', '=', 'pertanyaan.id', 'left')
             ->get();
@@ -170,8 +230,6 @@ class PenilaianController extends Controller
             'pertanyaan' => $pertanyaan
         ]);
     }
-
-
 
 
     public function penilaianindikator($id)
@@ -267,15 +325,6 @@ class PenilaianController extends Controller
             }
             array_push($answer, $j);
         }
-
-        // foreach($request->bukti_dukung as $b)
-        // {
-        //     array_push($bukti, $b);
-        // }
-
-
-        // return $nilaicapaian;
-
 
         for ($i = 0; $i < sizeof($pertanyaanID); $i++) {
             $jawab = new Jawaban();
