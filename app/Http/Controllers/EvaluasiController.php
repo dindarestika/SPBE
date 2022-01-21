@@ -51,8 +51,7 @@ class EvaluasiController extends Controller
     }
     public function dataevaluasi()
     {
-        // $data_evaluasi = Evaluasi::all();
-        $data_evaluasi = Evaluasi::orderBy('tahun_evaluasi', 'asc')->get();
+        $data_evaluasi = Evaluasi::orderBy('tahun_evaluasi', 'desc')->get();
 
         return view('evaluasi.dataevaluasi', [
             "title" => "Evaluasi New",

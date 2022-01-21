@@ -18,6 +18,7 @@ class CreateEvaluasiTable extends Migration
             $table->string('nama_evaluasi');
             $table->string('tahun_evaluasi');
             $table->text('deskripsi_evaluasi');
+            $table->decimal('indeks_spbe', $precision = 8, $scale = 2)->nullable();
             $table->timestamps();
         });
     }

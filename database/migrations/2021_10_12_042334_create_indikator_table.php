@@ -20,7 +20,7 @@ class CreateIndikatorTable extends Migration
             $table->integer('no_indikator');
             $table->string('nama_indikator');
             $table->decimal('bobot_indikator', $precision = 8, $scale = 2);
-            $table->text('penjelasan_indikator');
+            $table->text('penjelasan_indikator')->nullable();
             $table->timestamps();
         });
     }

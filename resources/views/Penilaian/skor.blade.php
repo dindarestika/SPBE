@@ -43,7 +43,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <div class="header-title ">
-                                        <h5 class="d-flex justify-content-center mb-2">Nilai Index</h5>
+                                        <h5 class="d-flex justify-content-center mb-2">Nilai Index SPBE</h5>
                                         <span class="d-flex justify-content-center mb-2">Total</span>
                                         <h1 class="d-flex justify-content-center mb-2">{{ sprintf('%.2f', $indeks_spbe) }}
                                         </h1>

@@ -19,6 +19,7 @@ class CreateDomainTable extends Migration
             $table->integer('no_domain');
             $table->string('nama_domain');
             $table->decimal('bobot_domain', $precision = 8, $scale = 2);
+            $table->decimal('indeks_domain', $precision = 8, $scale = 2)->nullable();
             $table->timestamps();
         });
     }

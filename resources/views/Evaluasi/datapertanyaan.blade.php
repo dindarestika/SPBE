@@ -38,8 +38,8 @@
                 <table id="datatable" class="table table-striped" data-toggle="data-table">
                     <thead>
                         <tr class="ligth">
-                            <th>No. </th>
-                            <th>Indikator</th>
+                            {{-- <th>No. </th>
+                            <th>Indikator</th> --}}
                             <th>Tingkat</th>
                             <th>Kriteria</th>
                             <th style="min-width: 100px">Action</th>
@@ -49,8 +49,8 @@
                         <?php $no = 1; ?>
                         @foreach ($data_pertanyaan as $pertanyaan)
                             <tr>
-                                <td>{{ $no++ }}</td>
-                                <td>{{ $pertanyaan->indikator->nama_indikator }}</td>
+                                {{-- <td>{{ $no++ }}</td>
+                                <td>{{ $pertanyaan->indikator->nama_indikator }}</td> --}}
                                 <td>{{ $pertanyaan->tingkat }}</td>
                                 <td>{{ $pertanyaan->kriteria }}</td>
                                 <td>

@@ -9,12 +9,6 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="card-header d-flex justify-content-between">
-                {{-- <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item active" aria-current="page">Evaluasi</li>
-                    </ol>
-                </nav> --}}
-
                 <ul class="nav nav-pills">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Evaluasi</a>
@@ -133,7 +127,8 @@
                                                                 Edit
                                                             </a>
                                                             <a class="dropdown-item"
-                                                                href="/evaluasi/{{ $evaluasi->id }}/delete">
+                                                                href="/evaluasi/{{ $evaluasi->id }}/delete"
+                                                                onclick="return confirm('Yakin ingin menghapus?')">
                                                                 <svg width="20" viewBox="0 0 24 24" fill="none"
                                                                     xmlns="http://www.w3.org/2000/svg"
                                                                     class="me-2">

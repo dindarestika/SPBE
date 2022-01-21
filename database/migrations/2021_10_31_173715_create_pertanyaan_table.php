@@ -18,9 +18,6 @@ class CreatePertanyaanTable extends Migration
             $table->foreignId('indikator_id');
             $table->string('tingkat');
             $table->text('kriteria');
-            //$table->text('jawaban')->nullable();
-            //$table->string('bukti_dukung')->nullable();
-            //$table->string('capaian')->nullable();
             $table->timestamps();
         });
     }

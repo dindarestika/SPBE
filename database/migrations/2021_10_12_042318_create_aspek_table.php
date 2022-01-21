@@ -19,6 +19,7 @@ class CreateAspekTable extends Migration
             $table->integer('no_aspek');
             $table->string('nama_aspek');
             $table->decimal('bobot_aspek', $precision = 8, $scale = 2);
+            $table->decimal('indeks_aspek', $precision = 8, $scale = 2)->nullable();;
             $table->timestamps();
         });
     }

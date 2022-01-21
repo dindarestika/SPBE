@@ -115,7 +115,11 @@ class PenilaianController extends Controller
             ->join('evaluasi AS b', 'b.id', '=', 'domain.evaluasi_id', 'left')
             ->where('domain.evaluasi_id', $id)
             ->first()->indeks_spbe;
-
+        if ($indeks_spbe) {
+            Evaluasi::where('id', $id)->update([
+                'indeks_spbe' => $indeks_spbe
+            ]);
+        }
         return view('penilaian.skor', [
             "title" => "Penilaian",
             'evaluasi' => $evaluasi,
