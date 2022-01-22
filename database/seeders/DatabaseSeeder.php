@@ -93,21 +93,130 @@ class DatabaseSeeder extends Seeder
         Wifi::create([
             'nama_wifi' => "DISKOMINFO SP",
             'alamat_wifi' => "Jl. Jend. Sudirman, Kedung Lumbu, Kec. Ps. Kliwon, Kota Surakarta, Jawa Tengah 57133",
-            'latitude' => "-7.569533935697417",
-            'longitude' => "110.82952170446538",
+            'latitude' => "-7.5685725",
+            'longitude' => "110.8263975",
         ]);
         Wifi::create([
-            'nama_wifi' => "Solo Paragon Mall",
-            'alamat_wifi' => "Jl. Yosodipuro No.133, Mangkubumen, Kec. Banjarsari, Kota Surakarta, Jawa Tengah 57139",
-            'latitude' => "-7.562266077623731",
-            'longitude' => "110.80993971181434",
+            'nama_wifi' => "Taman Sriwedari",
+            'alamat_wifi' => "Jl. Slamet Riyadi No.275, Sriwedari, Kec. Laweyan, Kota Surakarta, Jawa Tengah 57141",
+            'latitude' => "-7.5671027",
+            'longitude' => "110.8123839",
         ]);
         Wifi::create([
-            'nama_wifi' => "Universitas Sebelas Maret",
-            'alamat_wifi' => "Jl. Ir. Sutami No.36, Kentingan, Kec. Jebres, Kota Surakarta, Jawa Tengah 57126",
-            'latitude' => "-7.555347373399256",
-            'longitude' => "110.8567077847702",
+            'nama_wifi' => "Taman Balekambang",
+            'alamat_wifi' => "Jl. Balekambang, Manahan, Kec. Banjarsari, Kota Surakarta, Jawa Tengah 57139",
+            'latitude' => "-7.5530593",
+            'longitude' => "110.80578"
         ]);
+        Wifi::create([
+            'nama_wifi' => "Kawasan Balaikota Surakarta",
+            'alamat_wifi' => "Jl. Jend. Sudirman No.2, Kp. Baru, Kec. Ps. Kliwon, Kota Surakarta, Jawa Tengah 57133",
+            'latitude' => "-7.5695313",
+            'longitude' => "110.8271533"
+        ]);
+        Wifi::create([
+            'nama_wifi' => "Taman Cerdas Sumber",
+            'alamat_wifi' => "Jl. Kahuripan Utama, RT.02/RW.12, Sumber, Kec. Banjarsari, Kota Surakarta, Jawa Tengah 57138",
+            'latitude' => "-7.549924",
+            'longitude' => "110.805781"
+        ]);
+        Wifi::create([
+            'nama_wifi' => "Perpustakaan Mojosongo",
+            'alamat_wifi' => "Jl. Malabar Raya No.40A, Mojosongo, Jebres, Surakarta City, Central Java 57127",
+            'latitude' => "-7.537317",
+            'longitude' => "110.8199415"
+        ]);
+        Wifi::create([
+            'nama_wifi' => "Taman Cerdas Jebres",
+            'alamat_wifi' => "Jl. Ki Hajar Dewantara RT02 RW25, Jebres, Jl. Surya I Tengah No.25, RT.03/RW.25, Jebres, Kec. Jebres, Kota Surakarta, Jawa Tengah 57126",
+            'latitude' => "-7.5541004",
+            'longitude' => "110.8535477"
+        ]);
+        Wifi::create([
+            'nama_wifi' => "Taman Cerdas Pucangsawit",
+            'alamat_wifi' => "Pucangsawit, Kec. Jebres, Kota Surakarta, Jawa Tengah 57125",
+            'latitude' => "-7.5714627",
+            'longitude' => "110.8559233"
+        ]);
+        Wifi::create([
+            'nama_wifi' => "Taman Cerdas Semanggi",
+            'alamat_wifi' => "Jl. Banjir Kanal No.36, Semanggi, Kec. Ps. Kliwon, Kota Surakarta, Jawa Tengah 57116",
+            'latitude' => "-7.5896723",
+            'longitude' => "110.8275605"
+        ]);
+        Wifi::create([
+            'nama_wifi' => "Taman Cerdas Gandekan",
+            'alamat_wifi' => "Gandekan, Kec. Jebres, Kota Surakarta, Jawa Tengah 57122",
+            'latitude' => "-7.5729726",
+            'longitude' => "110.839772",
+        ]);
+        Wifi::create([
+            'nama_wifi' => "Taman Kuliner Pucangsawit",
+            'alamat_wifi' => "Jl. Ir. Juanda No.20, Pucangsawit, Kec. Jebres, Kota Surakarta, Jawa Tengah 57125",
+            'latitude' => "-7.568033",
+            'longitude' => "110.8409507"
+        ]);
+        Wifi::create([
+            'nama_wifi' => "Taman Cerdas Joyotakan",
+            'alamat_wifi' => "Jl. Rebab No.18, Joyotakan, Kec. Serengan, Kota Surakarta, Jawa Tengah 57157",
+            'latitude' => "-7.5921366",
+            'longitude' => "110.8006194"
+        ]);
+        Wifi::create([
+            'nama_wifi' => "Pasar Kembang Lantai 2",
+            'alamat_wifi' => "Jl. Dr. Rajiman No.258, Sriwedari, Kec. Laweyan, Kota Surakarta, Jawa Tengah 57141",
+            'latitude' => "-7.5921366",
+            'longitude' => "110.8006194"
+        ]);
+        Wifi::create([
+            'nama_wifi' => "Ruang Baca Dinas Arpusda",
+            'alamat_wifi' => "Jl. Hasanudin No.112, Punggawan, Kec. Banjarsari, Kota Surakarta, Jawa Tengah 57132",
+            'latitude' => "-7.558453",
+            'longitude' => "110.818195"
+        ]);
+        Wifi::create([
+            'nama_wifi' => "Monumen Soekarno",
+            'alamat_wifi' => "Jl. Adi Sucipto No.27, Manahan, Kec. Banjarsari, Kota Surakarta, Jawa Tengah 57139",
+            'latitude' => "-7.556015",
+            'longitude' => "110.8042129"
+        ]);
+        Wifi::create([
+            'nama_wifi' => "Taman Cerdas Kratonan",
+            'alamat_wifi' => "Kratonan, Kec. Serengan, Kota Surakarta, Jawa Tengah 57153",
+            'latitude' => "-7.5793799",
+            'longitude' => "110.8163231"
+        ]);
+        Wifi::create([
+            'nama_wifi' => "Gedung Sasono Krido Mangkubumen",
+            'alamat_wifi' => "Jl. R. M. Said No.236, Mangkubumen, Kec. Banjarsari, Kota Surakarta, Jawa Tengah 57139",
+            'latitude' => "-7.5558212",
+            'longitude' => "110.811411"
+        ]);
+        Wifi::create([
+            'nama_wifi' => "Loji Gandrung",
+            'alamat_wifi' => "Jl. Slamet Riyadi, Penumping, Kec. Laweyan, Kota Surakarta, Jawa Tengah 57141",
+            'latitude' => "-7.5670404",
+            'longitude' => "1110.8095045"
+        ]);
+        Wifi::create([
+            'nama_wifi' => "New Galabo",
+            'alamat_wifi' => "Kedung Lumbu, Kec. Ps. Kliwon, Kota Surakarta, Jawa Tengah 57133",
+            'latitude' => "-7.563867",
+            'longitude' => "110.7814651"
+        ]);
+        Wifi::create([
+            'nama_wifi' => "Taman Cerdas Nusukan",
+            'alamat_wifi' => "Bonorejo, Jl. Kediri Utara I No.22, Nusukan, Kec. Banjarsari, Kota Surakarta, Jawa Tengah 57135",
+            'latitude' => "-7.5446523",
+            'longitude' => "110.82218"
+        ]);
+        Wifi::create([
+            'nama_wifi' => "RSUD Ibu Fatmawati",
+            'alamat_wifi' => "Jl. Lettu Sumarto No.1, Kedungupit, Kadipiro, Kec. Banjarsari, Kota Surakarta, Jawa Tengah 57136",
+            'latitude' => "-7.5261727",
+            'longitude' => "110.8106383"
+        ]);
+
         PertanyaanUmum::create([
             'evaluasi_id' => "1",
             'soal' => "Jelaskan Visi Penerapan Sistem Pemerintahan Berbasis Elektronik di Lingkungan Instansi Pusat/Pemerintah Daerah Anda?",
