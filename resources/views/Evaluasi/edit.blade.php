@@ -1,4 +1,4 @@
-@extends('layouts.master')
+{{-- @extends('layouts.master')
 @section('content')
     @if (session('sukses'))
         <div class="alert alert-left alert-primary alert-dismissible fade show mb-3" role="alert">
@@ -57,4 +57,4 @@
         </div>
     </div>
     </div>
-@stop
+@stop --}}

@@ -43,7 +43,7 @@ class DomainController extends Controller
     {
         $domain = Domain::find($id);
         $domain->update($request->all());
-        return redirect('/domain')->with('sukses', 'Data berhasil diupdate');
+        return back()->with('sukses', 'Data berhasil diupdate');
     }
     public function delete($id)
     {

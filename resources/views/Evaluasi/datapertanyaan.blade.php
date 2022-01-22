@@ -14,14 +14,16 @@
                         <a class="nav-link" href="/dataevaluasi">Evaluasi</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/' . session('evaluasi_id') . '/datadomain') }}">Domain</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/' . session('domain_id') . '/dataaspek') }}">Aspek</a>
+                        <a class="nav-link"
+                            href="{{ url('/' . session('evaluasi_id') . '/' . session('nama_evaluasi') . '/datadomain') }}">Domain</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link"
-                            href="{{ url('/' . session('aspek_id') . '/dataindikator') }}">Indikator</a>
+                            href="{{ url('/' . session('domain_id') . '/' . session('nama_evaluasi') . '/' . session('nama_domain') . '/dataaspek') }}">Aspek</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                            href="{{ url('/' . session('aspek_id') . '/' . session('nama_evaluasi') . '/' . session('nama_domain') . '/' . session('nama_aspek') . '/dataindikator') }}">Indikator</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Pertanyaan</a>
@@ -31,6 +33,10 @@
                     <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
                         data-bs-target="#exampleModal">Tambah pertanyaan</button>
                 </div>
+            </div>
+            <div class="alert alert-primary alert-solid rounded-0 alert-dismissible fade show " role="alert">
+                <span> {{ session('nama_evaluasi') }} / {{ session('nama_domain') }} /
+                    {{ session('nama_aspek') }} / Indikator {{ session('no_indikator') }}</span>
             </div>
             </br>
 
@@ -55,9 +61,8 @@
                                 <td>{{ $pertanyaan->kriteria }}</td>
                                 <td>
                                     <div class="flex align-items-center list-pertanyaan-action">
-                                        <a class="btn btn-sm btn-icon btn-warning" data-toggle="tooltip"
-                                            data-placement="top" title="" data-original-title="Edit"
-                                            href="/pertanyaan/{{ $pertanyaan->id }}/edit">
+                                        <a class="btn btn-sm btn-icon btn-warning" type="button" data-bs-toggle="modal"
+                                            data-bs-target="#ModalEdit{{ $pertanyaan->id }}">
                                             <span class="btn-inner">
                                                 <svg width="20" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -109,5 +114,93 @@
         </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="/pertanyaan/create" method="POST" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        {{ csrf_field() }}
+                        <div class="mb-3">
+                            <input type="hidden" name="indikator_id" class="form-control" value="{{ $indikator->id }}">
 
+                            <label class="form-label">Indikator</label>
+                            <select disabled class="form-control" required aria-label=".form-select-sm example">
+                                <option>{{ $indikator->nama_indikator }}</option>
+                            </select>
+
+                            <label class="form-label">Tingkat</label>
+                            <input type="text" name="tingkat" class="form-control @error('tingkat') is-invalid @enderror"
+                                required value="{{ old('tingkat') }}">
+                            @error('tingkat')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+
+                            <label class="form-label">Kriteria</label>
+                            <textarea name="kriteria" class="form-control @error('kriteria') is-invalid @enderror" required
+                                value="{{ old('kriteria') }}" rows="5"></textarea>
+                            @error('kriteria')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    @foreach ($data_pertanyaan as $pertanyaan)
+        <div class="modal fade" id="ModalEdit{{ $pertanyaan->id }}" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="/pertanyaan/{{ $pertanyaan->id }}/update" method="POST" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <input type="hidden" name="indikator_id" class="form-control"
+                                    value="{{ $indikator->id }}">
+
+                                <label class="form-label">Indikator</label>
+                                <select disabled class="form-control" required aria-label=".form-select-sm example">
+                                    <option>{{ $indikator->nama_indikator }}</option>
+                                </select>
+
+                                <label class="form-label">Tingkat</label>
+                                <input type="text" name="tingkat"
+                                    class="form-control @error('tingkat') is-invalid @enderror" required
+                                    value="{{ $pertanyaan->tingkat }}">
+                                @error('tingkat')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+
+                                <label class="form-label">Kriteria</label>
+                                <textarea name="kriteria" class="form-control @error('kriteria') is-invalid @enderror"
+                                    required value="{{ $pertanyaan->kriteria }}"
+                                    rows="5">{{ $pertanyaan->kriteria }}</textarea>
+                                @error('kriteria')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    @endforeach
 @stop

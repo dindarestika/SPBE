@@ -22,6 +22,9 @@
                         data-bs-target="#exampleModal">Tambah Domain</button>
                 </div>
             </div>
+            <div class="alert alert-primary alert-solid rounded-0 alert-dismissible fade show " role="alert">
+                <span> {{ session('nama_evaluasi') }}</span>
+            </div>
             </br>
 
             <div class="row">
@@ -30,13 +33,15 @@
                         <div class="card bg-soft-primary">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <a href="/{{ $domain->id }}/dataaspek">Domain {{ $domain->no_domain }} :
+                                    <a
+                                        href="/{{ $domain->id }}/{{ session('nama_evaluasi') }}/{{ $domain->nama_domain }}/dataaspek">Domain
+                                        {{ $domain->no_domain }} :
                                         {{ $domain->nama_domain }}</a>
                                 </div>
                             </div>
                             <div class="flex align-items-center list-domain-action">
-                                <a class="btn btn-sm btn-icon btn-warning" data-toggle="tooltip" data-placement="top"
-                                    title="" data-original-title="Edit" href="/domain/{{ $domain->id }}/edit">
+                                <a class="btn btn-sm btn-icon btn-warning" type="button" data-bs-toggle="modal"
+                                    data-bs-target="#ModalEdit{{ $domain->id }}">
                                     <span class="btn-inner">
                                         <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -89,16 +94,26 @@
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-body">
-                    <form action="/domain/create" method="POST" enctype="multipart/form-data">
+                <form action="/domain/create" method="POST" enctype="multipart/form-data">
+                    <div class="modal-body">
                         {{ csrf_field() }}
                         <div class="mb-3">
                             <input type="hidden" name="evaluasi_id" class="form-control" value="{{ $evaluasi->id }}">
 
                             <label class="form-label">Evaluasi</label>
                             <select disabled class="form-control" required aria-label=".form-select-sm example">
-                                <option value="{{ $evaluasi->id }}">{{ $evaluasi->nama_evaluasi }}</option>
+                                <option>{{ $evaluasi->nama_evaluasi }}</option>
                             </select>
+
+                            <label class="form-label">Nomor domain</label>
+                            <input type="number" name="no_domain"
+                                class="form-control @error('no_domain') is-invalid @enderror" required
+                                value="{{ old('no_domain') }}">
+                            @error('no_domain')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
 
                             <label class="form-label">Nama domain</label>
                             <input type="text" name="nama_domain"
@@ -110,8 +125,8 @@
                                 </div>
                             @enderror
 
-                            <label class="form-label">Bobot domain</label>
-                            <input type="number" name="bobot_domain"
+                            <label class="form-label">Bobot Domain</label>
+                            <input type="text" name="bobot_domain"
                                 class="form-control @error('bobot_domain') is-invalid @enderror" required
                                 value="{{ old('bobot_domain') }}">
                             @error('bobot_domain')
@@ -120,13 +135,69 @@
                                 </div>
                             @enderror
                         </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
-    </div>
+
+    @foreach ($data_domain as $domain)
+
+        <div class="modal fade" id="ModalEdit{{ $domain->id }}" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="/domain/{{ $domain->id }}/update" method="POST" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <input type="hidden" name="evaluasi_id" class="form-control"
+                                    value="{{ $evaluasi->id }}">
+
+                                <label class="form-label">Evaluasi</label>
+                                <select disabled class="form-control" required aria-label=".form-select-sm example">
+                                    <option>{{ $evaluasi->nama_evaluasi }}</option>
+                                </select>
+
+                                <label class="form-label">Nomor domain</label>
+                                <input type="number" name="no_domain"
+                                    class="form-control @error('no_domain') is-invalid @enderror" required
+                                    value="{{ $domain->no_domain }}">
+                                @error('no_domain')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+
+                                <label class="form-label">Nama domain</label>
+                                <input type="text" name="nama_domain"
+                                    class="form-control @error('nama_domain') is-invalid @enderror" required
+                                    value="{{ $domain->nama_domain }}">
+                                @error('nama_domain')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+
+                                <label class="form-label">Bobot Domain</label>
+                                <input type="text" name="bobot_domain"
+                                    class="form-control @error('bobot_domain') is-invalid @enderror" required
+                                    value="{{ $domain->bobot_domain }}">
+                                @error('bobot_domain')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    @endforeach
 @stop

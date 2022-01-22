@@ -33,7 +33,7 @@ class IndikatorController extends Controller
             'penjelasan_indikator' => 'required',
         ]);
         Indikator::create($validatedData);
-        return redirect('/indikator')->with('sukses', 'Data berhasil diinput');
+        return back()->with('sukses', 'Data berhasil diinput');
     }
     public function edit($id)
     {
@@ -51,12 +51,12 @@ class IndikatorController extends Controller
     {
         $indikator = Indikator::find($id);
         $indikator->update($request->all());
-        return redirect('/indikator')->with('sukses', 'Data berhasil diupdate');
+        return back()->with('sukses', 'Data berhasil diupdate');
     }
     public function delete($id)
     {
         $indikator = Indikator::find($id);
         $indikator->delete($indikator);
-        return redirect('/indikator')->with('sukses', 'Data berhasil dihapus');
+        return back()->with('sukses', 'Data berhasil dihapus');
     }
 }

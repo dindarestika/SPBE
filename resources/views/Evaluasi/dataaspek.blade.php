@@ -14,7 +14,8 @@
                         <a class="nav-link" href="/dataevaluasi">Evaluasi</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/' . session('evaluasi_id') . '/datadomain') }}">Domain</a>
+                        <a class="nav-link"
+                            href="{{ url('/' . session('evaluasi_id') . '/' . session('nama_evaluasi') . '/datadomain') }}">Domain</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Aspek</a>
@@ -25,6 +26,9 @@
                         data-bs-target="#exampleModal">Tambah aspek</button>
                 </div>
             </div>
+            <div class="alert alert-primary alert-solid rounded-0 alert-dismissible fade show " role="alert">
+                <span> {{ session('nama_evaluasi') }} / {{ session('nama_domain') }}</span>
+            </div>
             </br>
             <div class="row">
                 @foreach ($data_aspek as $aspek)
@@ -32,13 +36,15 @@
                         <div class="card bg-soft-primary">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <a href="/{{ $aspek->id }}/dataindikator">Aspek {{ $aspek->no_aspek }} :
+                                    <a
+                                        href="/{{ $aspek->id }}/{{ session('nama_evaluasi') }}/{{ session('nama_domain') }}/{{ $aspek->nama_aspek }}/dataindikator">Aspek
+                                        {{ $aspek->no_aspek }} :
                                         {{ $aspek->nama_aspek }}</a>
                                 </div>
                             </div>
                             <div class="flex align-items-center list-aspek-action">
-                                <a class="btn btn-sm btn-icon btn-warning" data-toggle="tooltip" data-placement="top"
-                                    title="" data-original-title="Edit" href="/aspek/{{ $aspek->id }}/edit">
+                                <a class="btn btn-sm btn-icon btn-warning" type="button" data-bs-toggle="modal"
+                                    data-bs-target="#ModalEdit{{ $aspek->id }}">
                                     <span class="btn-inner">
                                         <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -81,11 +87,115 @@
                             </div>
                         </div>
                     </div>
-
                 @endforeach
             </div>
         </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="/aspek/create" method="POST" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        {{ csrf_field() }}
+                        <div class="mb-3">
+                            <input type="hidden" name="domain_id" class="form-control" value="{{ $domain->id }}">
 
+                            <label class="form-label">Domain</label>
+                            <select disabled class="form-control" required aria-label=".form-select-sm example">
+                                <option>{{ $domain->nama_domain }}</option>
+                            </select>
+
+
+                            <label class="form-label">Nomor aspek</label>
+                            <input type="number" name="no_aspek"
+                                class="form-control @error('no_aspek') is-invalid @enderror" required>
+                            @error('no_aspek')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+
+                            <label class="form-label">Nama aspek</label>
+                            <input type="text" name="nama_aspek"
+                                class="form-control @error('nama_aspek') is-invalid @enderror" required
+                                value="{{ old('nama_aspek') }}">
+                            @error('nama_aspek')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+
+                            <label class="form-label">Bobot aspek</label>
+                            <input type="text" name="bobot_aspek"
+                                class="form-control @error('bobot_aspek') is-invalid @enderror" required
+                                value="{{ old('bobot_aspek') }}">
+                            @error('bobot_aspek')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    @foreach ($data_aspek as $aspek)
+        <div class="modal fade" id="ModalEdit{{ $aspek->id }}" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="/aspek/{{ $aspek->id }}/update" method="POST" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <input type="hidden" name="domain_id" class="form-control" value="{{ $domain->id }}">
+
+                                <label class="form-label">Domain</label>
+                                <select disabled class="form-control" required aria-label=".form-select-sm example">
+                                    <option>{{ $domain->nama_domain }}</option>
+                                </select>
+
+
+                                <label class="form-label">Nomor aspek</label>
+                                <input type="number" name="no_aspek" value="{{ $aspek->no_aspek }}"
+                                    class="form-control @error('no_aspek') is-invalid @enderror" required>
+                                @error('no_aspek')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+
+                                <label class="form-label">Nama aspek</label>
+                                <input type="text" name="nama_aspek" value="{{ $aspek->nama_aspek }}"
+                                    class="form-control @error('nama_aspek') is-invalid @enderror" required>
+                                @error('nama_aspek')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+
+                                <label class="form-label">Bobot aspek</label>
+                                <input type="text" name="bobot_aspek" value="{{ $aspek->bobot_aspek }}"
+                                    class="form-control @error('bobot_aspek') is-invalid @enderror" required>
+                                @error('bobot_aspek')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    @endforeach
 @stop

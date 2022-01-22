@@ -15,7 +15,7 @@
                                     <td>{{ $no++ }}.</td>
                                     <td>{{ $row->nama_arsitektur }}</td>
                                     <td align="center">
-                                        <a href="{{ $row->link_arsitektur }}" type="button"
+                                        <a href="{{ $row->link_arsitektur }}" target="blank" type="button"
                                             class="btn btn-primary">Lihat</a>
                                     </td>
                                 </tr>

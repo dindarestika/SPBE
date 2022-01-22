@@ -12,10 +12,11 @@ class PertanyaanController extends Controller
     {
         $data_pertanyaan = Pertanyaan::all();
         $data_indikator = Indikator::all();
-        return view('pertanyaan.index',[
+        return view('pertanyaan.index', [
             "title" => "Pertanyaan",
             'data_pertanyaan' => $data_pertanyaan,
-            'data_indikator' => $data_indikator]);
+            'data_indikator' => $data_indikator
+        ]);
     }
     public function create(Request $request)
     {
@@ -25,7 +26,7 @@ class PertanyaanController extends Controller
             'kriteria' => 'required',
         ]);
         Pertanyaan::create($validatedData);
-        return redirect('/pertanyaan')->with('sukses', 'Data berhasil diinput');
+        return back()->with('sukses', 'Data berhasil diinput');
     }
     public function edit($id)
     {
@@ -34,18 +35,19 @@ class PertanyaanController extends Controller
         return view('pertanyaan/edit', [
             "title" => "Pertanyaan",
             'pertanyaan' => $pertanyaan,
-            'indikator' => $indikator]);
+            'indikator' => $indikator
+        ]);
     }
     public function update(Request $request, $id)
     {
         $pertanyaan = Pertanyaan::find($id);
         $pertanyaan->update($request->all());
-        return redirect('/pertanyaan')->with('sukses', 'Data berhasil diupdate');
+        return back()->with('sukses', 'Data berhasil diupdate');
     }
     public function delete($id)
     {
         $pertanyaan = Pertanyaan::find($id);
         $pertanyaan->delete($pertanyaan);
-        return redirect('/pertanyaan')->with('sukses', 'Data berhasil dihapus');
+        return back()->with('sukses', 'Data berhasil dihapus');
     }
 }

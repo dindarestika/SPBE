@@ -103,8 +103,8 @@
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-body">
-                    <form action="/aspek/create" method="POST" enctype="multipart/form-data">
+                <form action="/aspek/create" method="POST" enctype="multipart/form-data">
+                    <div class="modal-body">
                         {{ csrf_field() }}
                         <div class="mb-3">
                             <label class="form-label">Domain</label>
@@ -144,13 +144,12 @@
                                 </div>
                             @enderror
                         </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
                 </form>
             </div>
         </div>
-    </div>
     </div>
 @stop

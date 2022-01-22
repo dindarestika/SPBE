@@ -108,10 +108,10 @@ Route::group(['middleware' => ['auth', 'cekrole:1']], function () {
     Route::get('/dokumentasi/{id}/delete', 'DokumentasiController@delete');
 
     Route::get('/dataevaluasi', 'EvaluasiController@dataevaluasi');
-    Route::get('/{id}/datadomain', 'EvaluasiController@datadomain');
-    Route::get('/{id}/dataaspek', 'EvaluasiController@dataaspek');
-    Route::get('/{id}/dataindikator', 'EvaluasiController@dataindikator');
-    Route::get('/{id}/datapertanyaan', 'EvaluasiController@datapertanyaan');
+    Route::get('/{id}/{nama}/datadomain', 'EvaluasiController@datadomain');
+    Route::get('/{id}/{nama_evaluasi}/{nama_domain}/dataaspek', 'EvaluasiController@dataaspek');
+    Route::get('/{id}/{nama_evaluasi}/{nama_domain}/{nama_aspek}/dataindikator', 'EvaluasiController@dataindikator');
+    Route::get('/{id}/{nama_evaluasi}/{nama_domain}/{nama_aspek}/{no_indikator}/datapertanyaan', 'EvaluasiController@datapertanyaan');
 
     Route::get('/lihatvisimisi', 'HomeController@lihatvisimisi');
     Route::get('/datavisi', 'HomeController@datavisi');

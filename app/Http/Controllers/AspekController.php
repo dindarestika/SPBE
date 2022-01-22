@@ -28,7 +28,7 @@ class AspekController extends Controller
             'bobot_aspek' => 'required',
         ]);
         Aspek::create($validatedData);
-        return redirect('/aspek')->with('sukses', 'Data berhasil diinput');
+        return back()->with('sukses', 'Data berhasil diinput');
     }
     public function edit($id)
     {
@@ -44,12 +44,12 @@ class AspekController extends Controller
     {
         $aspek = Aspek::find($id);
         $aspek->update($request->all());
-        return redirect('/aspek')->with('sukses', 'Data berhasil diupdate');
+        return back()->with('sukses', 'Data berhasil diupdate');
     }
     public function delete($id)
     {
         $aspek = Aspek::find($id);
         $aspek->delete($aspek);
-        return redirect('/aspek')->with('sukses', 'Data berhasil dihapus');
+        return back()->with('sukses', 'Data berhasil dihapus');
     }
 }

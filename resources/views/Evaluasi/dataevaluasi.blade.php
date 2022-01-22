@@ -87,7 +87,7 @@
                                             <div class="card-body">
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <h6 class="text-pink mb-0"><a
-                                                            href="/{{ $evaluasi->id }}/datadomain">{{ $evaluasi->nama_evaluasi }}</a>
+                                                            href="/{{ $evaluasi->id }}/{{ $evaluasi->nama_evaluasi }}/datadomain">{{ $evaluasi->nama_evaluasi }}</a>
                                                     </h6>
                                                     <div class="dropdown">
                                                         <span class="d-flex align-items-center h5 mb-0"
@@ -106,8 +106,8 @@
                                                         </span>
                                                         <div class="dropdown-menu dropdown-menu-end"
                                                             aria-labelledby="dropdownMenuButton07" style="">
-                                                            <a class="dropdown-item"
-                                                                href="/evaluasi/{{ $evaluasi->id }}/edit">
+                                                            <a class="dropdown-item" type="button" data-bs-toggle="modal"
+                                                                data-bs-target="#ModalEdit{{ $evaluasi->id }}">
                                                                 <svg width="20" viewBox="0 0 24 24" fill="none"
                                                                     xmlns="http://www.w3.org/2000/svg"
                                                                     class="me-2">
@@ -168,9 +168,8 @@
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-body">
-                    <form action="/evaluasi/create" method="POST" enctype="multipart/form-data">
-                        {{ csrf_field() }}
+                <form action="/evaluasi/create" method="POST" enctype="multipart/form-data">{{ csrf_field() }}
+                    <div class="modal-body">
                         <div class="mb-3">
                             <label class="form-label">Tahun Evaluasi</label>
                             <input type="text" name="tahun_evaluasi"
@@ -202,13 +201,59 @@
                                 </div>
                             @enderror
                         </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
-    </div>
+
+    @foreach ($data_evaluasi as $evaluasi)
+
+        <div class="modal fade" id="ModalEdit{{ $evaluasi->id }}" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="/evaluasi/{{ $evaluasi->id }}/update" method="POST" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label class="form-label">Tahun Evaluasi</label>
+                                <input type="text" name="tahun_evaluasi" value="{{ $evaluasi->tahun_evaluasi }}"
+                                    class="form-control @error('tahun_evaluasi') is-invalid @enderror" required
+                                    value="{{ old('tahun_evaluasi') }}">
+                                @error('tahun_evaluasi')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                                <label class="form-label">Nama Evaluasi</label>
+                                <input type="text" name="nama_evaluasi" value="{{ $evaluasi->nama_evaluasi }}"
+                                    class="form-control @error('nama_evaluasi') is-invalid @enderror" required
+                                    value="{{ old('nama_evaluasi') }}">
+                                @error('nama_evaluasi')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                                <label class="form-label">Deskripsi Evaluasi</label>
+                                <input type="text" name="deskripsi_evaluasi" value="{{ $evaluasi->deskripsi_evaluasi }}"
+                                    class="form-control @error('deskripsi_evaluasi') is-invalid @enderror" required
+                                    value="{{ old('deskripsi_evaluasi') }}">
+                                @error('deskripsi_evaluasi')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    @endforeach
 @stop

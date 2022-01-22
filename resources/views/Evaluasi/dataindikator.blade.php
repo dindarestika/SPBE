@@ -14,10 +14,12 @@
                         <a class="nav-link" href="/dataevaluasi">Evaluasi</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/' . session('evaluasi_id') . '/datadomain') }}">Domain</a>
+                        <a class="nav-link"
+                            href="{{ url('/' . session('evaluasi_id') . '/' . session('nama_evaluasi') . '/datadomain') }}">Domain</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/' . session('domain_id') . '/dataaspek') }}">Aspek</a>
+                        <a class="nav-link"
+                            href="{{ url('/' . session('domain_id') . '/' . session('nama_evaluasi') . '/' . session('nama_domain') . '/dataaspek') }}">Aspek</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Indikator</a>
@@ -28,6 +30,10 @@
                         data-bs-target="#exampleModal">Tambah indikator</button>
                 </div>
             </div>
+            <div class="alert alert-primary alert-solid rounded-0 alert-dismissible fade show " role="alert">
+                <span> {{ session('nama_evaluasi') }} / {{ session('nama_domain') }} /
+                    {{ session('nama_aspek') }}</span>
+            </div>
             </br>
             <div class="row">
                 @foreach ($data_indikator as $indikator)
@@ -35,13 +41,14 @@
                         <div class="card bg-soft-primary">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <a href="/{{ $indikator->id }}/datapertanyaan">Indikator
+                                    <a
+                                        href="/{{ $indikator->id }}/{{ session('nama_evaluasi') }}/{{ session('nama_domain') }}/{{ session('nama_aspek') }}/{{ $indikator->no_indikator }}/datapertanyaan">Indikator
                                         {{ $indikator->no_indikator }} : {{ $indikator->nama_indikator }}</a>
                                 </div>
                             </div>
                             <div class="flex align-items-center list-indikator-action">
-                                <a class="btn btn-sm btn-icon btn-warning" data-toggle="tooltip" data-placement="top"
-                                    title="" data-original-title="Edit" href="/indikator/{{ $indikator->id }}/edit">
+                                <a class="btn btn-sm btn-icon btn-warning" type="button" data-bs-toggle="modal"
+                                    data-bs-target="#ModalEdit{{ $indikator->id }}">
                                     <span class="btn-inner">
                                         <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -84,11 +91,149 @@
                             </div>
                         </div>
                     </div>
-
                 @endforeach
             </div>
         </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="/indikator/create" method="POST" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        {{ csrf_field() }}
+                        <div class="mb-3">
+                            <input type="hidden" name="aspek_id" class="form-control" value="{{ $aspek->id }}">
 
+                            <label class="form-label">Aspek</label>
+                            <select disabled class="form-control" required aria-label=".form-select-sm example">
+                                <option>{{ $aspek->nama_aspek }}</option>
+                            </select>
+
+                            <label class="form-label">OPD</label>
+                            <select name="opd_id" class="form-select" required aria-label=".form-select-sm example">
+                                @foreach ($data_opd as $opd)
+                                    <option value="{{ $opd->id }}">{{ $opd->nama_opd }}</option>
+                                @endforeach
+                            </select>
+
+                            <label class="form-label">Nomor Indikator</label>
+                            <input type="number" name="no_indikator"
+                                class="form-control @error('no_indikator') is-invalid @enderror">
+                            @error('no_indikator')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                            <label class="form-label">Nama Indikator</label>
+                            <input type="text" name="nama_indikator"
+                                class="form-control @error('nama_indikator') is-invalid @enderror" required
+                                value="{{ old('nama_indikator') }}">
+                            @error('nama_indikator')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+
+                            <label class="form-label">Bobot Indikator</label>
+                            <input type="text" name="bobot_indikator"
+                                class="form-control @error('bobot_indikator') is-invalid @enderror" required
+                                value="{{ old('bobot_indikator') }}">
+                            @error('bobot_indikator')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+
+                            <label class="form-label">Penjelasan Indikator</label>
+                            <textarea name="penjelasan_indikator"
+                                class="form-control @error('penjelasan_indikator') is-invalid @enderror" rows="5"
+                                required>{{ old('penjelasan_indikator') }}</textarea>
+                            @error('penjelasan_indikator')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    @foreach ($data_indikator as $indikator)
+        <div class="modal fade" id="ModalEdit{{ $indikator->id }}" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="/indikator/{{ $indikator->id }}/update" method="POST" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <input type="hidden" name="aspek_id" class="form-control" value="{{ $aspek->id }}">
+
+                                <label class="form-label">Aspek</label>
+                                <select disabled class="form-control" required aria-label=".form-select-sm example">
+                                    <option>{{ $aspek->nama_aspek }}</option>
+                                </select>
+
+                                <label class="form-label">OPD</label>
+                                <select name="opd_id" class="form-select" required aria-label=".form-select-sm example">
+                                    <?php
+                                    foreach ($data_opd as $opd) {
+                                        echo "<option value='$opd->id'";
+                                        echo $indikator['opd_id'] == $opd->id ? 'selected' : '';
+                                        echo ">$opd->nama_opd</option>";
+                                    }
+                                    ?>
+                                </select>
+
+                                <label class="form-label">Nomor Indikator</label>
+                                <input type="number" name="no_indikator" value="{{ $indikator->no_indikator }}"
+                                    class="form-control @error('no_indikator') is-invalid @enderror">
+                                @error('no_indikator')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                                <label class="form-label">Nama Indikator</label>
+                                <input type="text" name="nama_indikator" value="{{ $indikator->nama_indikator }}"
+                                    class="form-control @error('nama_indikator') is-invalid @enderror" required>
+                                @error('nama_indikator')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+
+                                <label class="form-label">Bobot Indikator</label>
+                                <input type="text" name="bobot_indikator" value="{{ $indikator->bobot_indikator }}"
+                                    class="form-control @error('bobot_indikator') is-invalid @enderror" required>
+                                @error('bobot_indikator')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+
+                                <label class="form-label">Penjelasan Indikator</label>
+                                <textarea name="penjelasan_indikator" value="{{ $indikator->penjelasan_indikator }}"
+                                    class="form-control @error('penjelasan_indikator') is-invalid @enderror" rows="5"
+                                    required>{{ $indikator->penjelasan_indikator }}</textarea>
+                                @error('penjelasan_indikator')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    @endforeach
 @stop
