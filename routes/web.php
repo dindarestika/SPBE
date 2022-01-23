@@ -67,6 +67,29 @@ Route::group(['middleware' => ['auth', 'cekrole:1']], function () {
     Route::post('/evaluasi/{id}/update', 'EvaluasiController@update');
     Route::get('/evaluasi/{id}/delete', 'EvaluasiController@delete');
 
+    Route::get('/datavisi', 'LandingpageController@index');
+    Route::post('/landingpage/createvisi', 'LandingpageController@createvisi');
+    Route::get('/datavisi/{id}/editvisi', 'LandingController@editvisi');
+    Route::post('/datavisi/{id}/updatevisi', 'LandingpageController@updatevisi');
+    Route::get('/datavisi/{id}/delete', 'LandingpageController@deletevisi');
+
+    Route::get('/datamisi', 'LandingpageController@misi');
+    Route::post('/landingpage/createmisi', 'LandingpageController@createmisi');
+
+    Route::get('/datatujuan', 'LandingpageController@tujuan');
+    Route::get('/datasasaran', 'LandingpageController@sasaran');
+    Route::post('/landingpage/createsasaran', 'LandingpageController@createsasaran');
+
+    Route::post('/landingpage/createtujuan', 'LandingpageController@createtujuan');
+
+    Route::get('/datadasarhukum', 'LandingpageController@dasarhukum');
+    Route::post('/landingpage/createdasarhukum', 'LandingpageController@createdasarhukum');
+
+    Route::get('/datamasterplan', 'LandingpageController@masterplan');
+    Route::post('/landingpage/createmasterplan', 'LandingpageController@createmasterplan');
+
+    Route::get('/datainfrastruktur', 'InfrastrukturController@infrastruktur');
+
 
     Route::get('/domain', 'DomainController@index');
     Route::post('/domain/create', 'DomainController@create');
