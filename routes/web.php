@@ -181,7 +181,7 @@ Route::group(['middleware' => ['auth', 'cekrole:1,2']], function () {
     Route::get('/lihat-penilaian/{id}/penilaianindikator', 'PenilaianController@penilaianindikator');
     Route::post('/lihat-penilaian/{id}/update', 'PenilaianController@updatepertanyaan');
     Route::get('/lihat-penilaian/{id}/skorindex', 'PenilaianController@skor');
-    Route::get('/lihat-penilaian/{id}/pertanyaanumum', 'PenilaianController@pertanyaanumum');
+    Route::get('/lihat-penilaian/{id}/soalpertanyaanumum', 'PenilaianController@pertanyaanumum');
     Route::get('/lihat-penilaian/{id}/mandiri', 'PenilaianController@mandiri');
     Route::post('/lihat-penilaian/{id}/load_grafik', 'PenilaianController@load_grafik')->name('load.grafik');
 

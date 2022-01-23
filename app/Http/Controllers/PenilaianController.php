@@ -132,9 +132,16 @@ class PenilaianController extends Controller
 
     public function pertanyaanumum($id)
     {
-        $evaluasi = Evaluasi::find($id);
-        $pertanyaan_umum = PertanyaanUmum::all();
         $user = request()->user();
+        $evaluasi = Evaluasi::find($id);
+        // $pertanyaan_umum =   PertanyaanUmum::all();
+        $data = DB::select(
+            "SELECT  e.id, a.nama_evaluasi,e.soal FROM `evaluasi` AS a
+            LEFT JOIN pertanyaan_umum AS e ON e.evaluasi_id = a.id
+            LEFT JOIN opd AS f ON f.id = e.opd_id
+            WHERE a.id = $id AND f.id= $user->opd_id"
+        );
+
         $jawaban = JawabanUmum::where('user_id', $user->id)->get();
         $jawaban_umum = JawabanUmum::where('user_id', $user->id)->exists();
         if ($jawaban_umum) {
@@ -145,7 +152,7 @@ class PenilaianController extends Controller
         return view('penilaian.pertanyaanumum', [
             "title" => "Penilaian",
             'evaluasi' => $evaluasi,
-            'pertanyaan_umum' => $pertanyaan_umum,
+            'pertanyaan_umum' => $data,
             'jawaban' => $jawaban,
             'status' => $status,
         ]);

@@ -29,7 +29,7 @@
                             <tr>
                                 <td></td>
                                 <td>
-                                    <a href="/lihat-penilaian/{{ $evaluasi->id }}/pertanyaanumum" type="button"
+                                    <a href="/lihat-penilaian/{{ $evaluasi->id }}/soalpertanyaanumum" type="button"
                                         class="btn btn-primary btn-sm">Pertanyaan Umum</a>
                                     <a href="/lihat-penilaian/{{ $evaluasi->id }}/mandiri" type="button"
                                         class="btn btn-primary btn-sm">Penilaian Mandiri</a>

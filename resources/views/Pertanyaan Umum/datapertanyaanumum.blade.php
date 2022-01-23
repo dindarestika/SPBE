@@ -98,7 +98,7 @@
 
                             <label class="form-label">Evaluasi</label>
                             <select disabled class="form-control" required aria-label=".form-select-sm example">
-                                <option>{{ $evaluasi->nama_evaluasi }}</option>
+                                <option value="{{ $evaluasi->id }}">{{ $evaluasi->nama_evaluasi }}</option>
                             </select>
 
                             <label class="form-label">OPD</label>
