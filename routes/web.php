@@ -183,6 +183,8 @@ Route::group(['middleware' => ['auth', 'cekrole:1,2']], function () {
     Route::get('/lihat-penilaian/{id}/skorindex', 'PenilaianController@skor');
     Route::get('/lihat-penilaian/{id}/pertanyaanumum', 'PenilaianController@pertanyaanumum');
     Route::get('/lihat-penilaian/{id}/mandiri', 'PenilaianController@mandiri');
+    Route::post('/lihat-penilaian/{id}/load_grafik', 'PenilaianController@load_grafik')->name('load.grafik');
+
 
     Route::post('/lihat-penilaian/get_pertanyaan', 'PenilaianController@ajax_get_pertanyaan')->name('penilaian.get_pertanyaan');
 

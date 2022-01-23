@@ -377,4 +377,35 @@ class PenilaianController extends Controller
         }
         return back()->with('sukses', 'Jawaban berhasil diupdate');
     }
+    public function load_grafik($id)
+    {
+        $data_aspek = Aspek::whereHas('domain.evaluasi', function (Builder $query) use ($id) {
+            $query->where('evaluasi_id', $id);
+        })->get();
+
+        $nama = array();
+        $index = array();
+        foreach ($data_aspek as $n => $aspek) {
+            $nama_aspek = $aspek->nama_aspek;
+            array_push($nama, $nama_aspek);
+            $indeks_aspek = $aspek->indeks_aspek;
+            array_push($index, $indeks_aspek);
+        }
+
+        return response()->json([
+            'status' => true,
+            'data' => [
+                'series' => [
+                    [
+                        'name' => 'Aspek SPBE Target',
+                        'data' => [2.6, 2.6, 2.6, 2.6, 2.6, 2.6, 2.6, 2.6],
+                    ], [
+                        'name' => 'Aspek SPBE Indeks',
+                        'data' => $index
+                    ]
+                ],
+                'categories' => $nama
+            ]
+        ]);
+    }
 }

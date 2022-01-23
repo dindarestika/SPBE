@@ -43,6 +43,10 @@
                             <div class="card">
                                 <div class="card-header">
                                     <div class="header-title ">
+                                        <h5 class="d-flex justify-content-center mb-2">Hasil
+                                            {{ $evaluasi->nama_evaluasi }}</h5>
+                                        <div id="chart-skor"></div>
+                                        </br>
                                         <h5 class="d-flex justify-content-center mb-2">Nilai Index SPBE</h5>
                                         <span class="d-flex justify-content-center mb-2">Total</span>
                                         <h1 class="d-flex justify-content-center mb-2">{{ sprintf('%.2f', $indeks_spbe) }}
@@ -109,3 +113,56 @@
     </div>
 
 @stop
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+
+            axios.post("/lihat-penilaian/{{ $evaluasi->id }}/load_grafik")
+                .then(res => {
+                    console.log(res)
+                    let result = res.data.data
+
+                    let options = {
+                        series: result.series,
+                        chart: {
+                            height: 375,
+                            type: 'radar',
+                        },
+                        dataLabels: {
+                            enabled: true
+                        },
+
+                        plotOptions: {
+                            radar: {
+                                size: 150,
+                            }
+                        },
+                        title: {
+                            text: ''
+                        },
+                        colors: ['#1A73E8', '#B32824'],
+                        markers: {
+                            size: 4,
+                            colors: ['#fff'],
+                            strokeColor: '#FF4560',
+                            strokeWidth: 2,
+                        },
+                        tooltip: {
+                            y: {
+                                formatter: function(val) {
+                                    return val
+                                }
+                            }
+                        },
+                        xaxis: {
+                            categories: result.categories
+                        },
+                        yaxis: {}
+                    };
+
+                    let chart = new ApexCharts(document.querySelector("#chart-skor"), options);
+                    chart.render();
+                })
+        })
+    </script>
+@endpush

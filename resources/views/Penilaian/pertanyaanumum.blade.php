@@ -82,7 +82,7 @@
 
                 </div>
 
-            @elseif($status=='TIDAK ADA')
+            @elseif($status == 'TIDAK ADA')
                 <div class="card-body">
                     <?php $i = 1; ?>
                     @foreach ($pertanyaan_umum as $pu)
@@ -103,14 +103,6 @@
                                                 placeholder="Jawab di sini ..." rows="3"></textarea>
                                         </div>
                                     </div>
-                                    <!--
-                                                                                <div class="mb-0 p-2 flex-shrink-1 bd-highlight">
-                                                                                    <div class="form-group row-3">
-                                                                                        <label class="form-label">Upload Bukti</label>
-                                                                                        <input type="file" class="form-control">
-                                                                                    </div>
-                                                                                </div>
-                                                                                -->
                                 </div>
                     @endforeach
                     <div class="modal-footer">
