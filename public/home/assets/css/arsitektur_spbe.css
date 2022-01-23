@@ -1,0 +1,28 @@
+body {
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+.arsitektur {
+	margin-left: 1vw;
+	margin-top: 5vh;
+	width: 150vw;
+	height: auto;
+}
+
+.arsitektur .isi {
+	width: 30vw;
+	height: auto;
+}
+
+.arsitektur .container img {
+	width: 30vw;
+	height: auto;
+}
+
+footer {
+	position: absolute;
+	width: 100%;
+	bottom: 0px;
+}
+

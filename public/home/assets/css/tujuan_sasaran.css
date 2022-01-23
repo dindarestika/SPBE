@@ -1,0 +1,40 @@
+body {
+	background-color: #fafcff;
+	overflow-x: hidden;
+}
+
+.tujuan_sasaran {
+	margin-top: 20vh;
+}
+
+.tujuan, .sasaran {
+	background-color: /*#A1C2CE*/#F2F6F8;
+	/*position: absolute;*/
+	margin: 0vh 5vw 0vh 5vw;
+}
+
+.tujuan h1, .sasaran h1 {
+	margin-left: 5vw;
+}
+
+.tujuan ul li, .sasaran ul li {
+	font-size: 30px;
+}
+
+.tujuan h1 i, .sasaran h1 i {
+	color: #4F5452;
+}
+
+.tujuan h1 span, .sasaran h1 span {
+	color: #4F5452;
+}
+
+.tujuan ul li, .sasaran ul li {
+	color: #454A49;
+}
+
+.tujuan hr, .sasaran hr {
+	color: #1E201F;
+	margin-left: 2vw;
+	margin-right: 2vw;
+}

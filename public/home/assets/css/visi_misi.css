@@ -1,0 +1,42 @@
+body {
+	background-color: #fafcff;
+	overflow-x: hidden;
+}
+
+.visi_misi {
+	margin-top: 20vh;
+}
+
+.visi, .misi {
+	background-color: #F2F6F8;
+	/*position: absolute;*/
+	margin: 0vh 5vw 0vh 5vw;
+}
+
+.visi h1, .misi h1 {
+	margin-left: 5vw;
+}
+
+.visi h1 span, .misi h1 span {
+	color: #4F5452;
+}
+
+.visi h1 i, .misi h1 i {
+	color: #4F5452;
+}
+
+.visi p {
+	font-size: 30px;
+	color: #454A49;
+}
+
+.misi ul li {
+	font-size: 30px;
+	color: #454A49;
+}
+
+.misi hr {
+	color: #1E201F;
+	margin-left: 2vw;
+	margin-right: 2vw;
+}
