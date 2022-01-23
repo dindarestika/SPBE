@@ -15,7 +15,7 @@ class CreateDomainTable extends Migration
     {
         Schema::create('domain', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('evaluasi_id');
+            $table->foreignId("evaluasi_id")->constrained("evaluasi")->onDelete("cascade")->onUpdate("cascade");
             $table->integer('no_domain');
             $table->string('nama_domain');
             $table->decimal('bobot_domain', $precision = 8, $scale = 2);

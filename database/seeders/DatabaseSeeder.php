@@ -8,7 +8,6 @@ use App\Models\Opd;
 use App\Models\Role;
 use App\Models\Agenda;
 use App\Models\Jenisagenda;
-use App\Models\PertanyaanUmum;
 use App\Models\Wifi;
 use App\Models\Visi;
 use App\Models\Tujuan;
@@ -212,14 +211,6 @@ class DatabaseSeeder extends Seeder
             'longitude' => "110.8106383"
         ]);
 
-        PertanyaanUmum::create([
-            'evaluasi_id' => "1",
-            'soal' => "Jelaskan Visi Penerapan Sistem Pemerintahan Berbasis Elektronik di Lingkungan Instansi Pusat/Pemerintah Daerah Anda?",
-        ]);
-        PertanyaanUmum::create([
-            'evaluasi_id' => "1",
-            'soal' => "Jelaskan Misi Penerapan Sistem Pemerintahan Berbasis Elektronik di Lingkungan Instansi Pusat/Pemerintah Daerah Anda?",
-        ]);
 
 
         Visi::create([

@@ -15,7 +15,7 @@ class CreatePertanyaanTable extends Migration
     {
         Schema::create('pertanyaan', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('indikator_id');
+            $table->foreignId("indikator_id")->constrained("indikator")->onDelete("cascade")->onUpdate("cascade");
             $table->string('tingkat');
             $table->text('kriteria');
             $table->timestamps();

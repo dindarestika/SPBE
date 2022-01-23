@@ -15,8 +15,8 @@ class CreateJawabanTable extends Migration
     {
         Schema::create('jawaban', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('pertanyaan_id');
+            $table->foreignId("user_id")->constrained("users")->onDelete("cascade")->onUpdate("cascade");
+            $table->foreignId("pertanyaan_id")->constrained("pertanyaan")->onDelete("cascade")->onUpdate("cascade");
             $table->text('jawaban_pertanyaan')->nullable();
             $table->string('bukti_dukung')->nullable();
             $table->integer('capaian')->default(0);

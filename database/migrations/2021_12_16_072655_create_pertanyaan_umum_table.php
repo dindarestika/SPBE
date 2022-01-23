@@ -15,8 +15,9 @@ class CreatePertanyaanUmumTable extends Migration
     {
         Schema::create('pertanyaan_umum', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("evaluasi_id")->constrained("evaluasi")->onDelete("cascade")->onUpdate("cascade");
+            $table->foreignId("opd_id")->constrained("opd")->onDelete("cascade")->onUpdate("cascade");
             $table->text('soal');
-            $table->foreignId("evaluasi_id");
             $table->timestamps();
         });
     }

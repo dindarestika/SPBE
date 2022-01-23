@@ -15,7 +15,7 @@ class CreateDokumentasiTable extends Migration
     {
         Schema::create('dokumentasi', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('agenda_id');
+            $table->foreignId("agenda_id")->constrained("agenda")->onDelete("cascade")->onUpdate("cascade");
             $table->string('notulen')->nullable();
             $table->string('surat')->nullable();
             $table->string('presensi')->nullable();

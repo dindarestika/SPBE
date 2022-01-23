@@ -15,8 +15,8 @@ class CreateJawabanUmumTable extends Migration
     {
         Schema::create('jawaban_umum', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('pertanyaan_umum_id');
+            $table->foreignId("user_id")->constrained("users")->onDelete("cascade")->onUpdate("cascade");
+            $table->foreignId("pertanyaan_umum_id")->constrained("pertanyaan_umum")->onDelete("cascade")->onUpdate("cascade");
             $table->text('jawaban')->nullable();
             $table->timestamps();
         });

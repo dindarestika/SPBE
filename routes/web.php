@@ -67,7 +67,6 @@ Route::group(['middleware' => ['auth', 'cekrole:1']], function () {
     Route::post('/evaluasi/{id}/update', 'EvaluasiController@update');
     Route::get('/evaluasi/{id}/delete', 'EvaluasiController@delete');
 
-
     Route::get('/domain', 'DomainController@index');
     Route::post('/domain/create', 'DomainController@create');
     Route::get('/domain/{id}/edit', 'DomainController@edit');
@@ -89,7 +88,8 @@ Route::group(['middleware' => ['auth', 'cekrole:1']], function () {
     Route::post('/pertanyaan/{id}/update', 'PertanyaanController@update');
     Route::get('/pertanyaan/{id}/delete', 'PertanyaanController@delete');
 
-    Route::get('/pertanyaanumum', 'PertanyaanUmumController@index');
+    Route::get('/evaluasi/pertanyaanumum', 'PertanyaanUmumController@index');
+    Route::get('/{id}/{nama}/pertanyaanumum', 'PertanyaanUmumController@datapertanyaanumum');
     Route::post('/pertanyaanumum/create', 'PertanyaanUmumController@create');
     Route::get('/pertanyaanumum/{id}/edit', 'PertanyaanUmumController@edit');
     Route::post('/pertanyaanumum/{id}/update', 'PertanyaanUmumController@update');

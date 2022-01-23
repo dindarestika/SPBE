@@ -15,8 +15,8 @@ class CreateIndikatorTable extends Migration
     {
         Schema::create('indikator', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('opd_id');
-            $table->foreignId('aspek_id');
+            $table->foreignId("aspek_id")->constrained("aspek")->onDelete("cascade")->onUpdate("cascade");
+            $table->foreignId("opd_id")->constrained("opd")->onDelete("cascade")->onUpdate("cascade");
             $table->integer('no_indikator');
             $table->string('nama_indikator');
             $table->decimal('bobot_indikator', $precision = 8, $scale = 2);

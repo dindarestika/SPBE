@@ -7,6 +7,7 @@ use App\Models\Domain;
 use App\Models\Aspek;
 use App\Models\Indikator;
 use App\Models\Evaluasi;
+use App\Models\PertanyaanUmum;
 
 
 class EvaluasiMandiriSeeder extends Seeder
@@ -680,6 +681,16 @@ class EvaluasiMandiriSeeder extends Seeder
             Layanan Publik Sektor Berbasis Elektronik yang dimaksud merupakan keluaran yang dihasilkan 1 (satu) atau lebih aplikasi yang memberikan nilai manfaat dalam pengelolaan Layanan Publik Sektoral Instansi Pusat/Pemerintah DaerahInstansi Pusat dan/atau Pemerintah Daerah.
             Layanan Publik Sektor yang dimaksud merupakan layanan sektoral selain pada indikator 32 – 44.
             ",
+        ]);
+        PertanyaanUmum::create([
+            'evaluasi_id' => "1",
+            'opd_id' => "1",
+            'soal' => "Jelaskan Visi Penerapan Sistem Pemerintahan Berbasis Elektronik di Lingkungan Instansi Pusat/Pemerintah Daerah Anda?",
+        ]);
+        PertanyaanUmum::create([
+            'evaluasi_id' => "1",
+            'opd_id' => "1",
+            'soal' => "Jelaskan Misi Penerapan Sistem Pemerintahan Berbasis Elektronik di Lingkungan Instansi Pusat/Pemerintah Daerah Anda?",
         ]);
     }
 }

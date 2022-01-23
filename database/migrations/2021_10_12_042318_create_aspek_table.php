@@ -15,7 +15,7 @@ class CreateAspekTable extends Migration
     {
         Schema::create('aspek', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('domain_id');
+            $table->foreignId("domain_id")->constrained("domain")->onDelete("cascade")->onUpdate("cascade");
             $table->integer('no_aspek');
             $table->string('nama_aspek');
             $table->decimal('bobot_aspek', $precision = 8, $scale = 2);

@@ -9,7 +9,7 @@ class PertanyaanUmum extends Model
 {
     use HasFactory;
     protected $table = 'pertanyaan_umum';
-    protected $fillable = ['soal', 'evaluasi_id'];
+    protected $fillable = ['evaluasi_id', 'opd_id', 'soal'];
     public function jawaban_umum()
     {
         return $this->hasMany(JawabanUmum::class);

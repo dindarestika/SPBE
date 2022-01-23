@@ -12,14 +12,6 @@ use App\Models\Pertanyaan;
 
 class EvaluasiController extends Controller
 {
-    public function index()
-    {
-        $data_evaluasi = Evaluasi::all();
-        return view('evaluasi.index', [
-            "title" => "Evaluasi",
-            'data_evaluasi' => $data_evaluasi
-        ]);
-    }
     public function create(Request $request)
     {
         $validatedData = $request->validate([
@@ -28,7 +20,7 @@ class EvaluasiController extends Controller
             'deskripsi_evaluasi' => 'required',
         ]);
         Evaluasi::create($validatedData);
-        return redirect('/dataevaluasi')->with('sukses', 'Data berhasil diinput');
+        return back()->with('sukses', 'Data berhasil diinput');
     }
     public function edit($id)
     {
