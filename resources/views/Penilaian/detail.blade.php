@@ -12,7 +12,7 @@
                     </div>
                 </div>
                 <div class="card-body d-flex pb-0">
-                    <table class="table table-striped">
+                    <table id="datatable" class="table table-striped">
                         <tbody>
                             <tr>
                                 <td width="100">Tahun</td>
@@ -30,7 +30,8 @@
                                 <td></td>
                                 <td>
                                     <a href="/lihat-penilaian/{{ $evaluasi->id }}/soalpertanyaanumum" type="button"
-                                        class="btn btn-primary btn-sm">Pertanyaan Umum</a>
+                                        class="btn btn-primary btn-sm tombol_umum_{{ $evaluasi->status === 'insert' ? 'insert' : 'update' }}">Pertanyaan
+                                        Umum</a>
                                     <a href="/lihat-penilaian/{{ $evaluasi->id }}/mandiri" type="button"
                                         class="btn btn-primary btn-sm">Penilaian Mandiri</a>
                                     <a href="/lihat-penilaian/{{ $evaluasi->id }}/skorindex" type="button"

@@ -53,7 +53,7 @@
                             <?php $i = 1; ?>
                             @foreach ($jawaban as $jwb)
                                 <div class="pt-2">
-                                    <p style="color: black;">{{ $i++ }}. {{ $jwb->pertanyaan_umum->soal }}</p>
+                                    <p style="color: black;">{{ $i++ }}. {{ $jwb->soal }}</p>
                                     <hr>
                                     <form action="/update/jawabanumum" method="POST" enctype="multipart/form-data">
                                         {{ csrf_field() }}
@@ -61,9 +61,9 @@
                                             <div class="p-2 w-100 bd-highlight">
                                                 <div class="form-group">
                                                     <input type="hidden" name="id[]" class="form-control"
-                                                        value="{{ $jwb->id }}">
+                                                        value="{{ $jwb->id_jawaban }}">
                                                     <input type="hidden" name="pertanyaan_umum_id[]" class="form-control"
-                                                        value="{{ $jwb->pertanyaan_umum_id }}">
+                                                        value="{{ $jwb->id }}">
                                                     <input type="hidden" name="user_id[]" class="form-control"
                                                         value="{{ auth()->user()->id }}">
                                                     <label for="Textarea" class="form-label">Jawaban:</label>
@@ -73,6 +73,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                </div>
                             @endforeach
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-warning">Simpan</button>
@@ -80,43 +81,42 @@
                             </form>
                         </div>
 
-                </div>
 
-            @elseif($status == 'TIDAK ADA')
-                <div class="card-body">
-                    <?php $i = 1; ?>
-                    @foreach ($pertanyaan_umum as $pu)
-                        <div class="pt-2">
-                            <p style="color: black;">{{ $i++ }}. {{ $pu->soal }}</p>
-                            <hr>
-                            <form action="/jawabanumum" method="POST" enctype="multipart/form-data">
-                                {{ csrf_field() }}
-                                <div class="d-flex bd-highlight">
-                                    <div class="p-2 w-100 bd-highlight">
-                                        <div class="form-group">
-                                            <input type="hidden" name="pertanyaan_umum_id[]" class="form-control"
-                                                value="{{ $pu->id }}">
-                                            <input type="hidden" name="user_id[]" class="form-control"
-                                                value="{{ auth()->user()->id }}">
-                                            <label for="Textarea" class="form-label">Jawaban:</label>
-                                            <textarea name="jawaban[]" class="form-control" id="Textarea"
-                                                placeholder="Jawab di sini ..." rows="3"></textarea>
+                    @elseif($status == 'TIDAK ADA')
+                        <div class="card-body">
+                            <?php $i = 1; ?>
+                            @foreach ($pertanyaan_umum as $pu)
+                                <div class="pt-2">
+                                    <p style="color: black;">{{ $i++ }}. {{ $pu->soal }}</p>
+                                    <hr>
+                                    <form action="/jawabanumum" method="POST" enctype="multipart/form-data">
+                                        {{ csrf_field() }}
+                                        <div class="d-flex bd-highlight">
+                                            <div class="p-2 w-100 bd-highlight">
+                                                <div class="form-group">
+                                                    <input type="hidden" name="pertanyaan_umum_id[]" class="form-control"
+                                                        value="{{ $pu->id }}">
+                                                    <input type="hidden" name="user_id[]" class="form-control"
+                                                        value="{{ auth()->user()->id }}">
+                                                    <label for="Textarea" class="form-label">Jawaban:</label>
+                                                    <textarea name="jawaban[]" class="form-control" id="Textarea"
+                                                        placeholder="Jawab di sini ..." rows="3"></textarea>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
                                 </div>
-                    @endforeach
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-warning">Simpan</button>
-                    </div>
-                    </form>
-                </div>
+                            @endforeach
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-warning">Simpan</button>
+                            </div>
+                            </form>
+                        </div>
 
+
+                    @endif
+                @endauth
             </div>
-
-            @endif
-        @endauth
-    </div>
-    </div>
+        </div>
     </div>
 
 @stop

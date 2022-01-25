@@ -19,57 +19,31 @@ class PenilaianController extends Controller
 {
     public function index()
     {
-        $data_evaluasi = Evaluasi::all();
-        $pertanyaan = Pertanyaan::all();
+        $data_evaluasi = Evaluasi::orderBy('tahun_evaluasi', 'desc')->get();
         return view('penilaian.index', [
             "title" => "Penilaian",
             'data_evaluasi' => $data_evaluasi,
-            'pertanyaan' => $pertanyaan,
-        ]);
-    }
-    public function lihat()
-    {
-        return view('penilaian.detail', [
-            "title" => "Penilaian",
         ]);
     }
     public function detail($id)
     {
-        //$domain = Domain::with('indikator')->get();
         $evaluasi = Evaluasi::find($id);
         $indikator = Indikator::all();
         $data_domain = Domain::all();
         $data_aspek = Aspek::all();
         $pertanyaan_umum = PertanyaanUmum::all();
         $jawaban_umum = JawabanUmum::all();
-        //$pertanyaan = Pertanyaan::all();
-        //$pertanyaan = Pertanyaan::where('indikator_id', $id)->get();
         return view('penilaian.detail', [
             "title" => "Penilaian",
             'evaluasi' => $evaluasi,
-            //'domain' => $domain,
             'indikator' => $indikator,
             'data_domain' => $data_domain,
             'data_aspek' => $data_aspek,
             'pertanyaan_umum' => $pertanyaan_umum,
             'jawaban_umum' => $jawaban_umum,
-            //'pertanyaan' => $pertanyaan,
         ]);
     }
 
-    //     SELECT 
-    // -- c.aspek_id, b.indikator_id, a.pertanyaan_id, a.jawaban_pertanyaan,
-    // -- a.capaian ni, c.bobot_indikator bi,
-    // -- (a.capaian * c.bobot_indikator) hasil_kali
-    // -- SUM(a.capaian * c.bobot_indikator) jumlah,
-    // 1 / e.bobot_aspek * SUM(a.capaian * c.bobot_indikator) AS indeks_aspek
-
-    // FROM jawaban a
-    // JOIN pertanyaan b ON b.id = a.pertanyaan_id
-    // JOIN indikator c ON c.id = b.indikator_id
-    // JOIN aspek e ON e.id = c.aspek_id
-    // WHERE c.aspek_id = 9
-    // -- HAVING ni != 0
     public function skor($id)
     {
         $evaluasi = Evaluasi::find($id);
@@ -134,16 +108,53 @@ class PenilaianController extends Controller
     {
         $user = request()->user();
         $evaluasi = Evaluasi::find($id);
-        // $pertanyaan_umum =   PertanyaanUmum::all();
         $data = DB::select(
-            "SELECT  e.id, a.nama_evaluasi,e.soal FROM `evaluasi` AS a
+            "SELECT  e.id, e.soal FROM `evaluasi` AS a
             LEFT JOIN pertanyaan_umum AS e ON e.evaluasi_id = a.id
             LEFT JOIN opd AS f ON f.id = e.opd_id
             WHERE a.id = $id AND f.id= $user->opd_id"
         );
+        // $data = Evaluasi::select(DB::raw('
+        // e.id, e.soal,
+        //             CASE 
+        //             WHEN (SELECT* FROM jawaban_umum
+        //                 WHERE pertanyaan__umum_id = e.id) > 0
+        //             THEN "update"
+        //             ELSE "insert"
+        //         END AS status
+        //  '))->join('pertanyaan_umum AS e', 'e.evaluasi_id', '=', 'evaluasi.id', 'left')
+        //     ->join('opd AS f', 'f.id', '=', 'e.opd_id', 'left')
+        //     ->where('evaluasi.id', $id)
+        //     ->where('f.id', $user->opd_id)->get();
+        // $jawaban_umum = DB::select(
+        //     "SELECT  e.id, e.soal, g.id AS id_jawaban, g.jawaban, g.user_id FROM `evaluasi` AS a
+        //     LEFT JOIN pertanyaan_umum AS e ON e.evaluasi_id = a.id
+        //     LEFT JOIN opd AS f ON f.id = e.opd_id
+        //     LEFT JOIN jawaban_umum AS g ON g.pertanyaan_umum_id = e.id
+        //     WHERE EXISTS a.id = $id AND f.id= $user->opd_id AND g.pertanyaan_umum_id=g.id"
+        // );
+        // $jawaban_umum = Evaluasi::select(DB::raw('
+        // e.id, e.soal, g.id AS id_jawaban, g.jawaban, g.user_id
+        //  '))->join('pertanyaan_umum AS e', 'e.evaluasi_id', '=', 'evaluasi.id', 'left')
+        //     ->join('opd AS f', 'f.id', '=', 'e.opd_id', 'left')
+        //     ->join('jawaban_umum AS g', 'g.pertanyaan_umum_id', '=', 'e.id')
+        //     ->where('evaluasi.id', $id)
+        //     ->where('f.id', 'e.id')
+        //     ->where('g.user_id', $user->id)->exists();
+        $jawaban_umum = JawabanUmum::select(DB::raw('
+            e.id, e.soal
+             '))
+            ->join('pertanyaan_umum AS e', 'e.id', '=', 'jawaban_umum.pertanyaan_umum_id', 'left')
+            ->join('evaluasi AS a', 'a.id', '=', 'e.evaluasi_id', 'left')
+            ->join('opd AS f', 'f.id', '=', 'e.opd_id', 'left')
+            ->where('a.id', $id)
+            ->where('f.id', $user->opd_id)->exists();
 
-        $jawaban = JawabanUmum::where('user_id', $user->id)->get();
-        $jawaban_umum = JawabanUmum::where('user_id', $user->id)->exists();
+        $jawaban = JawabanUmum::select(DB::raw(' jawaban_umum.id AS id_jawaban, jawaban_umum.jawaban AS jawaban, e.soal, e.id'))
+            ->join('pertanyaan_umum AS e', 'e.id', '=', 'jawaban_umum.pertanyaan_umum_id', 'left')
+            ->join('evaluasi AS a', 'a.id', '=', 'e.evaluasi_id', 'left')
+            ->where('a.id', $id)
+            ->where('user_id', $user->id)->get();
         if ($jawaban_umum) {
             $status = "ADA";
         } else {
@@ -187,33 +198,16 @@ class PenilaianController extends Controller
             ->join('aspek AS c', 'c.domain_id', '=', 'b.id')
             ->join('indikator AS d', 'd.aspek_id', '=', 'c.id')
             ->join('opd AS f', 'f.id', '=', 'd.opd_id')
-            // ->join('pertanyaan AS e', 'e.indikator_id', '=', 'd.id')
             ->where('evaluasi.id', $id)
             ->where('f.id', $user->opd_id)
             ->get();
 
-        // return response()->json($data);
 
         $evaluasi = Evaluasi::find($id);
-        $indikator = Indikator::where('opd_id', $user->opd_id)->get();
-        // $items = Indikator::where('opd_id',$user->opd_id)->get();
-        // $jawaban = Jawaban::where('user_id', $user->id)->exists();
-        // if($jawaban)
-        // {
-        //     $status="ADA";
-        // }
-        // else{
-        //     $status="TIDAK ADA";
-        // }
-
-
         return view('penilaian.mandiri', [
             "title" => "Penilaian",
             'evaluasi' => $evaluasi,
             'indikator' => $data,
-            // 'items' => $items,
-            // 'jawaban' => $jawaban,
-            // 'status' => $status,
         ]);
     }
 
@@ -226,7 +220,6 @@ class PenilaianController extends Controller
             ->join('aspek AS c', 'c.domain_id', '=', 'b.id')
             ->join('indikator AS d', 'd.aspek_id', '=', 'c.id')
             ->join('opd AS f', 'f.id', '=', 'd.opd_id')
-            // ->where('evaluasi.id', $request->id_evaluasi)
             ->where('d.id', $request->id_indikator)
             ->where('f.id', request()->user()->opd_id)
             ->first();
@@ -248,14 +241,11 @@ class PenilaianController extends Controller
         $domain = Domain::with('indikator')->get();
         $evaluasi = Evaluasi::find($id);
         $indikator = Indikator::find($id);
-        //$pertanyaan = Pertanyaan::all();
-        //$pertanyaan = Pertanyaan::where('indikator_id', $id)->get();
         return view('penilaian.penilaianindikator', [
             "title" => "Penilaian",
             'evaluasi' => $evaluasi,
             'domain' => $domain,
             'indikator' => $indikator,
-            //'pertanyaan' => $pertanyaan,
         ]);
     }
     public function updatejawabanumum(Request $request)
@@ -346,7 +336,6 @@ class PenilaianController extends Controller
             $jawab->save();
         }
         return back()->with('sukses', 'Jawaban berhasil diinput');
-        //return $nilaicapaian;
     }
 
     public function updatejawabanpertanyaan(Request $request)
