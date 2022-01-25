@@ -13,6 +13,7 @@ use App\Models\Masterplan;
 use App\Models\Infrastruktur;
 use App\Models\Arsitektur;
 use App\Models\Kontak;
+use App\Models\HasilEvaluasi;
 
 class HomeController extends Controller
 {
@@ -80,7 +81,7 @@ class HomeController extends Controller
         $infrastruktur = Infrastruktur::all();
         $jumlah_infrastruktur = Infrastruktur::all()->count();
         return view('Landingpage.infrastruktur', [
-            "title" => "Tentang",
+            "title" => "TIK",
             "infrastruktur" => $infrastruktur,
             "jumlah_infrastruktur" => $jumlah_infrastruktur,
         ]);
@@ -93,6 +94,16 @@ class HomeController extends Controller
             "title" => "Tentang",
             "arsitektur" => $arsitektur,
             "jumlah_arsitektur" => $jumlah_arsitektur,
+        ]);
+    }
+    public function hasilevaluasi()
+    {
+        $hasilevaluasi = HasilEvaluasi::orderBy('tahun_hasilevaluasi', 'desc')->get();
+        $jumlah_hasilevaluasi = HasilEvaluasi::all()->count();
+        return view('Landingpage.hasilevaluasi', [
+            "title" => "Tentang",
+            "hasilevaluasi" => $hasilevaluasi,
+            "jumlah_hasilevaluasi" => $jumlah_hasilevaluasi,
         ]);
     }
     public function lihatvisimisi()
@@ -161,6 +172,14 @@ class HomeController extends Controller
         return view('Landingpage.dataarsitektur', [
             "title" => "Data Arsitektur",
             "arsitektur" => $data_arsitektur,
+        ]);
+    }
+    public function datahasilevaluasi()
+    {
+        $data_hasilevaluasi = HasilEvaluasi::all();
+        return view('Landingpage.datahasilevaluasi', [
+            "title" => "Data Hasil Evaluasi",
+            "hasilevaluasi" => $data_hasilevaluasi,
         ]);
     }
     public function datainfrastruktur()
@@ -413,6 +432,37 @@ class HomeController extends Controller
     {
         $infrastruktur = Infrastruktur::find($id);
         $infrastruktur->delete($infrastruktur);
+        return back()->with('sukses', 'Data berhasil dihapus');
+    }
+
+    public function createhasilevaluasi(Request $request)
+    {
+        $validatedData = $request->validate([
+            'tahun_hasilevaluasi' => 'required|unique:hasil_evaluasi',
+            'nama_hasilevaluasi' => 'required',
+            'link_hasilevaluasi' => 'required',
+        ]);
+        HasilEvaluasi::create($validatedData);
+        return back()->with('sukses', 'Data berhasil diinput');
+    }
+    public function edithasilevaluasi($id)
+    {
+        $hasilevaluasi = HasilEvaluasi::find($id);
+        return view('landingpage/datahasilevaluasi_edit', [
+            "title" => "Data Hasil Evaluasi",
+            'hasilevaluasi' => $hasilevaluasi
+        ]);
+    }
+    public function updatehasilevaluasi(Request $request, $id)
+    {
+        $hasilevaluasi = HasilEvaluasi::find($id);
+        $hasilevaluasi->update($request->all());
+        return redirect('/datahasilevaluasi')->with('sukses', 'Data berhasil diupdate');
+    }
+    public function deletehasilevaluasi($id)
+    {
+        $hasilevaluasi = HasilEvaluasi::find($id);
+        $hasilevaluasi->delete($hasilevaluasi);
         return back()->with('sukses', 'Data berhasil dihapus');
     }
 

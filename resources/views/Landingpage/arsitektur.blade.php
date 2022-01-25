@@ -16,12 +16,13 @@
                                     <td>{{ $row->nama_arsitektur }}</td>
                                     <td align="center">
                                         <a href="{{ $row->link_arsitektur }}" target="blank" type="button"
-                                            class="btn btn-primary">Lihat</a>
+                                            class="bi bi-eye"></a>
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
+                    <br><br><br><br><br><br><br><br><br>
                 @endif
 
             </div>

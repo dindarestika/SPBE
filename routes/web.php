@@ -28,6 +28,7 @@ Route::get('/tujuansasaran', 'HomeController@tujuansasaran');
 Route::get('/arsitektur', 'HomeController@arsitektur');
 Route::get('/dasarhukum', 'HomeController@dasarhukum');
 Route::get('/masterplan', 'HomeController@masterplan');
+Route::get('/hasilevaluasi', 'HomeController@hasilevaluasi');
 Route::get('/infrastruktur', 'HomeController@infrastruktur');
 Route::get('/map', 'MapController@index');
 Route::get('/titik', 'MapController@titik');
@@ -157,6 +158,12 @@ Route::group(['middleware' => ['auth', 'cekrole:1']], function () {
     Route::post('/dataarsitektur/{id}/update', 'HomeController@updatearsitektur');
     Route::get('/dataarsitektur/{id}/delete', 'HomeController@deletearsitektur');
 
+    Route::get('/datahasilevaluasi', 'HomeController@datahasilevaluasi');
+    Route::post('/datahasilevaluasi/create', 'HomeController@createhasilevaluasi');
+    Route::get('/datahasilevaluasi/{id}/edit', 'HomeController@edithasilevaluasi');
+    Route::post('/datahasilevaluasi/{id}/update', 'HomeController@updatehasilevaluasi');
+    Route::get('/datahasilevaluasi/{id}/delete', 'HomeController@deletehasilevaluasi');
+
     Route::get('/datainfrastruktur', 'HomeController@datainfrastruktur');
     Route::post('/datainfrastruktur/create', 'HomeController@createinfrastruktur');
     Route::get('/datainfrastruktur/{id}/edit', 'HomeController@editinfrastruktur');
@@ -184,13 +191,14 @@ Route::group(['middleware' => ['auth', 'cekrole:1,2']], function () {
     Route::get('/lihat-penilaian/{id}/soalpertanyaanumum', 'PenilaianController@pertanyaanumum');
     Route::get('/lihat-penilaian/{id}/mandiri', 'PenilaianController@mandiri');
     Route::post('/lihat-penilaian/{id}/load_grafik', 'PenilaianController@load_grafik')->name('load.grafik');
-
-
     Route::post('/lihat-penilaian/get_pertanyaan', 'PenilaianController@ajax_get_pertanyaan')->name('penilaian.get_pertanyaan');
+    Route::get('/dokumentasi/{id}/detail', 'DokumentasiController@detail');
+    Route::get('/dokumentasi', 'DokumentasiController@index');
 
     Route::get('/calender', 'AgendaController@calender');
     Route::get('/jscalender', 'AgendaController@jscalender');
     Route::get('/calender/{id}/detail', 'AgendaController@detailcalender');
+
     Route::post('/jawaban', 'PenilaianController@jawabanpertanyaan');
     Route::post('/update_jawaban', 'PenilaianController@updatejawabanpertanyaan');
     Route::post('/jawabanumum', 'PenilaianController@jawabanumum');

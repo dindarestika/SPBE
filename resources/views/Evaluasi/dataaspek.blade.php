@@ -136,6 +136,15 @@
                                     {{ $message }}
                                 </div>
                             @enderror
+                            <label class="form-label">Index Target</label>
+                            <input type="text" name="indeks_target"
+                                class="form-control @error('indeks_target') is-invalid @enderror" required
+                                value="{{ old('indeks_target') }}">
+                            @error('indeks_target')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -184,6 +193,14 @@
                                 <input type="text" name="bobot_aspek" value="{{ $aspek->bobot_aspek }}"
                                     class="form-control @error('bobot_aspek') is-invalid @enderror" required>
                                 @error('bobot_aspek')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                                <label class="form-label">Index Target</label>
+                                <input type="text" name="indeks_target" value="{{ $aspek->indeks_target }}"
+                                    class="form-control @error('indeks_target') is-invalid @enderror" required>
+                                @error('indeks_target')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>

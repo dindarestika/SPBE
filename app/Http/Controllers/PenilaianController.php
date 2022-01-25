@@ -381,11 +381,14 @@ class PenilaianController extends Controller
 
         $nama = array();
         $index = array();
+        $target = array();
         foreach ($data_aspek as $n => $aspek) {
             $nama_aspek = $aspek->nama_aspek;
             array_push($nama, $nama_aspek);
             $indeks_aspek = $aspek->indeks_aspek;
             array_push($index, $indeks_aspek);
+            $indeks_target = $aspek->indeks_target;
+            array_push($target, $indeks_target);
         }
 
         return response()->json([
@@ -394,7 +397,7 @@ class PenilaianController extends Controller
                 'series' => [
                     [
                         'name' => 'Aspek SPBE Target',
-                        'data' => [2.6, 2.6, 2.6, 2.6, 2.6, 2.6, 2.6, 2.6],
+                        'data' => $target,
                     ], [
                         'name' => 'Aspek SPBE Indeks',
                         'data' => $index

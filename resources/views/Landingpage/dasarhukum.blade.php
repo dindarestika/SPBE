@@ -13,7 +13,7 @@
                                 <td>{{ $row->nama_dasarhukum }}</td>
                                 <td align="center">
                                     <a href="{{ $row->link_dasarhukum }}" target="blank" type="button"
-                                        class="btn btn-primary">Lihat</a>
+                                        class="bi bi-eye"></a>
                                 </td>
                             </tr>
                         @endforeach

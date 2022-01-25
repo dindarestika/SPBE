@@ -26,6 +26,7 @@ class AspekController extends Controller
             'no_aspek' => 'required',
             'nama_aspek' => 'required|max:255',
             'bobot_aspek' => 'required',
+            'indeks_target' => 'required',
         ]);
         Aspek::create($validatedData);
         return back()->with('sukses', 'Data berhasil diinput');

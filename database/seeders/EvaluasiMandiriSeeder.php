@@ -56,48 +56,56 @@ class EvaluasiMandiriSeeder extends Seeder
             'no_aspek' => "1",
             'nama_aspek' => "Kebijakan Internal terkait Tata Kelola SPBE",
             'bobot_aspek' => "13.00",
+            'indeks_target' => "2.60",
         ]);
         Aspek::create([
             'domain_id' => "2",
             'no_aspek' => "2",
             'nama_aspek' => "Perencanaan Strategi SPBE",
             'bobot_aspek' => "10.00",
+            'indeks_target' => "2.60",
         ]);
         Aspek::create([
             'domain_id' => "2",
             'no_aspek' => "3",
             'nama_aspek' => "Teknologi Informasi dan Komunikasi",
             'bobot_aspek' => "10.00",
+            'indeks_target' => "2.60",
         ]);
         Aspek::create([
             'domain_id' => "2",
             'no_aspek' => "4",
             'nama_aspek' => "Penyelanggara SPBE",
             'bobot_aspek' => "5.00",
+            'indeks_target' => "2.60",
         ]);
         Aspek::create([
             'domain_id' => "3",
             'no_aspek' => "5",
             'nama_aspek' => "Penerapan Manajemen SPBE",
             'bobot_aspek' => "12.00",
+            'indeks_target' => "2.60",
         ]);
         Aspek::create([
             'domain_id' => "3",
             'no_aspek' => "6",
             'nama_aspek' => "Audit TIK",
             'bobot_aspek' => "4.50",
+            'indeks_target' => "2.60",
         ]);
         Aspek::create([
             'domain_id' => "4",
             'no_aspek' => "7",
             'nama_aspek' => "Layanan Administrasi Pemerintahan Berbasis Elektronik",
             'bobot_aspek' => "27.50",
+            'indeks_target' => "2.60",
         ]);
         Aspek::create([
             'domain_id' => "4",
             'no_aspek' => "8",
             'nama_aspek' => "Layanan Publik Berbasis Elektronik",
             'bobot_aspek' => "18.00",
+            'indeks_target' => "2.60",
         ]);
         Indikator::create([
             'opd_id' => "2",

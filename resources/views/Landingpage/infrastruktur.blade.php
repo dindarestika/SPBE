@@ -16,14 +16,14 @@
                                     <td>{{ $row->nama_infrastruktur }}</td>
                                     <td align="center">
                                         <a href="{{ $row->link_infrastruktur }}" target="blank" type="button"
-                                            class="btn btn-primary">Lihat</a>
+                                            class="bi bi-eye"></a>
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
+                    <br><br><br><br><br><br><br><br><br>
                 @endif
-
             </div>
         </div>
     </section>
