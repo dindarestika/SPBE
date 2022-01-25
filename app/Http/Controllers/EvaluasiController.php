@@ -22,14 +22,6 @@ class EvaluasiController extends Controller
         Evaluasi::create($validatedData);
         return back()->with('sukses', 'Data berhasil diinput');
     }
-    public function edit($id)
-    {
-        $evaluasi = Evaluasi::find($id);
-        return view('evaluasi/edit', [
-            "title" => "Penilaian Mandiri",
-            'evaluasi' => $evaluasi
-        ]);
-    }
     public function update(Request $request, $id)
     {
         $evaluasi = Evaluasi::find($id);

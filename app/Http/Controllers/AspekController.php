@@ -30,16 +30,6 @@ class AspekController extends Controller
         Aspek::create($validatedData);
         return back()->with('sukses', 'Data berhasil diinput');
     }
-    public function edit($id)
-    {
-        $aspek = Aspek::find($id);
-        $data_domain = Domain::all();
-        return view('aspek/edit', [
-            "title" => "Aspek",
-            'aspek' => $aspek,
-            'data_domain' => $data_domain
-        ]);
-    }
     public function update(Request $request, $id)
     {
         $aspek = Aspek::find($id);

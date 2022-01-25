@@ -35,18 +35,6 @@ class IndikatorController extends Controller
         Indikator::create($validatedData);
         return back()->with('sukses', 'Data berhasil diinput');
     }
-    public function edit($id)
-    {
-        $indikator = Indikator::find($id);
-        $aspek = Aspek::all();
-        $opd = Opd::all();
-        return view('indikator/edit', [
-            "title" => "Indikator",
-            'opd' => $opd,
-            'aspek' => $aspek,
-            'indikator' => $indikator
-        ]);
-    }
     public function update(Request $request, $id)
     {
         $indikator = Indikator::find($id);

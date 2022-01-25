@@ -28,16 +28,6 @@ class PertanyaanController extends Controller
         Pertanyaan::create($validatedData);
         return back()->with('sukses', 'Data berhasil diinput');
     }
-    public function edit($id)
-    {
-        $pertanyaan = Pertanyaan::find($id);
-        $indikator = Indikator::all();
-        return view('pertanyaan/edit', [
-            "title" => "Pertanyaan",
-            'pertanyaan' => $pertanyaan,
-            'indikator' => $indikator
-        ]);
-    }
     public function update(Request $request, $id)
     {
         $pertanyaan = Pertanyaan::find($id);

@@ -10,9 +10,10 @@ class WifiController extends Controller
     public function index()
     {
         $data_wifi = Wifi::all();
-        return view('wifi.index',[
+        return view('wifi.index', [
             "title" => "Wifi",
-            'data_wifi' => $data_wifi]);
+            'data_wifi' => $data_wifi
+        ]);
     }
     public function create(Request $request)
     {
@@ -30,17 +31,18 @@ class WifiController extends Controller
         $wifi = Wifi::find($id);
         return view('wifi/edit', [
             "title" => "Wifi",
-            'wifi' => $wifi]);
+            'wifi' => $wifi
+        ]);
     }
     public function update(Request $request, $id)
     {
-        $wifi= Wifi::find($id);
+        $wifi = Wifi::find($id);
         $wifi->update($request->all());
         return redirect('/wifi')->with('sukses', 'Data berhasil diupdate');
     }
     public function delete($id)
     {
-        $wifi= Wifi::find($id);
+        $wifi = Wifi::find($id);
         $wifi->delete($wifi);
         return redirect('/wifi')->with('sukses', 'Data berhasil dihapus');
     }
