@@ -180,6 +180,9 @@ Route::group(['middleware' => ['auth', 'cekrole:1']], function () {
 Route::group(['middleware' => ['auth', 'cekrole:1,2']], function () {
     Route::get('/logout', 'AuthController@logout');
     Route::get('/profile', 'AuthController@profile');
+    Route::get('/editprofil', 'AuthController@showChangePasswordForm');
+    Route::post('/changePassword', 'AuthController@changePassword')->name('changePassword');
+    Route::post('/user/{id}/update', 'AuthController@update');
 
     Route::get('/dashboard', 'DashboardController@index');
     Route::get('/penilaian', 'PenilaianController@index');

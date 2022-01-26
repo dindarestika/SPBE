@@ -29,7 +29,7 @@
                                     <center>No</center>
                                 </th>
                                 <th>
-                                    <center>Nama Acara</center>
+                                    Nama Acara
                                 </th>
                                 <th>
                                     <center>Aksi</center>
@@ -44,7 +44,7 @@
                                         <center>{{ $no++ }}</center>
                                     </td>
                                     <td>
-                                        <center>{{ $d->agenda->nama_acara }}</center>
+                                        {{ $d->agenda->nama_acara }}
                                     </td>
                                     <td>
                                         <center>

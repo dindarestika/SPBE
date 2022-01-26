@@ -55,6 +55,7 @@
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item {{ $title === 'Profile' ? 'active' : '' }}"
                                 href="/profile">Profile</a></li>
+                        <li><a class="dropdown-item" href="/editprofil">Setting</a></li>
                         <li><a class="dropdown-item" href="/">Logout</a></li>
                     </ul>
                 </li>

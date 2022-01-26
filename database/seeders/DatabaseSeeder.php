@@ -81,7 +81,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Jenisagenda::create([
-            'nama_jenis' => "Pelatihan",
+            'nama_jenis' => "Rapat",
         ]);
 
         Wifi::create([
