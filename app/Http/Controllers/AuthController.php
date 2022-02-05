@@ -112,11 +112,11 @@ class AuthController extends Controller
             "title" => "Profile",
         ]);
     }
-    public function __construct()
-    {
-        $this->middleware('auth');
-        // $this->middleware('preventBackHistory');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    //     // $this->middleware('preventBackHistory');
+    // }
 
     public function showChangePasswordForm()
     {
@@ -124,7 +124,7 @@ class AuthController extends Controller
         $data_role = Role::all();
         $data_opd = Opd::all();
         return view('auths.editprofil', [
-            "title" => "Profile",
+            "title" => "Setting",
             'data_user' => $data_user,
             'data_opd' => $data_opd,
             'data_role' => $data_role
